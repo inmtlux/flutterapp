@@ -55,18 +55,9 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 25,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context,'principal_screen');
-                    },
-                    child: Padding(
-                        padding: EdgeInsets.only(
-                            left: 150, top: 10, bottom: 10, right: 150),
-                        child: Text(
-                          'Login',
-                          style: TextStyle(fontSize: 28.0),
-                        )),
-                  ),
+                  RoundedButton(
+                    buttonName: 'login'
+                    ),
                   SizedBox(
                     height: 25,
                   ),

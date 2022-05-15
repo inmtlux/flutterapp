@@ -8,6 +8,7 @@ var app = express();
 
 //carga de archivos del rutas
 var libros_routes = require('./routes/libros');
+var usuario_routes = require('./routes/usuario');
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 });
 //reeescrbir rutas
 app.use('/api/',libros_routes);
+app.use('/api/',usuario_routes);
 //exportar modulo
 
 module.exports = app;
