@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:primera_prueba/screens/categoria-screen.dart';
+import 'package:primera_prueba/screens/inicio-screen.dart';
+import 'package:primera_prueba/screens/login-screen.dart';
+import 'package:primera_prueba/widgets/menu-inferior.dart';
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -7,6 +11,14 @@ class PrincipalScreen extends StatefulWidget {
 }
 
 class _PrincipalScreen extends State<PrincipalScreen> {
+  int _pagina_actual = 1;
+
+  List<Widget> _paginas = [
+    InicioScreen(),
+    CategoriaScreen(),
+    LoginScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -23,25 +35,33 @@ class _PrincipalScreen extends State<PrincipalScreen> {
         backgroundColor: Colors.white,
         
       ),
-      body: Container(child: Text('Home')),
+      body: _paginas[_pagina_actual],
       
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+      onTap: (index){
+          setState(() {
+            _pagina_actual = index;
+          });
+        },
+      currentIndex: _pagina_actual,
+      items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Inicio',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: 'Business',
+            label: 'Buscar',
           ),
           BottomNavigationBarItem(
+            
             icon: Icon(Icons.account_circle_rounded),
-            label: 'School',
+            label: 'Perfil',
+            
           ),
           
       ],
-      )
+      ),
     );
   }
 }

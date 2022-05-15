@@ -22,7 +22,7 @@ class RoundedButton extends StatelessWidget {
           ),
       child: FlatButton(
         onPressed: (){
-          Navigator.pushReplacementNamed(context,'principal_screen');
+          Navigator.pushReplacementNamed(context, 'principal_screen');
         },
         child: Text(
           buttonName,

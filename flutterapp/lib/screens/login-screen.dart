@@ -1,38 +1,38 @@
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:primera_prueba/palette.dart';
 import 'package:primera_prueba/widgets/widgets.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen  extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         BackgroundImage(
-          image: 'assets/libros.jpg',
-        ),
+          image: 'assets/libros.jpg',),
+
         Scaffold(
           backgroundColor: Colors.transparent,
           body: Column(
             children: [
               Flexible(
-                child: Center(
-                  //widget center para centrar el texto
-                  child: Text(
-                    //encima hemos creado otro widget hijo para centrar el texto
-                    'Sliderin',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 60,
-                        fontWeight: FontWeight.bold),
+                child: Center(//widget center para centrar el texto
+                  child: Text(//encima hemos creado otro widget hijo para centrar el texto
+                  'Sliderin',
+                  style: TextStyle(
+                    color: Colors.white, 
+                    fontSize: 60,
+                    fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
+
               Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  TextInputField(
-                    //aca reeemplazamos
+                  TextInputField(//aca reeemplazamos
                     icon: FontAwesomeIcons.envelope,
                     hint: 'Email',
                     inputType: TextInputType.emailAddress,
@@ -45,10 +45,10 @@ class LoginScreen extends StatelessWidget {
                     inputAction: TextInputAction.done,
                   ),
                   GestureDetector(
-                    onTap: () =>
-                        Navigator.pushNamed(context, 'Olvido la contraseña'),
+                    onTap: () => Navigator.pushNamed(context, 
+                    'Olvido la contraseña'),
                     child: Text(
-                      'Olvido la Contraseña',
+                    'Olvido la Contraseña',
                       style: kBodyText,
                     ),
                   ),
@@ -56,32 +56,41 @@ class LoginScreen extends StatelessWidget {
                     height: 25,
                   ),
                   RoundedButton(
-                    buttonName: 'login'
-                    ),
+                    buttonName: 'Login',
+                  ),
                   SizedBox(
-                    height: 25,
+                  height: 25,
                   ),
                 ],
               ),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, 'Crear nueva cuenta'),
+                onTap: () => Navigator.pushNamed(context, 
+                'Crear nueva cuenta'),
                 child: Container(
                   child: Text(
                     'Crear nueva cuenta',
                     style: kBodyText,
+                    ),
+                    decoration: BoxDecoration(
+                      border: 
+                      Border(bottom: BorderSide(width: 1,
+                      color: kWhite))),
                   ),
-                  decoration: BoxDecoration(
-                      border:
-                          Border(bottom: BorderSide(width: 1, color: kWhite))),
+              ),
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-            ],
-          ),
+              ],
+            ),
         )
       ],
     );
   }
 }
+
+
+
+
+
+
+
