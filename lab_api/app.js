@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 var app = express();
 
 //carga de archivos del rutas
-var producto_routes = require('./routes/producto');
+var libros_routes = require('./routes/libros');
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
     next();
 });
 //reeescrbir rutas
-app.use('/api/',producto_routes);
+app.use('/api/',libros_routes);
 //exportar modulo
 
 module.exports = app;

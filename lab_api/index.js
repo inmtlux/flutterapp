@@ -8,7 +8,7 @@ var port = process.env.port || 3999;
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://Alex:sonic45@realmcluster.nirxz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://user_node:BYxxFcvHxYohErgu@miclustercafe.kgjo7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
                 { useNewUrlParser: true})
                 .then(
                     ()=>{

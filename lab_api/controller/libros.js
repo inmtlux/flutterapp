@@ -2,14 +2,14 @@
 
 var client = require("../database/db");
 //sacar la base de datos
-var db = client.db("pruebasbd");
+var db = client.db("flutterapp");
 
 var controller = {
     //listar
     list: function(req,res){
         console.log("---------------");
         console.log("entrando a la funcion listar");
-        db.collection("productos").find().toArray(
+        db.collection("libros").find().toArray(
             (error, dataProductos)=>{
                 if(error||! dataProductos){
                     console.log(error);
@@ -29,7 +29,7 @@ var controller = {
         console.log("----------");
         console.log("entrando a la funcion find");
         console.log("id"+ req.params.id);
-        db.collection("productos").find({productoId: parseInt(req.params.id)}).toArray(
+        db.collection("libros").find({productoId: parseInt(req.params.id)}).toArray(
             (error, dataProductos)=>{
                 if(error||! dataProductos){
                     return res.status(404).send({
@@ -51,13 +51,13 @@ var controller = {
         console.log(req.body);
         if(req.body.productoId == "0"){//si es nuevo
             console.log("entrando a nuevo");
-            db.collection("productos").count().then(
+            db.collection("libros").count().then(
                 countProductos =>{
                     var producto = {}
                     producto.productoId = countProductos + 1;//producto
                     producto.descripcion = req.body.descripcion;//descripcion
                     producto.precio = req.body.precio;//precio
-                    db.collection('productos').insertOne(producto,
+                    db.collection('libros').insertOne(producto,
                         (error, result)=>{
                             if(error){
                                 return res.status(404).send({
@@ -80,7 +80,7 @@ var controller = {
             producto.descripcion = req.body.descripcion;//descripcion
             producto.precio = req.body.precio;//precio
             console.log(producto);
-            db.collection("productos").updateOne({ productoId: { $eq: parseInt(req.body.productoId)}},
+            db.collection("libros").updateOne({ productoId: { $eq: parseInt(req.body.productoId)}},
                                                  {$set: producto},
                 (error, result)=>{
                 if(error){
