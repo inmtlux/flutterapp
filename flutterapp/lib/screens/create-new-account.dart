@@ -84,7 +84,22 @@ class CreateNewAccount extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  RoundedButton(buttonName: 'Registrar'),
+                  Container(
+                    height: size.height * 0.09,
+                    width: size.width * 0.9,
+                    decoration: 
+                    BoxDecoration(borderRadius: 
+                      BorderRadius.circular(16),
+                    color: kBlue,
+                    ),
+                  child: FlatButton(
+                    onPressed: (){},
+                  child: Text(
+                    'Create',
+                    style: kBodyText.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: 25,
                   ),

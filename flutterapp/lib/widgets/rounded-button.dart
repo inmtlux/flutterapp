@@ -21,7 +21,9 @@ class RoundedButton extends StatelessWidget {
           color: kBlue,
           ),
       child: FlatButton(
-        onPressed: (){},
+        onPressed: (){
+          Navigator.pushReplacementNamed(context,'principal_screen');
+        },
         child: Text(
           buttonName,
           style: kBodyText.copyWith(fontWeight: FontWeight.bold),
