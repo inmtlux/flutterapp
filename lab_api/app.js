@@ -8,6 +8,7 @@ var app = express();
 
 //carga de archivos del rutas
 var libros_routes = require('./routes/libros');
+var cterror_routes = require('./routes/cterror');
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 });
 //reeescrbir rutas
 app.use('/api/',libros_routes);
+app.use('/api/',cterror_routes);
 //exportar modulo
 
 module.exports = app;
