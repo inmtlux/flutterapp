@@ -1,17 +1,117 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class InicioScreen extends StatefulWidget{
+class InicioScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _CategoriaScreen();
 }
 
-class _CategoriaScreen extends State<InicioScreen>{
+class _CategoriaScreen extends State<InicioScreen> {
+  List<List> novedades = [
+    ["Cortejo", "../assets/inicio-screen/cortejo.jpg"],
+    ["Abril rojo", "../assets/inicio-screen/abril-rojo.jpg"],
+    ["Boulevard", "../assets/inicio-screen/boulevard.jpg"],
+    ["Cortejo", "../assets/inicio-screen/mapa-anhelos.jpg"],
+    ["Violeta", "../assets/inicio-screen/violeta.jpg"],
+  ];
+
+  List<List> populares = [
+    ["IT", "../assets/inicio-screen/it.jpg"],
+    ["el-principito", "../assets/inicio-screen/el-principito.jpg"],
+    ["After 1", "../assets/inicio-screen/after.jpg"],
+    ["Hush Hush", "../assets/inicio-screen/hush.jpg"],
+    ["Steve Jobs", "../assets/inicio-screen/steve-jobs.jpg"],
+  ];
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return   Center(
-          child: Container(
-            child: Text('Inicio', style: TextStyle(fontSize: 20.0),),
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text('NOVEDADES',
+                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
           ),
-      );
-}}
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+              height: 200,
+              child: ListView.builder(
+                  itemCount: novedades.length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final libro = novedades[index];
+                    return Container(
+                      height: 180,
+                      width: 100,
+                      margin: EdgeInsets.all(8),
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            libro[1],
+                            height: 150,
+                            width: 100,
+                            fit: BoxFit.cover,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              libro[0],
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  })),
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text('MAS POPULARES',
+                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          SizedBox(
+              height: 200,
+              child: ListView.builder(
+                  itemCount: populares.length,
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final libro = populares[index];
+                    return Container(
+                      height: 180,
+                      width: 100,
+                      margin: EdgeInsets.all(8),
+                      child: Column(
+                        children: <Widget>[
+                          Image.asset(
+                            libro[1],
+                            height: 150,
+                            width: 100,
+                            fit: BoxFit.cover,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              libro[0],
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  })),
+        ]),
+      ),
+    );
+  }
+}

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
-import 'package:primera_prueba/widgets/menu-inferior.dart';
+
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class PrincipalScreen extends StatefulWidget {
 }
 
 class _PrincipalScreen extends State<PrincipalScreen> {
-  int _pagina_actual = 1;
+  int _pagina_actual = 0;
 
   List<Widget> _paginas = [
     InicioScreen(),
@@ -46,16 +46,17 @@ class _PrincipalScreen extends State<PrincipalScreen> {
       currentIndex: _pagina_actual,
       items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Colors.purple[900]),
             label: 'Inicio',
+            
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.search,color: Colors.purple[900]),
             label: 'Buscar',
           ),
           BottomNavigationBarItem(
             
-            icon: Icon(Icons.account_circle_rounded),
+            icon: Icon(Icons.account_circle_rounded, color: Colors.purple[900]),
             label: 'Perfil',
             
           ),

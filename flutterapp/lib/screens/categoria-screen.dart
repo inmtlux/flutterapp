@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:primera_prueba/widgets/menu-inferior.dart';
+
 
 class CategoriaScreen extends StatefulWidget{
   @override
