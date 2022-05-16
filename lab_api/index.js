@@ -1,5 +1,6 @@
 'use strict'
 //requerimientos
+require('dotenv').config();
 var mongoose = require('mongoose');
 var app = require('./app');
 
@@ -8,7 +9,7 @@ var port = process.env.port || 8080;
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://user_node:BYxxFcvHxYohErgu@miclustercafe.kgjo7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGO_DB,
                 { useNewUrlParser: true})
                 .then(
                     ()=>{

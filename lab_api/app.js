@@ -10,6 +10,8 @@ var app = express();
 var libros_routes = require('./routes/libros');
 var cterror_routes = require('./routes/cterror');
 var usuario_routes = require('./routes/usuario');
+var auth_routes = require('./routes/auth');
+var categorias_routes = require('./routes/categorias');
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -27,6 +29,8 @@ app.use((req, res, next) => {
 app.use('/api/',libros_routes);
 app.use('/api/',cterror_routes);
 app.use('/api/',usuario_routes);
+app.use('/api/',auth_routes);
+app.use('/api/',categorias_routes);
 //exportar modulo
 
 module.exports = app;
