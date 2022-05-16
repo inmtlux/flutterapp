@@ -7,6 +7,7 @@ import 'package:primera_prueba/widgets/background-image.dart';
 import 'package:primera_prueba/widgets/widgets.dart';
 
 class CreateNewAccount extends StatelessWidget {
+  final txtUser = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -59,31 +60,157 @@ class CreateNewAccount extends StatelessWidget {
                 height: size.width*0.1,
               ),
               Column(
-                children:[
-                  TextInputField(icon: FontAwesomeIcons.user, 
-                  hint: 'Usuario', 
-                  inputType: TextInputType.name, 
-                  inputAction: TextInputAction.next
-                  ),
-                  TextInputField(
-                    icon: FontAwesomeIcons.envelope,
-                    hint: 'Correo',
-                    inputType: TextInputType.emailAddress,
-                    inputAction: TextInputAction.next,
-                  ),
-                  PasswordInput(icon: FontAwesomeIcons.lock, 
-                  hint: 'Contraseña', 
-                  inputAction: TextInputAction.next, 
-                  inputType: TextInputType.visiblePassword,
-                  ),
-                  PasswordInput(icon: FontAwesomeIcons.lock, 
-                  hint: 'Confirma Contraseña', 
-                  inputAction: TextInputAction.done, 
-                  inputType: TextInputType.visiblePassword,
-                  ),
+                children:<Widget>[
+        Container(//cuadro gris
+        height: size.height * 0.09,
+        width: size.width * 0.9,
+        decoration: BoxDecoration(color: Colors.grey[500]?.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(16)
+        ),
+
+        child: Center(
+          child: TextFormField(
+            decoration: InputDecoration(
+            border: InputBorder.none,
+
+            prefixIcon: Padding(//Todo el icono espacio etc
+              padding: const EdgeInsets.symmetric
+              (horizontal: 20.0),
+              child: Icon(
+                Icons.person,
+                size: 30,
+                color: kWhite,
+              ),
+            ),
+
+            hintText: ('Usuario'),
+            hintStyle: kBodyText,
+          ),
+
+          style: kBodyText,//stilo de la letra
+          keyboardType: TextInputType.name,
+          textInputAction: TextInputAction.next,
+          ),
+
+        ),
+      ),
+
+      SizedBox(
+        height: 10,
+      ),
+                    
+                  
+
+        Container(//cuadro gris
+        height: size.height * 0.09,
+        width: size.width * 0.9,
+        decoration: BoxDecoration(color: Colors.grey[500]?.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(16)
+        ),
+
+        child: Center(
+          child: TextFormField(
+            decoration: InputDecoration(
+            border: InputBorder.none,
+
+            prefixIcon: Padding(//Todo el icono espacio etc
+              padding: const EdgeInsets.symmetric
+              (horizontal: 20.0),
+              child: Icon(
+                Icons.email,
+                size: 30,
+                color: kWhite,
+              ),
+            ),
+
+            hintText: ('Correo'),
+            hintStyle: kBodyText,
+          ),
+
+          style: kBodyText,//stilo de la letra
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.next,
+          ),
+
+        ),
+      ),
+
+      SizedBox(
+        height: 10,
+      ),
+
+        Container(//cuadro gris
+        height: size.height * 0.09,
+        width: size.width * 0.9,
+        decoration: BoxDecoration(color: Colors.grey[500]?.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(16)
+        ),
+
+        child: Center(//creamos otro widget para el texto y centrar
+          child: TextField(//texto del cuadro
+            decoration: InputDecoration(
+            border: InputBorder.none,
+
+            prefixIcon: Padding(//Todo el icono espacio etc
+              padding: const EdgeInsets.symmetric
+              (horizontal: 20.0),
+              child: Icon(//ponemos un icono antes del texto
+                Icons.block,
+                size: 30,//tamaño del icono
+                color: kWhite,
+              ),
+            ),
+
+            hintText: ('Contraseña'),//para escribir el email
+            hintStyle: kBodyText,
+          ),
+          obscureText: true,//para que las letras tengan cifrado ***
+          style: kBodyText,//stilo de la laetra que ira dentro del recuadro
+          keyboardType: TextInputType.visiblePassword,
+          textInputAction: TextInputAction.done,
+          ),
+        ),
+      ),
+
+      SizedBox(height: 10,),
+
+        Container(//cuadro gris
+        height: size.height * 0.09,
+        width: size.width * 0.9,
+        decoration: BoxDecoration(color: Colors.grey[500]?.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(16)
+        ),
+
+        child: Center(//creamos otro widget para el texto y centrar
+          child: TextField(//texto del cuadro
+            decoration: InputDecoration(
+            border: InputBorder.none,
+
+            prefixIcon: Padding(//Todo el icono espacio etc
+              padding: const EdgeInsets.symmetric
+              (horizontal: 20.0),
+              child: Icon(//ponemos un icono antes del texto
+                Icons.block,
+                size: 30,//tamaño del icono
+                color: kWhite,
+              ),
+            ),
+
+            hintText: ('Contraseña'),//para escribir el email
+            hintStyle: kBodyText,
+          ),
+          obscureText: true,//para que las letras tengan cifrado ***
+          style: kBodyText,//stilo de la laetra que ira dentro del recuadro
+          keyboardType: TextInputType.visiblePassword,
+          textInputAction: TextInputAction.done,
+          ),
+        ),
+      ),
+
                   SizedBox(
                     height: 30,
                   ),
+
                   Container(
                     height: size.height * 0.09,
                     width: size.width * 0.9,

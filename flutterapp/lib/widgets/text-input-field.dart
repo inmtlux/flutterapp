@@ -30,7 +30,7 @@ class TextInputField extends StatelessWidget {
         ),
 
         child: Center(
-          child: TextField(
+          child: TextFormField(
             decoration: InputDecoration(
             border: InputBorder.none,
 
@@ -48,10 +48,12 @@ class TextInputField extends StatelessWidget {
             hintStyle: kBodyText,
           ),
 
+
           style: kBodyText,//stilo de la letra
           keyboardType: inputType,
           textInputAction: inputAction,
           ),
+
         ),
       ),
     );

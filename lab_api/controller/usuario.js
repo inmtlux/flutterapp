@@ -1,6 +1,6 @@
 'use strict'
 
-//const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 var client = require("../database/db");
 //sacar la base de datos
@@ -55,14 +55,14 @@ var controller = {
             console.log("entrando a nuevo");
             db.collection("usuarios").count().then(
                 countUsuarios =>{
-                    //let password = req.body.password;
-                    //const salt = bcrypt.genSaltSync(10);
-                    password = bcryptjs.hashSync(password,salt);
+                    let password = req.body.password;
+                    const salt = bcrypt.genSaltSync(10);
+                    password = bcrypt.hashSync(password,salt);
                     var usuario = {}
                     usuario.usuarioId = countUsuarios + 1;
                     usuario.nombApelli = req.body.nombApelli;
                     usuario.email = req.body.email;
-                    usuario.password = req.body.password;
+                    usuario.password = password;
                     usuario.estado = true;
                     usuario.rol = "user_rol";
                     db.collection('usuarios').insertOne(usuario,

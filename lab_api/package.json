@@ -10,10 +10,7 @@
   "author": "Alex",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-=======
     "bcryptjs": "^2.4.3",
->>>>>>> 08a7677ee7ac01b4bf695a504722aa0c177835b1
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "mongoose": "^6.3.2"

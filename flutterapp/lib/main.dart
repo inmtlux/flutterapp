@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
 import 'package:primera_prueba/screens/principal-screen.dart';
+import 'package:primera_prueba/screens/usuarios.dart';
 import 'package:primera_prueba/widgets/my-custom-scroll.dart';
 import 'screens/screens.dart';
 
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
         'Olvido la contraseña':(context)=> ForgotPassword(),
         'Crear nueva cuenta': (context) => CreateNewAccount(),
         'principal_screen': (_) => PrincipalScreen(),
-        'categorias_screen': (_) => CategoriaScreen()
+        'categorias_screen': (_) => CategoriaScreen(),
+        'usuarios_screen': (_)=> UsuarioScreen(),
       },
     );
   }
