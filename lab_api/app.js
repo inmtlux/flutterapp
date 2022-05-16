@@ -8,11 +8,8 @@ var app = express();
 
 //carga de archivos del rutas
 var libros_routes = require('./routes/libros');
-<<<<<<< HEAD
 var cterror_routes = require('./routes/cterror');
-=======
-var usuario_routes = require('./routes/usuario');
->>>>>>> 08a7677ee7ac01b4bf695a504722aa0c177835b1
+var categorias_routes = require('./routes/categorias');
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -28,11 +25,8 @@ app.use((req, res, next) => {
 });
 //reeescrbir rutas
 app.use('/api/',libros_routes);
-<<<<<<< HEAD
 app.use('/api/',cterror_routes);
-=======
-app.use('/api/',usuario_routes);
->>>>>>> 08a7677ee7ac01b4bf695a504722aa0c177835b1
+app.use('/api/',categorias_routes);
 //exportar modulo
 
 module.exports = app;
