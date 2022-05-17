@@ -8,7 +8,6 @@ var app = express();
 
 //carga de archivos del rutas
 var libros_routes = require('./routes/libros');
-
 var usuario_routes = require('./routes/usuario');
 var auth_routes = require('./routes/auth');
 var categorias_routes = require('./routes/categorias');
@@ -27,7 +26,6 @@ app.use((req, res, next) => {
 });
 //reeescrbir rutas
 app.use('/api/',libros_routes);
-app.use('/api/',cterror_routes);
 app.use('/api/',usuario_routes);
 app.use('/api/',auth_routes);
 app.use('/api/',categorias_routes);
