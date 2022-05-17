@@ -8,7 +8,7 @@ var app = express();
 
 //carga de archivos del rutas
 var libros_routes = require('./routes/libros');
-var cterror_routes = require('./routes/cterror');
+
 var usuario_routes = require('./routes/usuario');
 var auth_routes = require('./routes/auth');
 var categorias_routes = require('./routes/categorias');
