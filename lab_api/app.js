@@ -11,6 +11,7 @@ var libros_routes = require('./routes/libros');
 var usuario_routes = require('./routes/usuario');
 var auth_routes = require('./routes/auth');
 var categorias_routes = require('./routes/categorias');
+var producto_routes = require("./routes/producto");
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -29,6 +30,8 @@ app.use('/api/',libros_routes);
 app.use('/api/',usuario_routes);
 app.use('/api/',auth_routes);
 app.use('/api/',categorias_routes);
+app.use("/api/", producto_routes);
+
 //exportar modulo
 
 module.exports = app;

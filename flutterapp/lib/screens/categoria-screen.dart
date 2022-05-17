@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../models/categoria.dart';
-import '../providers/categoria_provider.dart';
 
 class CategoriaScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _CategoriaScreen();
 }
-class _CategoriaScreen extends State<CategoriaScreen>{
-  
+
+class _CategoriaScreen extends State<CategoriaScreen> {
   List<List> Terror = [
-    ["El bazar de los malos sueños" , "../assets/terror-screen/1.jpg", "Stephen King"],
+    [
+      "El bazar de los malos sueños",
+      "../assets/terror-screen/1.jpg",
+      "Stephen King"
+    ],
     ["El quinto hijo", "../assets/terror-screen/4.jpg"],
     ["It", "../assets/terror-screen/5.jpg"],
     ["La semilla del diablo", "../assets/terror-screen/8.jpg"],
     ["Informe sobre ciegos", "../assets/terror-screen/9.jpg"],
   ];
   List<List> LJSmith = [
-    ["Despertar: The vampires diaries" , "../assets/terror-screen/cro1.jpg"],
+    ["Despertar: The vampires diaries", "../assets/terror-screen/cro1.jpg"],
     ["Conflicto: The vampires diaries", "../assets/terror-screen/cro2.jpg"],
     ["Furia: The vampires diaries", "../assets/terror-screen/cro3.jpg"],
     ["Invocación : The vampires diaries", "../assets/terror-screen/cro4.jpg"],
   ];
   List<List> SKing = [
-    ["Cementario de animales" , "../assets/terror-screen/sk1.jpg"],
+    ["Cementario de animales", "../assets/terror-screen/sk1.jpg"],
     ["Billy Summers", "../assets/terror-screen/sk2.jpg"],
     ["It", "../assets/terror-screen/5.jpg"],
     ["El visitante", "../assets/terror-screen/sk4.jpg"],
     ["El misterio de Salem's Lot", "../assets/terror-screen/sk.jpg"],
-    ["El bazar de los malos sueños" , "../assets/terror-screen/1.jpg", "Stephen King"],
+    [
+      "El bazar de los malos sueños",
+      "../assets/terror-screen/1.jpg",
+      "Stephen King"
+    ],
   ];
 
   @override
@@ -77,15 +82,15 @@ class _CategoriaScreen extends State<CategoriaScreen>{
                       ),
                     );
                   })),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text('L.J.SMITH',
-                    style: TextStyle(fontSize: 25, color: Colors.grey[850])),
-                  ),
-                  SizedBox(
+          SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text('L.J.SMITH',
+                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
+          ),
+          SizedBox(
             height: 5,
           ),
           SizedBox(
@@ -119,20 +124,15 @@ class _CategoriaScreen extends State<CategoriaScreen>{
                       ),
                     );
                   })),
-          
-
-
-
-
           SizedBox(
-                    height: 15,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text('STEPHEN KING',
-                    style: TextStyle(fontSize: 25, color: Colors.grey[850])),
-                  ),
-                  SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text('STEPHEN KING',
+                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
+          ),
+          SizedBox(
             height: 5,
           ),
           SizedBox(
@@ -166,10 +166,8 @@ class _CategoriaScreen extends State<CategoriaScreen>{
                       ),
                     );
                   })),
-          
-          
-          
         ]),
       ),
     );
-}}
+  }
+}
