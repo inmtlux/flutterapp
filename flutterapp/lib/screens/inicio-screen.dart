@@ -80,7 +80,7 @@ class _CategoriaScreen extends State<InicioScreen> {
             height: 5,
           ),
           SizedBox(
-              height: 200,
+              height: 230,
               child: ListView.builder(
                   itemCount: populares.length,
                   scrollDirection: Axis.horizontal,
@@ -88,10 +88,11 @@ class _CategoriaScreen extends State<InicioScreen> {
                   itemBuilder: (context, index) {
                     final libro = populares[index];
                     return Container(
-                      height: 180,
+                      height: 220,
                       width: 100,
-                      margin: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(10),
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Image.asset(
                             libro[1],

@@ -38,10 +38,7 @@ var controller = {
             }
 
 
-            res.json({
-                usuario,
-                msg: 'Inico de sesión'
-            })
+            res.send('Bienvenido');
 
 
         } catch (error) {
