@@ -14,11 +14,7 @@ class _ProductoScreen extends State<ProductoScreen> {
   Widget build(BuildContext context) {
     final productoProvider = Provider.of<ProductoProvider>(context);
     final List<Producto> listaProductos = productoProvider.listaProductos;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Productos"),
-      ),
-      body: Center(
+    return Center(
         child: ListView.builder(
           itemCount: listaProductos.length,
           itemBuilder: (context, index) {
@@ -41,14 +37,6 @@ class _ProductoScreen extends State<ProductoScreen> {
             );
           },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          Navigator.pushNamed(context, "ruta_productos_form");
-        },
-        backgroundColor: Colors.blue,
-      ),
-    );
+      );
   }
 }

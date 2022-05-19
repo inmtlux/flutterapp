@@ -9,7 +9,6 @@ class Usuario {
         required this.password,
         required this.estado,
         required this.rol,
-        this.nombApelli,
     });
 
     String id;
@@ -19,7 +18,7 @@ class Usuario {
     String password;
     bool estado;
     String rol;
-    dynamic nombApelli;
+
 
     factory Usuario.fromJson(String str) => Usuario.fromMap(json.decode(str));
 
@@ -33,7 +32,7 @@ class Usuario {
         password: json["password"],
         estado: json["estado"],
         rol: json["rol"],
-        nombApelli: json["nombApelli"],
+
     );
 
     Map<String, dynamic> toMap() => {
@@ -44,6 +43,6 @@ class Usuario {
         "password": password,
         "estado": estado,
         "rol": rol,
-        "nombApelli": nombApelli,
+
     };
 }
