@@ -19,7 +19,7 @@ class _UsuarioScreen extends State<UsuarioScreen>{
       body: Center(
         child: ListView.builder(
           itemCount: listaUsuarios.length,
-          itemBuilder: (context,index){
+          itemBuilder: (context, index){
             return ListTile(
               title: Text(listaUsuarios[index].nombApelli),
             );
