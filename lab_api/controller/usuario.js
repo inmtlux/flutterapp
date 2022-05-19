@@ -60,7 +60,7 @@ var controller = {
                     password = bcrypt.hashSync(password,salt);
                     var usuario = {}
                     usuario.usuarioId = countUsuarios + 1;
-                    usuario.nombApelli = req.body.nombApelli;
+                    usuario.nombre = req.body.nombre;
                     usuario.email = req.body.email;
                     usuario.password = password;
                     usuario.estado = true;
@@ -85,7 +85,7 @@ var controller = {
             console.log("ENTRANDO A EDITAR");
             var usuario = {}
             usuario.usuarioId = parseInt(req.body.usuarioId);
-            usuario.nombApelli = req.body.nombApelli;//descripcion
+            usuario.nombre = req.body.nombre;//descripcion
             usuario.email = req.body.email;//precio
             usuario.password = req.body.password;
             usuario.estado = true;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:primera_prueba/providers/categoria_provider.dart';
 import 'package:provider/provider.dart';
 import '../models/categoria.dart';
-import '../providers/categoria_provider.dart';
 
 class CategoriaScreen extends StatefulWidget {
   @override

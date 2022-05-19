@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primera_prueba/models/categoria.dart';
 import "package:http/http.dart" as http;
-
+import 'dart:io';
 import '../models/categoria_response.dart';
 
 class CategoriaProvider extends ChangeNotifier {

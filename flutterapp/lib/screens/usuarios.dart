@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:primera_prueba/models/usuario.dart';
+import 'package:primera_prueba/providers/usuario_provider.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
+import 'package:provider/provider.dart';
 
-class UsuarioScreen extends StatefulWidget {
-  UsuarioScreen({Key? key}) : super(key: key);
+class UsuarioScreend extends StatefulWidget {
   @override
-  State<UsuarioScreen> createState() => _UsuarioScreenState();
+  State<UsuarioScreend> createState() => _UsuarioScreenState();
 }
 
-class _UsuarioScreenState extends State<UsuarioScreen> {
+class _UsuarioScreenState extends State<UsuarioScreend> {
   @override
   Widget build(BuildContext context) {
+
+    final usuarioProvider = Provider.of<UsuarioProvider>(context);
+    final List<Usuario> listaUsuarios = usuarioProvider.listaUsuarios;
+
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -38,7 +44,6 @@ class _UsuarioScreenState extends State<UsuarioScreen> {
           child: Container(decoration: BoxDecoration(
             image: DecorationImage(image: AssetImage('assets/libros.jpg'),
             fit: BoxFit.cover,
-            //colorFilter: ColorFilter.mode(Colors.black54, BlendMode.color)
             ),
           ),
           ),
@@ -46,10 +51,11 @@ class _UsuarioScreenState extends State<UsuarioScreen> {
       ),
     ),
     SliverFillRemaining(
-      child: Center()
-    )
+      child:Container()
+    ),
             ],
           ),
+          
           
           ),
       ],
