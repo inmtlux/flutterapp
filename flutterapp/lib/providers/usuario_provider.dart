@@ -15,7 +15,7 @@ class UsuarioProvider extends ChangeNotifier{
     this.getOnUsuarioList();
   }
 
-  getOnUsuarioList()async{
+  getOnUsuarioList() async{
     var url = Uri.http(_baseUrl, '/api/usuarios',{});
     final response = await http.get(url);
     print(response.body);

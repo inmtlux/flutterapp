@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class UsuarioScreen extends StatefulWidget {
   @override
-  State<UsuarioScreen> createState() => _UsuarioScreen();
+  createState() => _UsuarioScreen();
 }
 
 class _UsuarioScreen extends State<UsuarioScreen>{
@@ -19,18 +19,12 @@ class _UsuarioScreen extends State<UsuarioScreen>{
       body: Center(
         child: ListView.builder(
           itemCount: listaUsuarios.length,
-          itemBuilder: (context, index) {
+          itemBuilder: (context,index){
             return ListTile(
-              title: Text(
-                listaUsuarios[index].nombre,
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue),
-              ),
+              title: Text(listaUsuarios[index].nombApelli),
             );
           },
-        ),
+        )
       ),
     );
   }
