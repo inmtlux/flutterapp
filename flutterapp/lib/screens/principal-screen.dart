@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
+import 'package:primera_prueba/screens/producto_screen.dart';
 
 
 class PrincipalScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _PrincipalScreen extends State<PrincipalScreen> {
 
   List<Widget> _paginas = [
     InicioScreen(),
-    CategoriaScreen(),
+    ProductoScreen(),
     LoginScreen()
   ];
 

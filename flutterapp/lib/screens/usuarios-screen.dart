@@ -21,7 +21,7 @@ class _UsuarioScreen extends State<UsuarioScreen>{
           itemCount: listaUsuarios.length,
           itemBuilder: (context, index){
             return ListTile(
-              title: Text(listaUsuarios[index].nombApelli),
+              title: Text(listaUsuarios[index].nombre),
             );
           },
         )

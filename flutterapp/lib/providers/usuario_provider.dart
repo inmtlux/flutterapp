@@ -6,7 +6,7 @@ import '../models/usuario_response.dart';
 
 class UsuarioProvider extends ChangeNotifier{
 
-  String _baseUrl = '192.168.1.11:8080';
+  String _baseUrl = 'localhost:8080';
 
   List<Usuario> listaUsuarios = [];
 
