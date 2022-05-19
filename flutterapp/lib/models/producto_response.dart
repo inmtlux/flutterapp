@@ -1,21 +1,21 @@
 import 'dart:convert';
 
-import 'package:primera_prueba/models/categoria.dart';
+import 'producto.dart';
 
-class CategoriaResponse {
-  CategoriaResponse({
+class ProductoResponse {
+  ProductoResponse({
     required this.productos,
   });
 
   List<Producto> productos;
 
-  factory CategoriaResponse.fromJson(String str) =>
-      CategoriaResponse.fromMap(json.decode(str));
+  factory ProductoResponse.fromJson(String str) =>
+      ProductoResponse.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory CategoriaResponse.fromMap(Map<String, dynamic> json) =>
-      CategoriaResponse(
+  factory ProductoResponse.fromMap(Map<String, dynamic> json) =>
+      ProductoResponse(
         productos: List<Producto>.from(
             json["productos"].map((x) => Producto.fromMap(x))),
       );

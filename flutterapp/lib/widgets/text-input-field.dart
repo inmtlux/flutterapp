@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../palette.dart';
 
 class TextInputField extends StatelessWidget {
-  const TextInputField({
+
+  const TextInputField( {
     Key? key, 
     required this.icon, 
     required this.hint, 
@@ -31,9 +32,10 @@ class TextInputField extends StatelessWidget {
 
         child: Center(
           child: TextFormField(
+
             decoration: InputDecoration(
             border: InputBorder.none,
-
+      
             prefixIcon: Padding(//Todo el icono espacio etc
               padding: const EdgeInsets.symmetric
               (horizontal: 20.0),
@@ -46,12 +48,12 @@ class TextInputField extends StatelessWidget {
 
             hintText: hint,
             hintStyle: kBodyText,
+            
           ),
-
-
           style: kBodyText,//stilo de la letra
           keyboardType: inputType,
           textInputAction: inputAction,
+          
           ),
 
         ),

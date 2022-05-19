@@ -5,13 +5,13 @@ class Producto {
     required this.id,
     required this.productoId,
     required this.descripcion,
-    required this.cantidadlibros,
+    required this.precio,
   });
 
   String id;
   int productoId;
   String descripcion;
-  String cantidadlibros;
+  String precio;
 
   factory Producto.fromJson(String str) => Producto.fromMap(json.decode(str));
 
@@ -21,13 +21,13 @@ class Producto {
         id: json["_id"],
         productoId: json["productoId"],
         descripcion: json["descripcion"],
-        cantidadlibros: json["cantidadlibros"],
+        precio: json["precio"],
       );
 
   Map<String, dynamic> toMap() => {
         "_id": id,
         "productoId": productoId,
         "descripcion": descripcion,
-        "cantidadlibros": cantidadlibros,
+        "precio": precio,
       };
 }
