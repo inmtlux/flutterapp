@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:primera_prueba/screens/cat-terror.dart';
 
 class CategoriaScreen extends StatefulWidget {
   @override
@@ -49,14 +50,14 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent)),
+                    color: Colors.grey[850])),
           ),
           SizedBox(
             height: 10,
           ),
           SizedBox(
               // 1ERA PARTE DE CATEG MAS VISITADAS
-              height: 146,
+              height: 174,
               width: 500,
               child: ListView.builder(
                   itemCount: masvisitadas.length,
@@ -76,6 +77,15 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                             width: 220,
                             fit: BoxFit.cover,
                           ),
+                          Container(
+                            child: ElevatedButton(
+                              child: const Text("CatTerror"),
+                              onPressed: () {
+                                Navigator.pushReplacementNamed(
+                                    context, "cat-terror");
+                              },
+                            ),
+                          )
                           /*Padding(
                             padding: EdgeInsets.only(top: 10),
                             child: Text(
@@ -154,7 +164,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent)),
+                    color: Colors.grey[850])),
           ),
           SizedBox(
             height: 10,
