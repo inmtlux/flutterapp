@@ -30,7 +30,6 @@ class _PrincipalScreen extends State<PrincipalScreen> {
                 color: Colors.black,
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold),
->>>>>>> 92ff09fc65f10b6ef94b34e2f603855db21a7d89
           ),
         ),
         elevation: 0.0,
