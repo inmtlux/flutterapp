@@ -58,7 +58,7 @@ var controller = {
                     producto.categorias = req.body.categorias;
                     producto.descripcion = req.body.descripcion;//descripcion
                     producto.precio = req.body.precio;
-                    prodcuto.autor = req.body.autor; //autor
+                    producto.autor = req.body.autor; //autor
                     producto.año_publicacion = req.body.año_publicacion//
                     db.collection('libros').insertOne(producto,
                         (error, result)=>{

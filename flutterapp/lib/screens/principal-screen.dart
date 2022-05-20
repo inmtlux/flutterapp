@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
-import 'package:primera_prueba/screens/producto_screen.dart';
-
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -14,11 +12,7 @@ class PrincipalScreen extends StatefulWidget {
 class _PrincipalScreen extends State<PrincipalScreen> {
   int _pagina_actual = 0;
 
-  List<Widget> _paginas = [
-    InicioScreen(),
-    ProductoScreen(),
-    LoginScreen()
-  ];
+  List<Widget> _paginas = [InicioScreen(), CategoriaScreen(), LoginScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -27,42 +21,44 @@ class _PrincipalScreen extends State<PrincipalScreen> {
       appBar: AppBar(
         title: Center(
           child: Text(
+<<<<<<< HEAD
             'Sliderin',
             style: TextStyle(color: Colors.black, fontSize: 30.0,fontWeight: FontWeight.bold),
+=======
+            'SLIDERIN',
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold),
+>>>>>>> 92ff09fc65f10b6ef94b34e2f603855db21a7d89
           ),
         ),
         elevation: 0.0,
         bottomOpacity: 0.0,
         backgroundColor: Colors.white,
-        
       ),
       body: _paginas[_pagina_actual],
-      
       bottomNavigationBar: BottomNavigationBar(
-      onTap: (index){
+        onTap: (index) {
           setState(() {
             _pagina_actual = index;
           });
         },
-      currentIndex: _pagina_actual,
-      items: [
+        currentIndex: _pagina_actual,
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home, color: Colors.purple[900]),
             label: 'Inicio',
-            
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search,color: Colors.purple[900]),
+            icon: Icon(Icons.search, color: Colors.purple[900]),
             label: 'Buscar',
           ),
           BottomNavigationBarItem(
-            
             icon: Icon(Icons.account_circle_rounded, color: Colors.purple[900]),
             label: 'Perfil',
-            
           ),
-          
-      ],
+        ],
       ),
     );
   }
