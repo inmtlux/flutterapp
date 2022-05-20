@@ -23,4 +23,16 @@ class UsuarioProvider extends ChangeNotifier{
     listaUsuarios = usuarioResponse.usuario;
     notifyListeners();
   }
+
+  saveUsuario(Usuario usuario) async{
+    var url = Uri.http(_baseUrl, '/api/usuarios/save');
+    print(usuario.toJson());
+    final response = await http.post(url,
+                                     headers: {HttpHeaders.contentTypeHeader:'application/json'},
+                                     body: usuario.toJson()                                     
+    );
+    print(response.body);
+    getOnUsuarioList();
+    notifyListeners();
+  }
 }

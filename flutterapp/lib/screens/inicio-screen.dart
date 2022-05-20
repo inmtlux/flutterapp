@@ -31,8 +31,8 @@ class _CategoriaScreen extends State<InicioScreen> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text('NOVEDADES',
-                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
+            child: Text('Novedades',
+                style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
           ),
           SizedBox(
             height: 10,
@@ -61,7 +61,7 @@ class _CategoriaScreen extends State<InicioScreen> {
                             padding: EdgeInsets.only(top: 10),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           )
                         ],
@@ -73,8 +73,8 @@ class _CategoriaScreen extends State<InicioScreen> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text('MAS POPULARES',
-                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
+            child: Text('Mas Populares',
+                style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
           ),
           SizedBox(
             height: 5,
@@ -104,7 +104,7 @@ class _CategoriaScreen extends State<InicioScreen> {
                             padding: EdgeInsets.only(top: 10),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           )
                         ],

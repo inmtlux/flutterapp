@@ -25,6 +25,10 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
           body: CustomScrollView(
             slivers: <Widget>[
     SliverAppBar(  
+      leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,),
+      onPressed: (){
+        Navigator.pushReplacementNamed(context, 'Crear nueva cuenta');
+      },),
       pinned: true,
       snap: true,
       floating: true,
@@ -32,7 +36,7 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
       backgroundColor: Colors.black,
       iconTheme: IconThemeData(color: Colors.black),
       flexibleSpace: FlexibleSpaceBar(
-        title: Text('Usuarios',style: TextStyle(),),
+        title: Text('Usuarios',style: TextStyle(fontWeight: FontWeight.bold),),
         centerTitle: true,
         background: ShaderMask(
           shaderCallback: (rect) => LinearGradient(
@@ -51,12 +55,33 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
       ),
     ),
     SliverFillRemaining(
-      child:Container()
+      child:Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Container(
+          child: Center(
+            child: ListView.builder(
+              itemCount: listaUsuarios.length,
+              itemBuilder: (context, index){
+                return Card(
+                  color: Colors.grey,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text(listaUsuarios[index].nombre,style: TextStyle(color: Colors.black),),
+                        subtitle: Text(listaUsuarios[index].email,style: TextStyle(color: Colors.black),),
+                        leading: Icon(Icons.person,color: Colors.black),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            )
+          ),
+        ),
+      )
     ),
             ],
           ),
-          
-          
           ),
       ],
     );

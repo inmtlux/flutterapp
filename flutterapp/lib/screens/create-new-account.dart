@@ -8,6 +8,10 @@ import 'package:primera_prueba/widgets/widgets.dart';
 
 class CreateNewAccount extends StatelessWidget {
   final txtUser = TextEditingController();
+  final txtEmail = TextEditingController();
+  final txtPassword = TextEditingController();
+  final txtPassConf = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -38,22 +42,6 @@ class CreateNewAccount extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: size.height * 0.6,
-                    left: size.width * 0.56,
-                    child: Container(
-                      height: size.width * 0.1,
-                      width: size.width * 0.1,
-                      decoration: BoxDecoration(
-                        color: kBlue,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: kWhite,width: 1),
-                      ),
-                      child: Icon(FontAwesomeIcons.arrowUp,
-                      color: kWhite,
-                      ),
-                    ),
-                  )
                 ],
               ),
                SizedBox(
@@ -83,9 +71,12 @@ class CreateNewAccount extends StatelessWidget {
               ),
             ),
 
+
             hintText: ('Usuario'),
             hintStyle: kBodyText,
           ),
+
+          controller: txtUser,
 
           style: kBodyText,//stilo de la letra
           keyboardType: TextInputType.name,
@@ -127,6 +118,8 @@ class CreateNewAccount extends StatelessWidget {
             hintStyle: kBodyText,
           ),
 
+          controller: txtEmail,
+
           style: kBodyText,//stilo de la letra
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
@@ -164,6 +157,8 @@ class CreateNewAccount extends StatelessWidget {
             hintText: ('Contraseña'),//para escribir el email
             hintStyle: kBodyText,
           ),
+
+          controller: txtPassword,
           obscureText: true,//para que las letras tengan cifrado ***
           style: kBodyText,//stilo de la laetra que ira dentro del recuadro
           keyboardType: TextInputType.visiblePassword,
@@ -199,6 +194,8 @@ class CreateNewAccount extends StatelessWidget {
             hintText: ('Contraseña'),//para escribir el email
             hintStyle: kBodyText,
           ),
+
+          controller: txtPassConf,
           obscureText: true,//para que las letras tengan cifrado ***
           style: kBodyText,//stilo de la laetra que ira dentro del recuadro
           keyboardType: TextInputType.visiblePassword,

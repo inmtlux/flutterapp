@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:primera_prueba/providers/usuario_provider.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
+import 'package:primera_prueba/screens/create-new-cuenta.dart';//aca
 import 'package:primera_prueba/screens/login-screen.dart';
 import 'package:primera_prueba/screens/principal-screen.dart';
 import 'package:primera_prueba/screens/usuarios-screen.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UsuarioProvider()),
+        ChangeNotifierProvider(create: (_) => UsuarioProvider(),lazy: false),
       ],
       child: MaterialApp(
       scrollBehavior: MyCustomScrollBehavior(),
@@ -38,10 +39,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/':(context)=> LoginScreen(),
         'Olvido la contraseña':(context)=> ForgotPassword(),
-        'Crear nueva cuenta': (context) => CreateNewAccount(),
+        'Crear nueva cuenta': (context) => CreateNewAccounte(),//aca
         'principal_screen': (_) => PrincipalScreen(),
         'categorias_screen': (_) => CategoriaScreen(),
-        'usuarios_screen': (_)=> UsuarioScreen(),
+        'usuarios_screen': (_)=> UsuarioScreend(),
       },
     ),
       );

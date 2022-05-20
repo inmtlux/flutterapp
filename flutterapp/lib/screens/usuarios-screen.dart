@@ -15,16 +15,29 @@ class _UsuarioScreen extends State<UsuarioScreen>{
     final List<Usuario> listaUsuarios = usuarioProvider.listaUsuarios;
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Text('hola')),
-      body: Center(
-        child: ListView.builder(
-          itemCount: listaUsuarios.length,
-          itemBuilder: (context, index){
-            return ListTile(
-              title: Text(listaUsuarios[index].nombre),
-            );
-          },
-        )
+      
+      backgroundColor: Colors.white,
+      body: 
+      Container(
+        child: Center(
+          child: ListView.builder(
+            itemCount: listaUsuarios.length,
+            itemBuilder: (context, index){
+              return Card(
+                color: Colors.grey,
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: Text(listaUsuarios[index].nombre,style: TextStyle(color: Colors.black),),
+                      subtitle: Text(listaUsuarios[index].email,style: TextStyle(color: Colors.black),),
+                      leading: Icon(Icons.person,color: Colors.black),
+                    ),
+                  ],
+                ),
+              );
+            },
+          )
+        ),
       ),
     );
   }

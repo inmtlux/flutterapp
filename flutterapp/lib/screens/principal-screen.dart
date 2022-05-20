@@ -27,7 +27,7 @@ class _PrincipalScreen extends State<PrincipalScreen> {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'SLIDERIN',
+            'Sliderin',
             style: TextStyle(color: Colors.black, fontSize: 30.0,fontWeight: FontWeight.bold),
           ),
         ),
