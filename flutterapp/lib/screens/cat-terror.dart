@@ -74,7 +74,10 @@ class _CategoriaScreen extends State<CategoriaTScreen> {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 15, color: Colors.black, ),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
                             ),
                           )
                         ],
@@ -87,7 +90,10 @@ class _CategoriaScreen extends State<CategoriaTScreen> {
           Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text('L.J.SMITH',
-                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
+                style: TextStyle(
+                    fontFamily: "RobotoMono",
+                    fontSize: 25,
+                    color: Colors.grey[850])),
           ),
           SizedBox(
             height: 5,
@@ -116,7 +122,8 @@ class _CategoriaScreen extends State<CategoriaTScreen> {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 15,color: Colors.black),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
                             ),
                           )
                         ],
@@ -158,8 +165,8 @@ class _CategoriaScreen extends State<CategoriaTScreen> {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 15,color: Colors.black),
-                              
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
                             ),
                           )
                         ],
