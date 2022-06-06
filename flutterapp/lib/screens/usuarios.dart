@@ -67,7 +67,7 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
                   child: Column(
                     children: [
                       ListTile(
-                        title: Text(listaUsuarios[index].nombre,style: TextStyle(color: Colors.black),),
+                        title: Text(listaUsuarios[index].nombre,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
                         subtitle: Text(listaUsuarios[index].email,style: TextStyle(color: Colors.black),),
                         leading: Icon(Icons.person,color: Colors.black),
                       ),

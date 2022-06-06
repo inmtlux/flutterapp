@@ -31,7 +31,7 @@ class _CategoriaScreen extends State<InicioScreen> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text('Novedades',
+            child: Text('Novedade',
                 style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
           ),
           SizedBox(
@@ -46,16 +46,22 @@ class _CategoriaScreen extends State<InicioScreen> {
                   itemBuilder: (context, index) {
                     final libro = novedades[index];
                     return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                      ),
                       height: 180,
                       width: 100,
                       margin: EdgeInsets.all(8),
                       child: Column(
                         children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 150,
-                            width: 100,
-                            fit: BoxFit.cover,
+                          Container(
+                            color: Colors.amber,
+                            child: Image.asset(
+                              libro[1],
+                              height: 150,
+                              width: 100,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 10),

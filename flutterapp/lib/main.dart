@@ -7,7 +7,6 @@ import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart';//aca
 import 'package:primera_prueba/screens/login-screen.dart';
 import 'package:primera_prueba/screens/principal-screen.dart';
-import 'package:primera_prueba/screens/usuarios-screen.dart';
 import 'package:primera_prueba/screens/usuarios.dart';
 import 'package:primera_prueba/widgets/my-custom-scroll.dart';
 import 'package:provider/provider.dart';
@@ -40,10 +39,10 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => LoginScreen(),
           'Olvido la contraseña': (context) => ForgotPassword(),
-          'Crear nueva cuenta': (context) => CreateNewAccount(),
+          'Crear nueva cuenta': (context) => CreateNewAccounte(),
           'principal_screen': (_) => PrincipalScreen(),
           'categorias_screen': (_) => CategoriaScreen(),
-          'usuarios_screen': (_) => UsuarioScreen(),
+          'usuarios_screen': (_) => UsuarioScreend(),
           "cat-terror": (_) => CategoriaTScreen(),
         },
       ),
