@@ -8,21 +8,6 @@ class CategoriaScreen extends StatefulWidget {
 }
 
 class _CategoriasScreen extends State<CategoriaScreen> {
-  List<List> mascatgs = [
-    ["", "../assets/categoria-screen/comics.jpg"],
-    ["", "../assets/categoria-screen/historia.jpg"],
-  ];
-
-  List<List> mascatgs2 = [
-    ["", "../assets/categoria-screen/cientifico.jpg"],
-    ["", "../assets/categoria-screen/biografia.jpg"],
-  ];
-
-  List<List> mascatgs3 = [
-    ["", "../assets/categoria-screen/poetico.jpg"],
-    ["", "../assets/categoria-screen/infantilesYjuvenil.jpg"],
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -426,6 +411,48 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               ),
             ],
           ), // 3ERA PARTE FINAL
+          SizedBox(
+            height: 50,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 50),
+            child: Text('DALE CLICK SI QUIERES SUGERIR UNA CATEGORIA...',
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[850])),
+          ),
+          SizedBox(
+            height: 17,
+          ),
+          Container(
+            //padding: EdgeInsets.only(left: 100),
+            margin: EdgeInsets.only(left: 135),
+            height: 130,
+            width: 220,
+            child: Material(
+              borderRadius: BorderRadius.circular(30),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: InkWell(
+                splashColor: Color.fromARGB(255, 136, 235, 24),
+                onTap: () {
+                  Navigator.pushNamed(context, 'categorias2_screen');
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Ink.image(
+                      image: AssetImage(
+                          "../assets/categoria-screen/sugerenciaCatg.jpg"),
+                      height: 130,
+                      width: 220,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ]),
       ),
     );
