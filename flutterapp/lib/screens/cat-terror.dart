@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 class CategoriaTScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _CategoriaTScreen();
+  State<StatefulWidget> createState() => _CategoriaScreen();
 }
 
-class _CategoriaTScreen extends State<CategoriaTScreen> {
+class _CategoriaScreen extends State<CategoriaTScreen> {
   List<List> Terror = [
     [
       "El bazar de los malos sueños",
       "../assets/terror-screen/1.jpg",
-      "Stephen King"
     ],
     ["El quinto hijo", "../assets/terror-screen/4.jpg"],
     ["It", "../assets/terror-screen/5.jpg"],
@@ -75,7 +74,10 @@ class _CategoriaTScreen extends State<CategoriaTScreen> {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
                             ),
                           )
                         ],
@@ -88,7 +90,10 @@ class _CategoriaTScreen extends State<CategoriaTScreen> {
           Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text('L.J.SMITH',
-                style: TextStyle(fontSize: 25, color: Colors.grey[850])),
+                style: TextStyle(
+                    fontFamily: "RobotoMono",
+                    fontSize: 25,
+                    color: Colors.grey[850])),
           ),
           SizedBox(
             height: 5,
@@ -117,7 +122,8 @@ class _CategoriaTScreen extends State<CategoriaTScreen> {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 18),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
                             ),
                           )
                         ],
@@ -159,7 +165,8 @@ class _CategoriaTScreen extends State<CategoriaTScreen> {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               libro[0],
-                              style: TextStyle(fontSize: 18),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black),
                             ),
                           )
                         ],

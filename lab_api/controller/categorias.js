@@ -10,16 +10,16 @@ var controller = {
         console.log("---------------");
         console.log("entrando a la funcion listar");
         db.collection("categorias").find().toArray(
-            (error, dataProductos)=>{
-                if(error||! dataProductos){
+            (error, dataCategorias)=>{
+                if(error||! dataCategorias){
                     console.log(error);
                     return res.status(404).send({
-                        message: "no se encontraron los produ"
+                        message: "no se encontraron las categorias"
                     });
                 }else{
                     return res.status(200).send({
                         status:"succees",
-                        productos: dataProductos
+                        categorias: dataCategorias
                     });
                 }
             }
@@ -29,16 +29,16 @@ var controller = {
         console.log("----------");
         console.log("entrando a la funcion find");
         console.log("id"+ req.params.id);
-        db.collection("categorias").find({productoId: parseInt(req.params.id)}).toArray(
-            (error, dataProductos)=>{
-                if(error||! dataProductos){
+        db.collection("categorias").find({categoriaId: parseInt(req.params.id)}).toArray(
+            (error, dataCategorias)=>{
+                if(error||! dataCategorias){
                     return res.status(404).send({
-                        message: "no se encontraron los productos"
+                        message: "no se encontraron las categorias"
                     });
                 }else{
                     return res.status(200).send({
                         status:"succees",
-                        productos: dataProductos[0]
+                        categorias: dataCategorias[0]
                     });
             }
         }
@@ -49,24 +49,24 @@ var controller = {
         console.log("----------");
         console.log("entrando a la funcion save");
         console.log(req.body);
-        if(req.body.productoId == "0"){//si es nuevo
+        if(req.body.categoriaId == "0"){//si es nuevo
             console.log("entrando a nuevo");
             db.collection("categorias").count().then(
-                countProductos =>{
-                    var producto = {}
-                    producto.productoId = countProductos + 1;//producto
-                    producto.descripcion = req.body.descripcion;//descripcion
-                    producto.cantidadlibros = req.body.cantidadlibros;//cantidad de libros
-                    db.collection('categorias').insertOne(producto,
+                countCategorias =>{
+                    var categoria = {}
+                    categoria.categoriaId = countCategorias + 1;//categoria
+                    categoria.descripcion = req.body.descripcion;//descripcion
+                    categoria.cantidadlibros = req.body.cantidadlibros;//cantidad de libros
+                    db.collection('categorias').insertOne(categoria,
                         (error, result)=>{
                             if(error){
                                 return res.status(404).send({
-                                    message:"no se pudo regitrar el producto"
+                                    message:"no se pudo regitrar la categoria"
                                 });
                             }else{
                                 return res.status(200).send({
                                     message: "success",
-                                    producto: result
+                                    categoria: result
                                 });
                             }
                         }
@@ -75,22 +75,22 @@ var controller = {
             );
         }else{//entrando a editar
             console.log("ENTRANDO A EDITAR");
-            var producto = {}
-            producto.productoId = parseInt(req.body.productoId);
-            producto.descripcion = req.body.descripcion;//descripcion
-            producto.cantidadlibros = req.body.cantidadlibros;//cantidad de libros
-            console.log(producto);
-            db.collection("categorias").updateOne({ productoId: { $eq: parseInt(req.body.productoId)}},
-                                                 {$set: producto},
+            var categoria = {}
+            categoria.categoriaId = parseInt(req.body.categoriaId);
+            categoria.descripcion = req.body.descripcion;//descripcion
+            categoria.cantidadlibros = req.body.cantidadlibros;//cantidad de libros
+            console.log(categoria);
+            db.collection("categorias").updateOne({ categoriaId: { $eq: parseInt(req.body.categoriaId)}},
+                                                 {$set: categoria},
                 (error, result)=>{
                 if(error){
                     return res.status(404).send({
-                        message:"no se pudo editar el producto"
+                        message:"no se pudo editar la categoria"
                     });
                 }else{
                     return res.status(200).send({
                         message: "success",
-                        producto: result
+                        categoria: result
                     });
                 }
             }

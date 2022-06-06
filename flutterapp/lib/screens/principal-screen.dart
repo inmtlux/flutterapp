@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
@@ -12,7 +13,12 @@ class PrincipalScreen extends StatefulWidget {
 class _PrincipalScreen extends State<PrincipalScreen> {
   int _pagina_actual = 0;
 
-  List<Widget> _paginas = [InicioScreen(), CategoriaScreen(), LoginScreen()];
+  List<Widget> _paginas = [
+    InicioScreen(),
+    CategoriaScreen(),
+    LoginScreen(),
+    CategoriaTScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {

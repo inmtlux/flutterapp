@@ -8,36 +8,6 @@ class CategoriaScreen extends StatefulWidget {
 }
 
 class _CategoriasScreen extends State<CategoriaScreen> {
-  List<List> masvisitadas = [
-    ["", "../assets/categoria-screen/romance.jpg"],
-    ["", "../assets/categoria-screen/terror.jpg"],
-  ];
-
-  List<List> masvisitadas2 = [
-    ["", "../assets/categoria-screen/ficcion.jpg"],
-    ["", "../assets/categoria-screen/literatura.jpg"],
-  ];
-
-  List<List> masvisitadas3 = [
-    ["", "../assets/categoria-screen/fantasia2.jpg"],
-    ["", "../assets/categoria-screen/viajes.jpg"],
-  ];
-
-  List<List> mascatgs = [
-    ["", "../assets/categoria-screen/comics.jpg"],
-    ["", "../assets/categoria-screen/historia.jpg"],
-  ];
-
-  List<List> mascatgs2 = [
-    ["", "../assets/categoria-screen/cientifico.jpg"],
-    ["", "../assets/categoria-screen/biografia.jpg"],
-  ];
-
-  List<List> mascatgs3 = [
-    ["", "../assets/categoria-screen/poetico.jpg"],
-    ["", "../assets/categoria-screen/infantilesYjuvenil.jpg"],
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,110 +23,196 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     color: Colors.grey[850])),
           ),
           SizedBox(
-            height: 10,
+            height: 12,
           ),
-          SizedBox(
-              // 1ERA PARTE DE CATEG MAS VISITADAS
-              height: 174,
-              width: 500,
-              child: ListView.builder(
-                  itemCount: masvisitadas.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = masvisitadas[index];
-                    return Container(
-                      height: 130,
-                      width: 220,
-                      margin: EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 130,
-                            width: 220,
-                            fit: BoxFit.cover,
-                          ),
-                          Container(
-                            child: ElevatedButton(
-                              child: const Text("CatTerror"),
-                              onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                    context, "cat-terror");
-                              },
-                            ),
-                          )
-                          /*Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text(
-                              libro[0],
-                              style: TextStyle(fontSize: 10),
-                            ),
-                          )*/
-                        ],
-                      ),
-                    );
-                  })),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-              // 2DA PARTE DE CATG MAS VISITADAS
-              height: 146,
-              width: 500,
-              child: ListView.builder(
-                  itemCount: masvisitadas2.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = masvisitadas2[index];
-                    return Container(
-                      height: 130,
-                      width: 220,
-                      margin: EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 130,
-                            width: 220,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                    );
-                  })),
+          Row(
+            // 1ERA PARTE INICIO
+            children: [
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Colors.yellowAccent,
+                    onTap: () {
+                      Navigator.pushNamed(context, "cat-terror");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/romance.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Colors.white54,
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/terror.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ), //FINAL 1ERA PARTE
           SizedBox(
             height: 10,
           ),
-          SizedBox(
-              // 3ERA PARTE DE CATG MAS VISITADAS
-              height: 170,
-              width: 500,
-              child: ListView.builder(
-                  itemCount: masvisitadas3.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = masvisitadas3[index];
-                    return Container(
-                      height: 130,
-                      width: 220,
-                      margin: EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 130,
-                            width: 220,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                    );
-                  })),
+          Row(
+            //2DA PARTE INICIO
+            children: [
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Colors.lightBlue,
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/ficcion.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Color.fromARGB(255, 211, 236, 113),
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/literatura.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ), // 2DA PARTE FINAL
           SizedBox(
             height: 10,
+          ),
+          Row(
+            //3ERA PARTE INICIO
+            children: [
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Color.fromARGB(255, 238, 145, 119),
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/fantasia2.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Color.fromARGB(255, 15, 168, 234),
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/viajes.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ), // 3ERA PARTE FINAL
+          SizedBox(
+            height: 30,
           ),
           Padding(
             padding: EdgeInsets.only(left: 20),
@@ -167,102 +223,244 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     color: Colors.grey[850])),
           ),
           SizedBox(
+            height: 12,
+          ),
+          Row(
+            // 1ERA PARTE INICIO
+            children: [
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Colors.grey,
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/comics.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Colors.white30,
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/historia.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ), //FINAL 1ERA PARTE
+          SizedBox(
             height: 10,
           ),
-          SizedBox(
-              // 1ERA PARTE DE MAS CATEGORIAS
-              height: 150,
-              width: 500,
-              child: ListView.builder(
-                  itemCount: mascatgs.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = mascatgs[index];
-                    return Container(
-                      height: 130,
-                      width: 220,
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 130,
-                            width: 220,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                    );
-                  })),
+          Row(
+            //2DA PARTE INICIO
+            children: [
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Colors.black,
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/cientifico.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Colors.grey,
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/biografia.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ), // 2DA PARTE FINAL
           SizedBox(
             height: 10,
           ),
+          Row(
+            //3ERA PARTE INICIO
+            children: [
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Color.fromARGB(255, 244, 236, 82),
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/poetico.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Container(
+                height: 130,
+                width: 220,
+                child: Material(
+                  borderRadius: BorderRadius.circular(28),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  child: InkWell(
+                    splashColor: Color.fromARGB(255, 15, 168, 234),
+                    onTap: () {
+                      Navigator.pushNamed(context, ".....");
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Ink.image(
+                          image: AssetImage(
+                              "../assets/categoria-screen/infantilesYjuvenil.jpg"),
+                          height: 130,
+                          width: 220,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ), // 3ERA PARTE FINAL
           SizedBox(
-              //  2DA PARTE DE MAS CATEGORIAS
-              height: 146,
-              width: 500,
-              child: ListView.builder(
-                  itemCount: mascatgs2.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = mascatgs2[index];
-                    return Container(
-                      height: 130,
-                      width: 220,
-                      margin: EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 130,
-                            width: 220,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                    );
-                  })),
-          SizedBox(
-            height: 10,
+            height: 50,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 50),
+            child: Text('DALE CLICK SI QUIERES SUGERIR UNA CATEGORIA...',
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[850])),
           ),
           SizedBox(
-              //  3ERA PARTE DE MAS CATEGORIAS
-              height: 146,
-              width: 500,
-              child: ListView.builder(
-                  itemCount: mascatgs3.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = mascatgs3[index];
-                    return Container(
+            height: 17,
+          ),
+          Container(
+            //padding: EdgeInsets.only(left: 100),
+            margin: EdgeInsets.only(left: 135),
+            height: 130,
+            width: 220,
+            child: Material(
+              borderRadius: BorderRadius.circular(30),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: InkWell(
+                splashColor: Color.fromARGB(255, 136, 235, 24),
+                onTap: () {
+                  Navigator.pushNamed(context, 'categorias2_screen');
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Ink.image(
+                      image: AssetImage(
+                          "../assets/categoria-screen/sugerenciaCatg.jpg"),
                       height: 130,
                       width: 220,
-                      margin: EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 130,
-                            width: 220,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                    );
-                  })),
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ]),
       ),
     );
   }
 }
 
-  
-    // TODO: implement build
-    /*return   Center(
+// TODO: implement build
+/*return   Center(
           child: Container(
             child: Text('categorias', style: TextStyle(fontSize: 20.0),),
           ),
