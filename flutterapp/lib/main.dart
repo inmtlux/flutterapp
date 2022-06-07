@@ -6,8 +6,9 @@ import 'package:primera_prueba/providers/usuario_provider.dart';
 import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart'; //aca
+import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
-import 'package:primera_prueba/screens/principal-screen.dart';
+import 'package:primera_prueba/screens/terr-cat-screen.dart';
 import 'package:primera_prueba/screens/usuarios.dart';
 import 'package:primera_prueba/widgets/my-custom-scroll.dart';
 import 'package:provider/provider.dart';
@@ -44,10 +45,10 @@ class MyApp extends StatelessWidget {
           '/': (context) => LoginScreen(),
           'Olvido la contraseña': (context) => ForgotPassword(),
           'Crear nueva cuenta': (context) => CreateNewAccounte(),
-          'principal_screen': (_) => PrincipalScreen(),
+          'principal_screen': (_) => InicioScreen(),
           'categorias_screen': (_) => CategoriaScreen(),
           'usuarios_screen': (_) => UsuarioScreend(),
-          "cat-terror": (_) => CategoriaTScreen(),
+          "cat-terror": (_) => CategoriaTScreen(),//cambiar un rato
         },
       ),
     );

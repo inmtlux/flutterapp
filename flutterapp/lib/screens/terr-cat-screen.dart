@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primera_prueba/widgets/menu_lateral.dart';
 
 class TerrorScreen extends StatefulWidget {
   TerrorScreen({Key? key}) : super(key: key);
@@ -13,14 +14,15 @@ class _TerrorScreenState extends State<TerrorScreen> {
     return Stack(
       children: <Widget>[
         Scaffold(
+          //drawer: TerrorScreen(),
           backgroundColor:Colors.black,
           body: CustomScrollView(
             slivers: <Widget>[
-    SliverAppBar(  
-      leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,),
+    SliverAppBar( 
+      /*leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,),
       onPressed: (){
         Navigator.pushReplacementNamed(context, 'Crear nueva cuenta');
-      },),
+      },),*/
       pinned: true,
       snap: true,
       floating: true,
@@ -28,7 +30,7 @@ class _TerrorScreenState extends State<TerrorScreen> {
       backgroundColor: Colors.black,
       iconTheme: IconThemeData(color: Colors.black),
       flexibleSpace: FlexibleSpaceBar(
-        title: Text('Usuarios',style: TextStyle(fontWeight: FontWeight.bold),),
+        title: Text('-',style: TextStyle(fontWeight: FontWeight.bold),),
         centerTitle: true,
         background: ShaderMask(
           shaderCallback: (rect) => LinearGradient(
@@ -51,6 +53,7 @@ class _TerrorScreenState extends State<TerrorScreen> {
     ),
             ],
           ),
+          drawer: MenuLateral(),
           ),
       ],
     );
