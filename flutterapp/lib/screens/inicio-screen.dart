@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:primera_prueba/widgets/menu_lateral.dart';
 
 class InicioScreen extends StatefulWidget {
   @override
@@ -25,93 +26,105 @@ class _CategoriaScreen extends State<InicioScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10),
-      child: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Text('Novedades',
-                style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-              height: 200,
-              child: ListView.builder(
-                  itemCount: novedades.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = novedades[index];
-                    return Container(
-                      height: 180,
-                      width: 100,
-                      margin: EdgeInsets.all(8),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 150,
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text(
-                              libro[0],
-                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return Scaffold(
+      drawer: MenuLateral(),
+      appBar: AppBar(
+        title: Text('Principal'),
+      ),
+      body: Container(
+        margin: EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Padding(
+              padding: EdgeInsets.only(left: 20),
+              child: Text('Novedade',
+                  style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+                height: 200,
+                child: ListView.builder(
+                    itemCount: novedades.length,
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      final libro = novedades[index];
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20))
+                        ),
+                        height: 180,
+                        width: 100,
+                        margin: EdgeInsets.all(8),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              color: Colors.amber,
+                              child: Image.asset(
+                                libro[1],
+                                height: 150,
+                                width: 100,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          )
-                        ],
-                      ),
-                    );
-                  })),
-          SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Text('Mas Populares',
-                style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          SizedBox(
-              height: 230,
-              child: ListView.builder(
-                  itemCount: populares.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final libro = populares[index];
-                    return Container(
-                      height: 220,
-                      width: 100,
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Image.asset(
-                            libro[1],
-                            height: 150,
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text(
-                              libro[0],
-                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                libro[0],
+                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    })),
+            SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20),
+              child: Text('Mas Populares',
+                  style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            SizedBox(
+                height: 230,
+                child: ListView.builder(
+                    itemCount: populares.length,
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      final libro = populares[index];
+                      return Container(
+                        height: 220,
+                        width: 100,
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Image.asset(
+                              libro[1],
+                              height: 150,
+                              width: 100,
+                              fit: BoxFit.cover,
                             ),
-                          )
-                        ],
-                      ),
-                    );
-                  })),
-        ]),
+                            Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                libro[0],
+                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    })),
+          ]),
+        ),
       ),
     );
   }

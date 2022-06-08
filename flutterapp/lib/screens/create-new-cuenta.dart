@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:primera_prueba/models/usuario.dart';
 import 'package:primera_prueba/palette.dart';
 import 'package:primera_prueba/providers/usuario_provider.dart';
+import 'package:primera_prueba/screens/terr-cat-screen.dart';
 import 'package:primera_prueba/widgets/background-image.dart';
 import 'package:provider/provider.dart';
 
@@ -226,11 +227,11 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                         ),
               
                         controller: txtPassConf,
-                        /*validator: (value){
-                          if(value!.isEmpty){
+                        validator: (value){
+                          if(txtPassConf == '${txtPassword}'){
                             return 'Porfavor confirmar contraseña';
                           }
-                        },*/
+                        },
                         obscureText: true,//para que las letras tengan cifrado ***
                         style: kBodyText,//stilo de la laetra que ira dentro del recuadro
                         keyboardType: TextInputType.visiblePassword,
@@ -270,7 +271,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                               usuarioProvider.saveUsuario(usuario);
 
 
-                          Navigator.pushReplacementNamed(context, 'usuarios_screen');
+                          Navigator.pushReplacementNamed(context, 'principal_screen');
                         }
                       },
                     child: Text(
