@@ -2,6 +2,7 @@
 //requerimientos
 var express = require('express')
 var bodyParser = require('body-parser')
+var fileUpload = require('express-fileupload');
 
 //usando la dependencia express
 var app = express();
@@ -12,10 +13,15 @@ var usuario_routes = require('./routes/usuario');
 var auth_routes = require('./routes/auth');
 var categorias_routes = require('./routes/categorias');
 var producto_routes = require("./routes/producto");
+var upload_routes = require("./routes/upload");
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 
 //configuracion de caberas cors
 app.use((req, res, next) => {
@@ -31,6 +37,7 @@ app.use('/api/',usuario_routes);
 app.use('/api/',auth_routes);
 app.use('/api/',categorias_routes);
 app.use("/api/", producto_routes);
+app.use("/api/upload", upload_routes);
 
 //exportar modulo
 

@@ -63,6 +63,7 @@ var controller = {
                     usuario.nombre = req.body.nombre;
                     usuario.email = req.body.email;
                     usuario.password = password;
+                    usuario.img = '';
                     usuario.estado = true;
                     usuario.rol = "user_rol";
                     db.collection('usuarios').insertOne(usuario,
@@ -88,6 +89,7 @@ var controller = {
             usuario.nombre = req.body.nombre;//descripcion
             usuario.email = req.body.email;//precio
             usuario.password = req.body.password;
+            usuario.img = '';
             usuario.estado = true;
             usuario.rol = "user_rol";
             console.log(usuario);

@@ -40,10 +40,10 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => LoginScreen(),
           'Olvido la contraseña': (context) => ForgotPassword(),
-          'Crear nueva cuenta': (context) => CreateNewAccount(),
+          'Crear nueva cuenta': (context) => CreateNewAccounte(),
           'principal_screen': (_) => PrincipalScreen(),
           'categorias_screen': (_) => CategoriaScreen(),
-          'usuarios_screen': (_) => UsuarioScreen(),
+          'usuarios_screen': (_) => UsuarioScreend(),
           "cat-terror": (_) => CategoriaTScreen(),
         },
       ),

@@ -9,9 +9,7 @@ var db = client.db("flutterapp");
 
 var controller = {
     login: async function (req, res=response) {
-
         const { email, password } = req.body;
-
         const usuario = await db.collection('usuarios').findOne({ email });
         try {
             if (!usuario) {
@@ -19,25 +17,19 @@ var controller = {
                     msg: 'Usuario / password no es correcto - email'
                 })
             }
-
-
             // verificar que el estado del usuario este activo
             if (!usuario.estado) {
                 return res.status(400).json({
                     msg: 'Usuario / password / estodo no es correcto - estado: false'
                 })
             }
-
             // verificar contraseña
-
             const validPassword = bcrypt.compareSync(password, usuario.password);
             if (!validPassword) {
                 return res.status(400).json({
                     msg: 'Usuario / password no es correcto - password'
                 })
             }
-
-
             res.send('Bienvenido');
 
 
