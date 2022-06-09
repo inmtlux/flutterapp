@@ -95,7 +95,7 @@ class _CategoriaScreen extends State<CategoriaTScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 20),
-              child: Text('L.J.SMITH',
+              child: Text('L.J.SMITh',
                   style: TextStyle(
                       fontFamily: "RobotoMono",
                       fontSize: 25,
