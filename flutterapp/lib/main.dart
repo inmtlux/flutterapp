@@ -48,10 +48,21 @@ class MyApp extends StatelessWidget {
           'splash': (_) => SplasScreen(),
           'Olvido la contraseña': (context) => ForgotPassword(),
           'Crear nueva cuenta': (context) => CreateNewAccounte(),
+<<<<<<< HEAD
+          'principal_screen': (_) => PrincipalScreen(),
+          'categorias_screen': (_) => CategoriaScreen(),
+          'usuarios_screen': (_) => UsuarioScreend(),
+          "cat-terror": (_) => CategoriaTScreen(),
+=======
           'principal_screen': (_) => InicioScreen(),
           'categorias_screen': (_) => CategoriaScreen(),
           'usuarios_screen': (_) => UsuarioScreend(),
+<<<<<<< HEAD
           "cat-terror": (_) => TerrorScreen(),//cambiar un rato
+=======
+          "cat-terror": (_) => CategoriaTScreen(),//cambiar un rato
+>>>>>>> bea1ae9f854385a9f43e431c6ddb66dc88098ee9
+>>>>>>> 05bb5f10e6d49b9939f5bdc15182561e026680f0
         },
       ),
     );
