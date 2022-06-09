@@ -271,7 +271,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                               usuarioProvider.saveUsuario(usuario);
 
 
-                          Navigator.pushReplacementNamed(context, 'principal_screen');
+                          Navigator.pushReplacementNamed(context, 'usuarios_screen');
                         }
                       },
                     child: Text(
