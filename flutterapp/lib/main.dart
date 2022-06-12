@@ -51,9 +51,11 @@ class MyApp extends StatelessWidget {
           'Crear nueva cuenta': (context) => CreateNewAccounte(),
           'principal_screen': (_) => InicioScreen(),
           'categorias_screen': (_) => CategoriaScreen(),
+          'categorias2_screen': (_) => Categoria2Screen(), // NO BORRAR
+          'categorias2_form_screen': (_) =>
+              CategoriaFormScreen(), //NO BORRAR X2
           'usuarios_screen': (_) => UsuarioScreend(),
           "cat-terror": (_) => TerrorScreen(),
-
         },
       ),
     );

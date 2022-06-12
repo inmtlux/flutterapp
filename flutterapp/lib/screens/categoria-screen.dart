@@ -19,7 +19,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
       body: Container(
         margin: EdgeInsets.all(10),
         child: SingleChildScrollView(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Padding(
               padding: EdgeInsets.only(left: 20),
               child: Text('CATEGORIAS MAS VISITADAS',
@@ -43,7 +44,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     child: InkWell(
                       splashColor: Colors.yellowAccent,
                       onTap: () {
-                        Navigator.pushNamed(context, "cat-terror");
+                        Navigator.pushNamed(context, ".....");
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -72,7 +73,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     child: InkWell(
                       splashColor: Colors.white54,
                       onTap: () {
-                        Navigator.pushNamed(context, ".....");
+                        Navigator.pushNamed(context, "cat-terror");
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -434,24 +435,36 @@ class _CategoriasScreen extends State<CategoriaScreen> {
             Container(
               //padding: EdgeInsets.only(left: 100),
               margin: EdgeInsets.only(left: 135),
-              height: 130,
-              width: 220,
+              height: 60,
+              width: 200,
               child: Material(
+                color: Color.fromARGB(255, 93, 241, 56),
                 borderRadius: BorderRadius.circular(30),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
+                clipBehavior: Clip.antiAliasWithSaveLayer, //click mas suave
                 child: InkWell(
-                  splashColor: Color.fromARGB(255, 136, 235, 24),
+                  splashColor: Color.fromARGB(255, 96, 241, 56),
                   onTap: () {
                     Navigator.pushNamed(context, 'categorias2_screen');
                   },
-                  child: Column(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      /*Ink.image(
+                        image: AssetImage(
+                            "../assets/categoria-screen/sugerenciaCatg.jpg"),
+                        height: 60,
+                        width: 110,
+                        fit: BoxFit.cover,
+                      ),*/
+                      SizedBox(width: 10),
+                      Text("CLICK AQUI",
+                          style: TextStyle(fontSize: 12, color: Colors.white)),
+                      SizedBox(width: 10),
                       Ink.image(
                         image: AssetImage(
                             "../assets/categoria-screen/sugerenciaCatg.jpg"),
-                        height: 130,
-                        width: 220,
+                        height: 60,
+                        width: 109,
                         fit: BoxFit.cover,
                       ),
                     ],

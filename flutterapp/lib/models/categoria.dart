@@ -3,15 +3,17 @@ import 'dart:convert';
 class Categoria {
   Categoria({
     required this.id,
+    required this.categoriaId,
     required this.descripcion,
     required this.cantidadlibros,
-    required this.categoriaId,
+    required this.imagen,
   });
 
   String id;
-  String descripcion;
-  String cantidadlibros;
   int categoriaId;
+  String descripcion;
+  dynamic cantidadlibros;
+  String imagen;
 
   factory Categoria.fromJson(String str) => Categoria.fromMap(json.decode(str));
 
@@ -19,15 +21,17 @@ class Categoria {
 
   factory Categoria.fromMap(Map<String, dynamic> json) => Categoria(
         id: json["_id"],
+        categoriaId: json["categoriaId"],
         descripcion: json["descripcion"],
         cantidadlibros: json["cantidadlibros"],
-        categoriaId: json["categoriaId"],
+        imagen: json["imagen"],
       );
 
   Map<String, dynamic> toMap() => {
         "_id": id,
+        "categoriaId": categoriaId,
         "descripcion": descripcion,
         "cantidadlibros": cantidadlibros,
-        "categoriaId": categoriaId,
+        "imagen": imagen,
       };
 }
