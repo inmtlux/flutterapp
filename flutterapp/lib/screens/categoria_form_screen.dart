@@ -10,18 +10,32 @@ class CategoriaFormScreen extends StatefulWidget {
   State<CategoriaFormScreen> createState() => _CategoriaFormScreen();
 }
 
-//enum Categorias { computo, sonido }
+enum Categoriaslist {
+  terror,
+  historia,
+  romance,
+  ficcion,
+  literatura,
+  fantasia,
+  viajes,
+  comics,
+  cientifico,
+  biografia,
+  poetico,
+  infantiles
+} //categorias: terror historis etc
 
 class _CategoriaFormScreen extends State<CategoriaFormScreen> {
   final _formKey = GlobalKey<FormState>();
-  //Categorias? _catSeleccion = Categorias.computo;
-  // bool? _estadoActivo = false;
+  Categoriaslist? _catSeleccion = Categoriaslist.terror;
+  bool? _estadoActivo = false;
 
   @override
   Widget build(BuildContext context) {
     final categoriaProvider = Provider.of<CategoriaProvider>(context);
     final txtDescripcion = TextEditingController();
     final txtCantidadLibros = TextEditingController();
+    final txtImagen = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +65,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
             ),
             TextFormField(
               decoration: InputDecoration(
-                  labelText: 'A que categoria pertenece...',
+                  labelText: 'Cantidad de libros recomendada...',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0))),
               controller: txtCantidadLibros,
@@ -64,39 +78,195 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
             SizedBox(
               height: 20,
             ),
-            /*Row(
-              children: <Widget>[
-                Text('Categoria'),
-                SizedBox(
-                  width: 20,
-                ),
-                Radio(
-                  value: Categorias.computo, 
-                  groupValue: _catSeleccion, 
-                  onChanged: (value){
-                    setState(() {
-                      _catSeleccion = value as Categorias?;
-                      print(_catSeleccion);
-                    });
-                  }
-                ),
-                Text('Computo'),
-                SizedBox(
-                  width: 15,
-                ),
-                Radio(
-                  value: Categorias.sonido, 
-                  groupValue: _catSeleccion, 
-                  onChanged: (value){
-                    setState(() {
-                      _catSeleccion = value as Categorias?;
-                      print(_catSeleccion);
-                    });
-                  }
-                ),
-                Text('Sonido'),
-              ],
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: 'Imagen',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0))),
+              controller: txtImagen,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Por favor ingrese una imagen';
+                }
+              },
             ),
+            Row(
+                //boton para seleccionar categorias
+                children: <Widget>[
+                  Text('Categoria'),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Radio(
+                      value: Categoriaslist.terror,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Terror'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.historia,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Historia'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.romance,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Romance'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.ficcion,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Ficción'),
+                ]),
+            //.........................
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+                //boton para seleccionar categorias 2
+                children: <Widget>[
+                  SizedBox(
+                    width: 73,
+                  ),
+                  Radio(
+                      value: Categoriaslist.literatura,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Literatura'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.fantasia,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Fantasia'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.viajes,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Viajes'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.comics,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Comics'),
+                ]),
+            SizedBox(
+              height: 10,
+            ),
+            //....................................
+            Row(
+                //boton para seleccionar categorias 2
+                children: <Widget>[
+                  SizedBox(
+                    width: 73,
+                  ),
+                  Radio(
+                      value: Categoriaslist.cientifico,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Científico'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.biografia,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Biografía'),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Radio(
+                      value: Categoriaslist.poetico,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Poético'),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Radio(
+                      value: Categoriaslist.infantiles,
+                      groupValue: _catSeleccion,
+                      onChanged: (value) {
+                        setState(() {
+                          _catSeleccion = value as Categoriaslist?;
+                          print(_catSeleccion);
+                        });
+                      }),
+                  Text('Infantil'),
+                ]),
             SizedBox(
               height: 20,
             ),
@@ -107,18 +277,16 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                   width: 20,
                 ),
                 Checkbox(
-                  value: _estadoActivo, 
-                  onChanged: (value){
-                    setState(() {
-                      _estadoActivo = value;
-                      print('_estadoActivo: ${_estadoActivo}');
-                    });
-                  }
-                ),
+                    value: _estadoActivo,
+                    onChanged: (value) {
+                      setState(() {
+                        _estadoActivo = value;
+                        print('_estadoActivo: ${_estadoActivo}');
+                      });
+                    }),
                 Text('Activo')
               ],
-            ),*/
-
+            ),
             Container(
               child: ElevatedButton(
                 child: const Text('GUARDAR'),
@@ -131,7 +299,8 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                       id: '',
                       categoriaId: 0,
                       descripcion: txtDescripcion.text,
-                      cantidadlibros: txtCantidadLibros.text,
+                      cantidadlibros: int.parse(txtCantidadLibros.text),
+                      imagen: txtImagen.text,
                     );
 
                     categoriaProvider.saveCategoria(categoria);
