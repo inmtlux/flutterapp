@@ -1,131 +1,132 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:primera_prueba/models/libro.dart';
+import 'package:primera_prueba/providers/libro_provider.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
+import 'package:provider/provider.dart';
 
-class InicioScreen extends StatefulWidget {
+class InicioScrenn extends StatefulWidget {
+
   @override
-  State<StatefulWidget> createState() => _CategoriaScreen();
+  State<InicioScrenn> createState() => _InicioScrenn();
 }
 
-class _CategoriaScreen extends State<InicioScreen> {
-  List<List> novedades = [
-    ["Cortejo", "../assets/inicio-screen/cortejo.jpg"],
-    ["Abril rojo", "../assets/inicio-screen/abril-rojo.jpg"],
-    ["Boulevard", "../assets/inicio-screen/boulevard.jpg"],
-    ["Cortejo", "../assets/inicio-screen/mapa-anhelos.jpg"],
-    ["Violeta", "../assets/inicio-screen/violeta.jpg"],
-  ];
+class _InicioScrenn extends State<InicioScrenn> {
 
-  List<List> populares = [
-    ["IT", "../assets/inicio-screen/it.jpg"],
-    ["el-principito", "../assets/inicio-screen/el-principito.jpg"],
-    ["After 1", "../assets/inicio-screen/after.jpg"],
-    ["Hush Hush", "../assets/inicio-screen/hush.jpg"],
-    ["Steve Jobs", "../assets/inicio-screen/steve-jobs.jpg"],
-  ];
 
   @override
   Widget build(BuildContext context) {
+
+    final libroProvider = Provider.of<LibroProvider>(context);
+    final List<Libro> listaNovedades = libroProvider.listaLibrosNovedades;
+    final List<Libro> listaPopulares = libroProvider.listaLibrosPopulares;
     return Scaffold(
-      drawer: MenuLateral(),
       appBar: AppBar(
-        title: Text('Principal'),
+        backgroundColor: Colors.blue,
+        title: Center(child: Text('PRINCIPAL')),
       ),
+      drawer: MenuLateral(),
       body: Container(
-        margin: EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text('Novedade',
-                  style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
+        padding: EdgeInsets.all(10),
+        child: Column(//LIBROS
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text('Novedades', style: TextStyle(fontSize: 30),),
+            Expanded(
+              child: Container(
+                child: ListView(
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  children: buildBooks(listaNovedades),
+                ),
+              ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-                height: 200,
-                child: ListView.builder(
-                    itemCount: novedades.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final libro = novedades[index];
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20))
-                        ),
-                        height: 180,
-                        width: 100,
-                        margin: EdgeInsets.all(8),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              color: Colors.amber,
-                              child: Image.asset(
-                                libro[1],
-                                height: 150,
-                                width: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 10),
-                              child: Text(
-                                libro[0],
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    })),
-            SizedBox(
-              height: 40,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text('Mas Populares',
-                  style: TextStyle(fontSize: 25, color: Colors.grey[850], fontWeight: FontWeight.bold)),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                height: 230,
-                child: ListView.builder(
-                    itemCount: populares.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final libro = populares[index];
-                      return Container(
-                        height: 220,
-                        width: 100,
-                        margin: EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Image.asset(
-                              libro[1],
-                              height: 150,
-                              width: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 10),
-                              child: Text(
-                                libro[0],
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    })),
-          ]),
+            Text('Populares', style: TextStyle(fontSize: 30),),
+            Expanded(
+            child: Container(
+                 child: ListView(
+                   physics: BouncingScrollPhysics(),
+                   scrollDirection: Axis.horizontal,
+                   children: buildBooks(listaPopulares),
+                 ),
+             ),
+             ),
+            
+          ],
         ),
       ),
     );
   }
+
+  //LIBROS
+  List<Widget> buildBooks(libros){
+    List<Widget> list = [];
+    for (var i = 0; i < libros.length; i++){
+      list.add(buildBook(libros[i],i));
+    }
+    return list;
+  }
+
+  Widget buildBook(Libro book, int index){
+    return Container(
+      margin: EdgeInsets.only(right: 32,left:  0,bottom: 8),
+      child: Column(
+        
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+
+          Container(
+            
+            height: 200,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 12,
+                  offset: Offset(0,3),
+                )
+              ],
+            ),
+            margin: EdgeInsets.only(bottom: 16, top: 24),
+            child: Hero(
+              tag: book.descripcion,
+              child: Container(
+                child: ClipRRect(
+                  
+                  child: Image.network(
+                     book.img,
+                     fit: BoxFit.cover,
+                 ),
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                Radius.circular(15)
+              ),
+                // image: DecorationImage(
+                //   image:NetworkImage(book.img),
+                //   fit: BoxFit.cover,
+                // )
+              ),
+              ),
+            ),
+          ),
+          Text(
+            book.descripcion,
+            
+          //  textDirection: TextDirection.ltr,
+            style: GoogleFonts.catamaran(
+              fontSize:18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black, 
+            ),
+            
+          ),
+
+        ],
+      ),
+    );
+}
 }
