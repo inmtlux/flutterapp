@@ -14,6 +14,7 @@ import 'package:primera_prueba/screens/reporte_categoria_screen.dart';
 import 'package:primera_prueba/screens/reportes_screen.dart';
 
 import 'package:primera_prueba/screens/terr-cat-screen.dart';
+import 'package:primera_prueba/screens/usuario_reporte.dart';
 import 'package:primera_prueba/screens/usuarios.dart';
 import 'package:primera_prueba/widgets/my-custom-scroll.dart';
 import 'package:primera_prueba/widgets/splash.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
           "cat-terror": (_) => TerrorScreen(),
           'reporte_screen': (_) => ReporteScreen(),
           'reporte_categorias_screen': (_) => ReporteCategoriaScreen(),
+          'reporte_usuarios': (_) => UsuarioReporte(),
         },
       ),
     );

@@ -64,8 +64,9 @@ var controller = {
                     usuario.email = req.body.email;
                     usuario.password = password;
                     usuario.img = '';
-                    usuario.estado = true;
+                    usuario.estado = req.body.estado;
                     usuario.rol = "user_rol";
+                    usuario.categoria = req.body.categoria;
                     db.collection('usuarios').insertOne(usuario,
                         (error, result)=>{
                             if(error){
@@ -90,8 +91,9 @@ var controller = {
             usuario.email = req.body.email;//precio
             usuario.password = req.body.password;
             usuario.img = '';
-            usuario.estado = true;
+            usuario.estado = req.body.estado;
             usuario.rol = "user_rol";
+            usuario.categoria = req.body.categoria;
             console.log(usuario);
             db.collection("usuarios").updateOne({ usuarioId: { $eq: parseInt(req.body.usuarioId)}},
                                                  {$set: usuario},
