@@ -80,7 +80,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
             SizedBox(
               height: 20,
             ),
-            TextFormField(
+            /*TextFormField(
               decoration: InputDecoration(
                   labelText: 'Imagen',
                   border: OutlineInputBorder(
@@ -91,7 +91,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                   return 'Por favor ingrese una imagen';
                 }
               },
-            ),
+            ),*/
             Row(
                 //boton para seleccionar categorias
                 children: <Widget>[
@@ -301,7 +301,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                       id: '',
                       categoriaId: 0,
                       descripcion: txtDescripcion.text,
-                      cantidadlibros: int.parse(txtCantidadLibros.text),
+                      cantidadlibros: txtCantidadLibros.text,
                       img: txtImagen.text,
                       categoria: _catSeleccion.toString(),
                       estado: _estadoActivo.toString(),
