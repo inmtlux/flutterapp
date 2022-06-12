@@ -10,8 +10,11 @@ var controller = {
     list: function (req, res) {
         console.log("---------------");
         console.log("entrando a la funcion listar");
-        const { desde } = req.query;
-        db.collection("libros").find().skip(Number(desde)).toArray(
+        const { desde, limite } = req.query;
+       
+        db.collection("libros").find()
+        .skip(Number(desde))
+        .limit(Number(limite)).toArray(
             (error, dataLibros) => {
                 if (error || !dataLibros) {
                     console.log(error);
@@ -21,7 +24,7 @@ var controller = {
                 } else {
                     return res.status(200).send({
                         status: "succees",
-                        libros: dataLibros
+                        libro: dataLibros
                     });
                 }
             }
@@ -31,8 +34,12 @@ var controller = {
         console.log("---------------");
         console.log("entrando a la funcion Listar por Categoria");
         const { categoria } = req.params;
+        const { desde, limite } = req.query;
 
-        db.collection("libros").find({ categoria: (categoria).toUpperCase() }).toArray(
+        db.collection("libros").find({ categoria: (categoria).toUpperCase() })
+        .skip(Number(desde))
+        .limit(Number(limite))
+        .toArray(
             (error, dataLibros) => {
                 if (error || !dataLibros) {
                     console.log(error);
@@ -42,7 +49,7 @@ var controller = {
                 } else {
                     return res.status(200).send({
                         status: "succees",
-                        libros: dataLibros
+                        libro: dataLibros
                     });
                 }
             }
@@ -82,7 +89,6 @@ var controller = {
                     libro.categoria = (req.body.categoria).toUpperCase();
                     libro.descripcion = req.body.descripcion;//descripcion
                     libro.autor = req.body.autor; //autor
-                    libro.anio_publicacion = req.body.anio_publicacion;//
                     libro.img = '';
 
                     db.collection('libros').insertOne(libro,
@@ -108,7 +114,7 @@ var controller = {
             libro.categoria = (req.body.categoria).toUpperCase();
             libro.descripcion = req.body.descripcion;//descripcion
             libro.autor = req.body.autor; //autor
-            libro.anio_publicacion = req.body.anio_publicacion;//
+            //
             libro.img = "";
             console.log(libro);
             db.collection("libros").updateOne({ libroId: { $eq: parseInt(req.body.libroId) } },

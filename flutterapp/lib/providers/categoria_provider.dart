@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import "package:http/http.dart" as http;
 import 'package:primera_prueba/models/categoria.dart';
+import 'package:primera_prueba/models/categoria_report.dart';
+import 'package:primera_prueba/models/categoria_report_responsive.dart';
 import 'dart:io';
 import '../models/categoria_response.dart';
 
@@ -8,10 +10,12 @@ class CategoriaProvider extends ChangeNotifier {
   String _baseUrl = "localhost:8080";
 
   List<Categoria> listaCategorias = [];
+  List<ReporteCategoria> listaReporteCategoria = [];
 
   CategoriaProvider() {
     print("Ingresando a CategoriaProvider");
     this.getOnCategoriaList();
+    this.reporteCategoria();
   }
 
   getOnCategoriaList() async {
@@ -31,6 +35,15 @@ class CategoriaProvider extends ChangeNotifier {
         body: categorias.toJson());
     print(response.body);
     getOnCategoriaList();
+    notifyListeners();
+  }
+
+  reporteCategoria() async {
+    var url = Uri.http(_baseUrl, 'api/reportes/ReporteCategorias');
+    final response = await http.get(url);
+    final categoriaReportResponse =
+        CategoriaReportResponse.fromJson(response.body);
+    listaReporteCategoria = categoriaReportResponse.reporteCategorias;
     notifyListeners();
   }
 }
