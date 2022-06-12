@@ -46,6 +46,7 @@ class _ReporteCategoriaScreenState extends State<ReporteCategoriaScreen> {
                       child: charts.BarChart(
                     serie,
                     animate: true,
+                    vertical: false, //horizontal barras
                   )),
                   Text("FUENTE: MONGODB")
                 ],

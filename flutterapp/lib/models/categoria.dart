@@ -28,7 +28,7 @@ class Categoria {
         categoriaId: json["categoriaId"],
         descripcion: json["descripcion"],
         cantidadlibros: json["cantidadlibros"],
-        img: json["imagen"],
+        img: json["img"],
         categoria: json["categoria"],
         estado: json["estado"],
       );

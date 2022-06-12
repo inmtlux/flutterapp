@@ -41,11 +41,11 @@ class _Categorias2Screen extends State<Categoria2Screen> {
                         width: double.infinity,
                         height: 250,
                         child: FadeInImage(
-                            placeholder: AssetImage(
-                                '../assets/categoria-screen/sugerenciaCatg.jpg'),
-                            //image: AssetImage('../assets/categoria-screen/sugerenciaCatg.jpg'),
-                            image: NetworkImage(listaCategorias[index].img),
-                            fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                          placeholder: AssetImage('.........'),
+                          //image: AssetImage('../assets/categoria-screen/sugerenciaCatg.jpg'),
+                          image: NetworkImage(listaCategorias[index].img),
+                        ),
                       ),
                     ),
                     Container(
