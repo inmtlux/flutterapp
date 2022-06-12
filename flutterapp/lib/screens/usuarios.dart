@@ -56,7 +56,7 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
     ),
     SliverFillRemaining(
       child:Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 10,left: 20,right: 20),
         child: Container(
           child: Center(
             child: ListView.builder(
@@ -67,9 +67,31 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
                   child: Column(
                     children: [
                       ListTile(
-                        title: Text(listaUsuarios[index].nombre,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),),
-                        subtitle: Text(listaUsuarios[index].email,style: TextStyle(color: Colors.black),),
-                        leading: Icon(Icons.person,color: Colors.black),
+                        title: Text(listaUsuarios[index].nombre,
+                         style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),),
+                        subtitle: Text(listaUsuarios[index].email,
+                         style: TextStyle(
+                          color: Colors.black),),
+                        trailing: Container(
+                          height: 300,
+                          width: 50,
+                        child: Padding(
+                          padding: const EdgeInsets.all(1.0),
+                          child: CircleAvatar(  
+                                                  
+                            child: ClipOval(
+                              child: Image(image: NetworkImage(listaUsuarios[index].img,),
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,),
+                            )
+                          ),
+                        ),
+                      ),
+                        
                       ),
                     ],
                   ),

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
@@ -54,4 +54,4 @@ class _PrincipalScreen extends State<PrincipalScreen> {
       ),
     );
   }
-}
+}*/

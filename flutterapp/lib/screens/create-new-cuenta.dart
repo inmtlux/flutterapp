@@ -266,7 +266,8 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                               email: txtEmail.text, 
                               password: txtPassword.text, 
                               estado: true, 
-                              rol: '');
+                              rol: '',
+                              img: "");
 
                               usuarioProvider.saveUsuario(usuario);
 
