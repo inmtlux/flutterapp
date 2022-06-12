@@ -27,15 +27,17 @@ enum Categoriaslist {
 
 class _CategoriaFormScreen extends State<CategoriaFormScreen> {
   final _formKey = GlobalKey<FormState>();
+
+  final txtDescripcion = TextEditingController();
+  final txtCantidadLibros = TextEditingController();
+  final txtImagen = TextEditingController();
+
   Categoriaslist? _catSeleccion = Categoriaslist.terror;
   bool? _estadoActivo = false;
 
   @override
   Widget build(BuildContext context) {
     final categoriaProvider = Provider.of<CategoriaProvider>(context);
-    final txtDescripcion = TextEditingController();
-    final txtCantidadLibros = TextEditingController();
-    final txtImagen = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -50,7 +52,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
               //maxLines: 8,
               //maxLength: 50,
               decoration: InputDecoration(
-                  labelText: 'Nombre del libro',
+                  labelText: 'Breve descripcion',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0))),
               controller: txtDescripcion,
@@ -300,7 +302,9 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                       categoriaId: 0,
                       descripcion: txtDescripcion.text,
                       cantidadlibros: int.parse(txtCantidadLibros.text),
-                      imagen: txtImagen.text,
+                      img: txtImagen.text,
+                      categoria: _catSeleccion.toString(),
+                      estado: _estadoActivo.toString(),
                     );
 
                     categoriaProvider.saveCategoria(categoria);

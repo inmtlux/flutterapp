@@ -57,7 +57,11 @@ var controller = {
                     categoria.categoriaId = countProductos + 1;//categoria
                     categoria.descripcion = (req.body.descripcion).toUpperCase();//descripcion
                     categoria.cantidadlibros = req.body.cantidadlibros;//cantidad de libros
-                    categoria.imagen = req.body.imagen;
+                    categoria.img = '';
+                    //categoria.imagen = req.body.imagen;
+                    categoria.categoria = req.body.categoria;
+                    categoria.estado = req.body.estado;
+
                     db.collection('categorias').insertOne(categoria,
                         (error, result) => {
                             if (error) {
@@ -81,6 +85,8 @@ var controller = {
             categoria.descripcion = (req.body.descripcion).toUpperCase();//descripcion
             categoria.cantidadlibros = req.body.cantidadlibros;//cantidad de libros
             categoria.imagen = req.body.imagen;
+            categoria.categoria = req.body.categoria;
+            categoria.estado = req.body.estado;
 
             console.log(categoria);
             db.collection("categorias").updateOne({ categoriaId: { $eq: parseInt(req.body.categoriaId) } },
