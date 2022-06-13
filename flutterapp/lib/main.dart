@@ -10,11 +10,13 @@ import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart'; //aca
 import 'package:primera_prueba/screens/inicio-screen.dart';
+import 'package:primera_prueba/screens/libro_form_screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
 import 'package:primera_prueba/screens/reporte_categoria_screen.dart';
 import 'package:primera_prueba/screens/reportes_screen.dart';
 
 import 'package:primera_prueba/screens/terr-cat-screen.dart';
+import 'package:primera_prueba/screens/terror1_screen.dart';
 import 'package:primera_prueba/screens/usuario_reporte.dart';
 import 'package:primera_prueba/screens/usuarios.dart';
 import 'package:primera_prueba/widgets/my-custom-scroll.dart';
@@ -68,6 +70,8 @@ class MyApp extends StatelessWidget {
           'reporte_usuarios_activos': (_) => UsuarioActivoReporte(),
           'reporte_categorias_screen': (_) => ReporteCategoriaScreen(),
           'reporte_usuarios': (_) => UsuarioReporte(),
+          'terror1_screen': (_) => Terror1Screen(),
+          'libro_form_screen':(_) => LibroFormScreen(),
         },
       ),
     );

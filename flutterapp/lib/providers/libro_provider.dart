@@ -1,5 +1,7 @@
 
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:primera_prueba/models/libro.dart';
@@ -12,12 +14,14 @@ class LibroProvider extends ChangeNotifier{
 
   List<Libro> listaLibrosNovedades = [];
   List<Libro> listaLibrosPopulares = [];
+  List<Libro> listaLibros = [];
   
 
   LibroProvider(){
     print('Ingresando a Libro Provider');
     this.getLibrosNovedades();
     this.getLibrosPopulares();
+    this.getLibros();
   }
   getLibrosNovedades() async {
     final queryParameters = {
@@ -49,5 +53,29 @@ class LibroProvider extends ChangeNotifier{
   }
   getlibrosTerro() async{
 
+  }
+  getLibros() async {
+    final queryParameters = {
+       'limite':'5',
+    };
+
+    var url = Uri.http(_baseUrl, '/api/libros',queryParameters);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroResponse = LibroResponse.fromJson(response.body);
+    listaLibros = libroResponse.libro;
+    notifyListeners();
+  }
+  saveLibros(Libro libro) async {
+    var url = Uri.http(_baseUrl, "/api/libros/save");
+    print(libro.toJson());
+    final response = await http.post(url,
+        headers: {HttpHeaders.contentTypeHeader: "application/json"},
+        body: libro.toJson());
+    print(response.body);
+    getLibros();
+    notifyListeners();
   }
 }

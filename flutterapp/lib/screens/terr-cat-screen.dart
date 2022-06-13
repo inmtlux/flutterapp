@@ -224,6 +224,34 @@ class _TerrorScreenState extends State<TerrorScreen> {
                                       ),
                                     );
                                   })),
+
+
+
+                                    Center(
+                      child: Container(
+                        height: 50,
+                        width: 300,
+                        child: FlatButton(
+                          
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                          color: Colors.red[900],
+                          onPressed: (){
+                            Navigator.pushNamed(context, 'terror1_screen');
+                            //Navigator.pushNamed(context, 'libro_form_screen');
+                          },
+                          child: Text("FORMULARIO", style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                          ),),
+
+                        ),
+
+                      ),
+                    ),
+
+
+
+                    
                         ]),
                   ),
                 ),
