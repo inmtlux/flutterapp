@@ -12,7 +12,7 @@ class _ReporteScreen extends State<ReporteScreen>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: ( AppBar(title: Text('REPORTES'),)),
+      appBar: ( AppBar(title: Text('REPORTES'),backgroundColor: Color.fromARGB(255, 41, 76, 233),)),
       drawer: MenuLateral(),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -21,16 +21,27 @@ class _ReporteScreen extends State<ReporteScreen>{
             children: [
               ListTile(
                 
-                title: Text('Reporte usuario'),
-                onTap: (){},
-                tileColor: Colors.blue,
+                title: Text('Reporte usuarios activos', 
+                style: TextStyle(
+                  color: Colors.white),
+                  
+                  ),
+                
+                onTap: (){
+                  Navigator.pushReplacementNamed(context, 'usuarios_activos_reportes');
+                },
+                tileColor: Color.fromARGB(255, 41, 76, 233,),
+                
                 
               ),
               SizedBox(height: 30,),
               ListTile(
-                title: Text('Reporte libros'),
+                title: Text('Reporte libros',
+                style: TextStyle(
+                  color: Colors.white),
+                  ),
                 onTap: (){},
-                tileColor: Colors.blue,
+                tileColor: Color.fromARGB(255, 41, 76, 233),
               )
             ],
           ),)

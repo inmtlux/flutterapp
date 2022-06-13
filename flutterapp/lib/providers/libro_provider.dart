@@ -12,6 +12,7 @@ class LibroProvider extends ChangeNotifier{
 
   List<Libro> listaLibrosNovedades = [];
   List<Libro> listaLibrosPopulares = [];
+  
 
   LibroProvider(){
     print('Ingresando a Libro Provider');
@@ -45,5 +46,8 @@ class LibroProvider extends ChangeNotifier{
     final libroResponse = LibroResponse.fromJson(response.body);
     listaLibrosPopulares = libroResponse.libro;
     notifyListeners();
+  }
+  getlibrosTerro() async{
+
   }
 }

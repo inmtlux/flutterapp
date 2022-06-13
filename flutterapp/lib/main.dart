@@ -5,6 +5,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:primera_prueba/providers/categoria_provider.dart';
 import 'package:primera_prueba/providers/libro_provider.dart';
 import 'package:primera_prueba/providers/usuario_provider.dart';
+import 'package:primera_prueba/reportes/usuarios_activos_reporte.dart';
 import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart'; //aca
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
           'usuarios_screen': (_) => UsuarioScreend(),
           "cat-terror": (_) => TerrorScreen(),
           'reporte_screen': (_) => ReporteScreen(),
+          'usuarios_activos_reportes': (_) => UsuarioActivoReporte()
         },
       ),
     );
