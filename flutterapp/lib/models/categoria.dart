@@ -6,14 +6,18 @@ class Categoria {
     required this.categoriaId,
     required this.descripcion,
     required this.cantidadlibros,
-    required this.imagen,
+    required this.img,
+    required this.categoria,
+    required this.estado,
   });
 
   String id;
   int categoriaId;
   String descripcion;
   dynamic cantidadlibros;
-  String imagen;
+  String img;
+  String categoria;
+  String estado;
 
   factory Categoria.fromJson(String str) => Categoria.fromMap(json.decode(str));
 
@@ -24,7 +28,9 @@ class Categoria {
         categoriaId: json["categoriaId"],
         descripcion: json["descripcion"],
         cantidadlibros: json["cantidadlibros"],
-        imagen: json["imagen"],
+        img: json["img"],
+        categoria: json["categoria"],
+        estado: json["estado"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -32,6 +38,8 @@ class Categoria {
         "categoriaId": categoriaId,
         "descripcion": descripcion,
         "cantidadlibros": cantidadlibros,
-        "imagen": imagen,
+        "img": img,
+        "categoria": categoria,
+        "estado": estado,
       };
 }

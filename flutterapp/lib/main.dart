@@ -11,9 +11,11 @@ import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart'; //aca
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
+import 'package:primera_prueba/screens/reporte_categoria_screen.dart';
 import 'package:primera_prueba/screens/reportes_screen.dart';
 
 import 'package:primera_prueba/screens/terr-cat-screen.dart';
+import 'package:primera_prueba/screens/usuario_reporte.dart';
 import 'package:primera_prueba/screens/usuarios.dart';
 import 'package:primera_prueba/widgets/my-custom-scroll.dart';
 import 'package:primera_prueba/widgets/splash.dart';
@@ -35,7 +37,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UsuarioProvider(), lazy: false),
-        ChangeNotifierProvider(create: (_) => LibroProvider(), lazy: false,),
+        ChangeNotifierProvider(
+          create: (_) => LibroProvider(),
+          lazy: false,
+        ),
         ChangeNotifierProvider(create: (_) => CategoriaProvider(), lazy: false),
       ],
       child: MaterialApp(
@@ -55,13 +60,14 @@ class MyApp extends StatelessWidget {
           'Crear nueva cuenta': (context) => CreateNewAccounte(),
           'principal_screen': (_) => InicioScrenn(),
           'categorias_screen': (_) => CategoriaScreen(),
-          'categorias2_screen': (_) => Categoria2Screen(), // NO BORRAR
-          'categorias2_form_screen': (_) =>
-              CategoriaFormScreen(), //NO BORRAR X2
+          'categorias2_screen': (_) => Categoria2Screen(),
+          'categorias2_form_screen': (_) => CategoriaFormScreen(),
           'usuarios_screen': (_) => UsuarioScreend(),
           "cat-terror": (_) => TerrorScreen(),
           'reporte_screen': (_) => ReporteScreen(),
-          'usuarios_activos_reportes': (_) => UsuarioActivoReporte()
+          'reporte_usuarios_activos': (_) => UsuarioActivoReporte(),
+          'reporte_categorias_screen': (_) => ReporteCategoriaScreen(),
+          'reporte_usuarios': (_) => UsuarioReporte(),
         },
       ),
     );

@@ -25,6 +25,31 @@ const controller = {
         );
     },
 
+    //REPORTE DE CATEGORIAS
+    ReporteCategorias: function(req,res){
+        console.log("--------------------------");
+        console.log("ENTRANDO A LA FUNCION REPORTE DE CATEGORIAS");
+        // CONTABILIZA LAS CATEGORIAS POR CATEGORIA
+        db.collection("categorias").aggregate([
+            {$group:{_id:"$categoria",count:{$sum:1}}}
+        ]).toArray(
+            (error, dataCategorias) => {
+                if(error || !dataCategorias){
+                    return res.status(404).send({
+                        message: "No se encontraron categorias",
+                    })
+                }else{
+                    return res.status(200).send({
+                        status:"success",
+                        ReporteCategorias: dataCategorias
+                    })
+                }
+            }
+        );
+    },
+
+    //REPORTE DE USUARIOS
+
 
     //======= Aca agregan su controllador ====
     // EJM

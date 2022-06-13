@@ -36,8 +36,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               // 1ERA PARTE INICIO
               children: [
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -51,9 +51,9 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                         children: [
                           Ink.image(
                             image: AssetImage(
-                                "../assets/categoria-screen/romance.jpg"),
-                            height: 130,
-                            width: 220,
+                                "../assets/categoria-screen/romanceprueba.jpg"),
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -65,8 +65,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                   width: 20,
                 ),
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -81,8 +81,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/terror.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -99,8 +99,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               //2DA PARTE INICIO
               children: [
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -115,8 +115,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/ficcion.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -128,8 +128,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                   width: 20,
                 ),
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -144,8 +144,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/literatura.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -162,8 +162,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               //3ERA PARTE INICIO
               children: [
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -178,8 +178,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/fantasia2.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -191,8 +191,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                   width: 20,
                 ),
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -207,8 +207,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/viajes.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -236,8 +236,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               // 1ERA PARTE INICIO
               children: [
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -252,8 +252,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/comics.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -265,8 +265,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                   width: 20,
                 ),
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -281,8 +281,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/historia.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -299,8 +299,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               //2DA PARTE INICIO
               children: [
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -315,8 +315,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/cientifico.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -328,8 +328,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                   width: 20,
                 ),
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -344,8 +344,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/biografia.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -362,8 +362,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               //3ERA PARTE INICIO
               children: [
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -378,8 +378,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/poetico.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -391,8 +391,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                   width: 20,
                 ),
                 Container(
-                  height: 130,
-                  width: 220,
+                  height: 100,
+                  width: 176,
                   child: Material(
                     borderRadius: BorderRadius.circular(28),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -407,8 +407,8 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/infantilesYjuvenil.jpg"),
-                            height: 130,
-                            width: 220,
+                            height: 100,
+                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -422,10 +422,10 @@ class _CategoriasScreen extends State<CategoriaScreen> {
               height: 50,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 50),
+              padding: EdgeInsets.only(left: 10),
               child: Text('DALE CLICK SI QUIERES SUGERIR UNA CATEGORIA...',
                   style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 13,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey[850])),
             ),
@@ -434,7 +434,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
             ),
             Container(
               //padding: EdgeInsets.only(left: 100),
-              margin: EdgeInsets.only(left: 135),
+              margin: EdgeInsets.only(left: 85),
               height: 60,
               width: 200,
               child: Material(
