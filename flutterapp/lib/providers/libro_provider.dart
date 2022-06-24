@@ -15,6 +15,7 @@ class LibroProvider extends ChangeNotifier{
   List<Libro> listaLibrosNovedades = [];
   List<Libro> listaLibrosPopulares = [];
   List<Libro> listaLibros = [];
+  List<Libro> listaLibrosTerror = [];
   
 
   LibroProvider(){
@@ -22,6 +23,7 @@ class LibroProvider extends ChangeNotifier{
     this.getLibrosNovedades();
     this.getLibrosPopulares();
     this.getLibros();
+    this.getLibrosTerror();
   }
   getLibrosNovedades() async {
     final queryParameters = {
@@ -37,6 +39,23 @@ class LibroProvider extends ChangeNotifier{
     listaLibrosNovedades = libroResponse.libro;
     notifyListeners();
   }
+
+  getLibrosTerror() async {
+    final queryParameters = {
+       'limite':'5',
+      'desde':'5'
+    };
+    var url = Uri.http(_baseUrl, '/api/libros/terror',queryParameters);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroResponse = LibroResponse.fromJson(response.body);
+    listaLibrosTerror = libroResponse.libro;
+    notifyListeners();
+  }
+
+
   getLibrosPopulares() async {
      final queryParameters = {
        'limite':'5',
