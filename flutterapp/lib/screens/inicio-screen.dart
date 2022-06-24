@@ -27,8 +27,10 @@ class _InicioScrenn extends State<InicioScrenn> {
                 snap: true,
                 floating: true,
                 expandedHeight: 160,
-                backgroundColor: Color.fromARGB(255, 32, 32, 32),
-                iconTheme: IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+                        
+                backgroundColor: Color.fromARGB(255, 41, 76, 233),
+                iconTheme:
+                    IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     'INICIO',
@@ -39,7 +41,10 @@ class _InicioScrenn extends State<InicioScrenn> {
                     shaderCallback: (rect) => LinearGradient(
                       begin: Alignment.bottomCenter,
                       end: Alignment.center,
-                      colors: [Color.fromARGB(255, 29, 29, 29), Color.fromARGB(255, 41, 76, 233)],
+                      colors: [
+                        Color.fromARGB(255, 29, 29, 29),
+                        Color.fromARGB(255, 41, 76, 233)
+                      ],
                     ).createShader(rect),
                     blendMode: BlendMode.darken,
                     child: Container(
@@ -53,109 +58,84 @@ class _InicioScrenn extends State<InicioScrenn> {
                   ),
                 ),
               ),
-              SliverFillRemaining(
-               child: Container(
-                
-         padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 55),
-         child: Column(//LIBROS
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: <Widget>[
-             Text('Novedades', style: TextStyle(fontSize: 30),),
-             Expanded(
-               child: Container(
-                 child: ListView(
-                   physics: BouncingScrollPhysics(),
-                   scrollDirection: Axis.horizontal,
-                   children: buildBooks(listaNovedades),
-                 ),
-               ),
-             ),
-             Text('Populares', style: TextStyle(fontSize: 30),),
-             Expanded(
-             child: Container(
-                  child: ListView(
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    children: buildBooks(listaPopulares),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Novedades',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Container(
+                        height: 250,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: listaNovedades.length,
+                          separatorBuilder: (context, _) => SizedBox(
+                            width: 20,
+                          ),
+                          itemBuilder: (context, index) =>
+                              buildCard(item: listaNovedades[index]),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Text(
+                        'POPULARES',
+                        style: TextStyle(fontSize: 30),
+                      ),
+                      Container(
+                        height: 250,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: listaPopulares.length,
+                          separatorBuilder: (context, _) => SizedBox(
+                            width: 20,
+                          ),
+                          itemBuilder: (context, index) =>
+                              buildCard(item: listaPopulares[index]),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                    ],
                   ),
-              ),
-              ),
-
-           ],
-         ),
-       ),
-              )
+                ),
+              ])),
+              
             ],
           ),
-           drawer: MenuLateral(),
+          drawer: MenuLateral(),
         )
       ],
     );
-
   }
+}
 
-  //LIBROS
-  List<Widget> buildBooks(libros) {
-    List<Widget> list = [];
-    for (var i = 0; i < libros.length; i++) {
-      list.add(buildBook(libros[i], i));
-    }
-    return list;
-  }
-
-  Widget buildBook(Libro book, int index) {
-    return Container(
-      margin: EdgeInsets.only(right: 32, left: 0, bottom: 8),
+Widget buildCard({
+  required Libro item,
+}) =>
+    Container(
+      margin: EdgeInsets.only(top: 15),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 12,
-                  offset: Offset(0, 3),
-                )
-              ],
-            ),
-            margin: EdgeInsets.only(bottom: 16, top: 24),
-            child: Hero(
-              tag: book.descripcion,
-              child: Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.network(
-                    book.img,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                // decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.all(Radius.circular(15)),
-                //     image: DecorationImage(
-                //       image: NetworkImage(book.img),
-                //       fit: BoxFit.cover,
-                //     )),
+        children: [
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                item.img,
+                width: 150,
+                fit: BoxFit.cover,
               ),
             ),
           ),
-          Text(
-            book.descripcion,
-
-            //  textDirection: TextDirection.ltr,
-            style: GoogleFonts.catamaran(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
+          const SizedBox(height: 10),
+          Text(item.descripcion,style: TextStyle(fontSize: 18),)
         ],
       ),
     );
-  }
-}
