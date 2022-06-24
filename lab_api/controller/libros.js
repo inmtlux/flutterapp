@@ -34,9 +34,9 @@ var controller = {
         console.log("---------------");
         console.log("entrando a la funcion Listar por Categoria");
         const { categoria } = req.params;
-        const { desde, limite } = req.query;
+        const { desde, limite} = req.query;
 
-        db.collection("libros").find({ categoria: (categoria).toUpperCase() })
+        db.collection("libros").find({ categoria: (categoria).toUpperCase()})
         .skip(Number(desde))
         .limit(Number(limite))
         .toArray(

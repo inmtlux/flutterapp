@@ -8,6 +8,8 @@ import "package:http/http.dart" as http;
 
 
 class ProductoProvider extends ChangeNotifier {
+  
+  // String _baseUrl = 'api-sliderin.herokuapp.com';
   String _baseUrl = "localhost:8080";
 
   List<Producto> listaProductos = [];

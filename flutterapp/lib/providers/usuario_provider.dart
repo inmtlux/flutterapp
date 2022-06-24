@@ -10,7 +10,8 @@ import '../models/usuario_response.dart';
 
 class UsuarioProvider extends ChangeNotifier{
 
-  String _baseUrl = 'localhost:8080';
+  // String _baseUrl = 'api-sliderin.herokuapp.com';
+  String _baseUrl = "localhost:8080";
 
   List<Usuario> listaUsuarios = [];
   List<UsuarioActivo> listaUsuariosActivos = [];
