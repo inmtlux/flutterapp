@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
 import 'package:provider/provider.dart';
 import 'package:primera_prueba/models/categoria.dart';
@@ -15,12 +16,34 @@ class _Categorias2Screen extends State<Categoria2Screen> {
     final categoriaProvider = Provider.of<CategoriaProvider>(context);
     final List<Categoria> listaCategorias = categoriaProvider.listaCategorias;
 
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       drawer: MenuLateral(),
       appBar: AppBar(
         title: Text('Categorias'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {}, //PENDIENTE
+          )
+        ],
       ),
-      body: Center(
+      body: Container(
+        width: double.infinity,
+        height: size.height * 0.7,
+        color: Colors.white,
+        child: Swiper(
+          itemCount: listaCategorias.length,
+          layout: SwiperLayout.STACK,
+          itemWidth: size.width * 0.8,
+          itemHeight: size.height * 0.7,
+          itemBuilder: (BuildContext context, int index) {
+            return _cardCategorias(listaCategorias[index]);
+          },
+        ),
+      ),
+      /*body: Center(
           child: ListView.builder(
         itemCount: listaCategorias.length,
         itemBuilder: (context, index) {
@@ -73,7 +96,7 @@ class _Categorias2Screen extends State<Categoria2Screen> {
                 )),
           );
         },
-      )),
+      )),*/
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
@@ -85,21 +108,84 @@ class _Categorias2Screen extends State<Categoria2Screen> {
   }
 }
 
+class _cardCategorias extends StatelessWidget {
+  final Categoria categoria;
+  _cardCategorias(this.categoria);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Container(
+      margin: EdgeInsets.only(top: 140, bottom: 20),
+      width: double.infinity,
+      height: size.height * 0.5,
+      decoration: _cardBorders(),
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          _ImagenFondo(categoria),
+          Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              color: Colors.amber,
+            ),
+            child: ListTile(
+              title: Text(
+                categoria.descripcion,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+              subtitle: Text(
+                'Cantidad de libros:  ' + categoria.cantidadlibros.toString(),
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigo,
+                ),
+              ),
+              trailing: IconButton(
+                icon: const Icon(
+                  Icons.edit,
+                  color: Colors.blueAccent,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'categorias2_form_screen',
+                      arguments: categoria);
+                },
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class _ImagenFondo extends StatelessWidget {
+  final Categoria categoria;
+  _ImagenFondo(this.categoria);
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Container(
         width: double.infinity,
-        height: 200,
+        height: 300,
         child: FadeInImage(
-            placeholder:
-                AssetImage('../assets/categoria-screen/sugerenciaCatg.jpg'),
-            image: AssetImage('../assets/categoria-screen/sugerenciaCatg.jpg'),
-
-            // NetworkImage('https://placeimg.com/400/300/tech'),
-            fit: BoxFit.cover),
+          fit: BoxFit.cover,
+          placeholder:
+              AssetImage('../assets/categoria-screen/sugerenciaCatg.jpg'),
+          //image: AssetImage('../assets/categoria-screen/sugerenciaCatg.jpg'),
+          image: NetworkImage(categoria.img),
+        ),
       ),
     );
   }
