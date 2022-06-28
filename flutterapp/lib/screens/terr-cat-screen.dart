@@ -9,8 +9,7 @@ class TerrorScreen extends StatefulWidget {
 }
 
 class _TerrorScreenState extends State<TerrorScreen> {
-
-   List<List> Terror = [
+  List<List> Terror = [
     [
       "El bazar de los malos sueños",
       "../assets/terror-screen/1.jpg",
@@ -39,190 +38,228 @@ class _TerrorScreenState extends State<TerrorScreen> {
     ],
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         Scaffold(
           //drawer: TerrorScreen(),
-          backgroundColor:Colors.black,
+          backgroundColor: Colors.black,
           body: CustomScrollView(
             slivers: <Widget>[
-    SliverAppBar( 
-      /*leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,),
+              SliverAppBar(
+                /*leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,),
       onPressed: (){
         Navigator.pushReplacementNamed(context, 'Crear nueva cuenta');
       },),*/
-      pinned: true,
-      snap: true,
-      floating: true,
-      expandedHeight: 160,
-      backgroundColor: Colors.black,
-      iconTheme: IconThemeData(color: Colors.black),
-      flexibleSpace: FlexibleSpaceBar(
-        title: Text('HORROR',style: TextStyle(fontWeight: FontWeight.bold),),
-        centerTitle: true,
-        background: ShaderMask(
-          shaderCallback: (rect) => LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.center,
-              colors: [Colors.black, Colors.transparent],
-              ).createShader(rect),
-              blendMode: BlendMode.darken,
-          child: Container(decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage('assets/oscuro.jpg'),
-            fit: BoxFit.cover,
-            ),
-          ),
-          ),
-        ),
-      ),
-    ),
-    SliverFillRemaining(
-      child: Container(
-        margin: EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text('TERROR',
-                  style: TextStyle(fontSize: 25, color: Colors.grey[850])),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-                height: 230,
-                child: ListView.builder(
-                    itemCount: Terror.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final libro = Terror[index];
-                      return Container(
-                        height: 220,
-                        width: 100,
-                        margin: EdgeInsets.all(8),
-                        child: Column(
-                          children: <Widget>[
-                            Image.asset(
-                              libro[1],
-                              height: 150,
-                              width: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 5),
-                              child: Text(
-                                libro[0],
+                pinned: true,
+                snap: true,
+                floating: true,
+                expandedHeight: 160,
+                backgroundColor: Colors.black,
+                iconTheme: IconThemeData(color: Colors.black),
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text(
+                    'HORROR',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  centerTitle: true,
+                  background: ShaderMask(
+                    shaderCallback: (rect) => LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                      colors: [Colors.black, Colors.transparent],
+                    ).createShader(rect),
+                    blendMode: BlendMode.darken,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/oscuro.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SliverFillRemaining(
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Text('TERROR',
                                 style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            )
-                          ],
+                                    fontSize: 25, color: Colors.grey[850])),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                              height: 230,
+                              child: ListView.builder(
+                                  itemCount: Terror.length,
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    final libro = Terror[index];
+                                    return Container(
+                                      height: 220,
+                                      width: 100,
+                                      margin: EdgeInsets.all(8),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Image.asset(
+                                            libro[1],
+                                            height: 150,
+                                            width: 100,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 5),
+                                            child: Text(
+                                              libro[0],
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  })),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Text('L.J.SMITH',
+                                style: TextStyle(
+                                    fontFamily: "RobotoMono",
+                                    fontSize: 25,
+                                    color: Colors.grey[850])),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          SizedBox(
+                              height: 230,
+                              child: ListView.builder(
+                                  itemCount: LJSmith.length,
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    final libro = LJSmith[index];
+                                    return Container(
+                                      height: 220,
+                                      width: 100,
+                                      margin: EdgeInsets.all(8),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Image.asset(
+                                            libro[1],
+                                            height: 150,
+                                            width: 100,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 5),
+                                            child: Text(
+                                              libro[0],
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  })),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Text('STEPHEN KING',
+                                style: TextStyle(
+                                    fontSize: 25, color: Colors.grey[850])),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          SizedBox(
+                              height: 230,
+                              child: ListView.builder(
+                                  itemCount: SKing.length,
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    final libro = SKing[index];
+                                    return Container(
+                                      height: 220,
+                                      width: 100,
+                                      margin: EdgeInsets.all(8),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Image.asset(
+                                            libro[1],
+                                            height: 150,
+                                            width: 100,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 5),
+                                            child: Text(
+                                              libro[0],
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  })),
+
+
+
+                                    Center(
+                      child: Container(
+                        height: 50,
+                        width: 300,
+                        child: FlatButton(
+                          
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                          color: Colors.red[900],
+                          onPressed: (){
+                            Navigator.pushNamed(context, 'terror1_screen');
+                            //Navigator.pushNamed(context, 'libro_form_screen');
+                          },
+                          child: Text("FORMULARIO", style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.white,
+                          ),),
+
                         ),
-                      );
-                    })),
-            SizedBox(
-              height: 15,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text('L.J.SMITH',
-                  style: TextStyle(
-                      fontFamily: "RobotoMono",
-                      fontSize: 25,
-                      color: Colors.grey[850])),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                height: 230,
-                child: ListView.builder(
-                    itemCount: LJSmith.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final libro = LJSmith[index];
-                      return Container(
-                        height: 220,
-                        width: 100,
-                        margin: EdgeInsets.all(8),
-                        child: Column(
-                          children: <Widget>[
-                            Image.asset(
-                              libro[1],
-                              height: 150,
-                              width: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 5),
-                              child: Text(
-                                libro[0],
-                                style:
-                                    TextStyle(fontSize: 15, color: Colors.black),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    })),
-            SizedBox(
-              height: 15,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text('STEPHEN KING',
-                  style: TextStyle(fontSize: 25, color: Colors.grey[850])),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-                height: 230,
-                child: ListView.builder(
-                    itemCount: SKing.length,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final libro = SKing[index];
-                      return Container(
-                        height: 220,
-                        width: 100,
-                        margin: EdgeInsets.all(8),
-                        child: Column(
-                          children: <Widget>[
-                            Image.asset(
-                              libro[1],
-                              height: 150,
-                              width: 100,
-                              fit: BoxFit.cover,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 5),
-                              child: Text(
-                                libro[0],
-                                style:
-                                    TextStyle(fontSize: 15, color: Colors.black),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    })),
-          ]),
-        ),
-      ),
-    ),
+
+                      ),
+                    ),
+
+
+
+                    
+                        ]),
+                  ),
+                ),
+              ),
             ],
           ),
           drawer: MenuLateral(),
-          ),
+        ),
       ],
     );
   }

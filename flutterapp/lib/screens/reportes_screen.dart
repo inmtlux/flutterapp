@@ -23,15 +23,21 @@ class _ReporteScreen extends State<ReporteScreen> {
               children: [
                 ListTile(
                   title: Text('Reporte usuario'),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, 'reporte_usuarios');
+                  },
                   tileColor: Colors.blue,
                 ),
                 SizedBox(
                   height: 30,
                 ),
                 ListTile(
-                  title: Text('Reporte libros'),
-                  onTap: () {},
+                  title: Text('Reporte usuarios activos'),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, 'reporte_usuarios_activos');
+                  },
                   tileColor: Colors.blue,
                 ),
                 SizedBox(

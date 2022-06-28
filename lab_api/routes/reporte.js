@@ -9,7 +9,8 @@ router.get('/reportes/usuariosActivos', ReporteController.ReporteUsuariosActivos
 //REPORTE CATEGORIA
 router.get('/reportes/reporteCategorias', ReporteController.ReporteCategorias);
 
-// Agregar mas reportes
+//REPORTE USUARIOS
+
 
 // EXPORTAR RUTA
 module.exports = router;

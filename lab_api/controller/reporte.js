@@ -48,6 +48,8 @@ const controller = {
         );
     },
 
+    //REPORTE DE USUARIOS
+
 
     //======= Aca agregan su controllador ====
     // EJM

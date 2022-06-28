@@ -15,6 +15,7 @@ var categorias_routes = require('./routes/categorias');
 var producto_routes = require("./routes/producto");
 var upload_routes = require("./routes/upload");
 var reportes_routes = require("./routes/reporte");
+var reportesUsuario_routes = require("./routes/reporte_U");
 
 //midelaware
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -40,6 +41,7 @@ app.use('/api/',categorias_routes);
 app.use("/api/", producto_routes);
 app.use("/api/", reportes_routes);
 app.use("/api/upload", upload_routes);
+app.use("/api/", reportesUsuario_routes);
 
 //exportar modulo
 
