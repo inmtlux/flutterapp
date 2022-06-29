@@ -7,11 +7,12 @@ import 'package:primera_prueba/models/usuario_report.dart';
 import 'package:primera_prueba/models/usuario_report_response.dart';
 import 'dart:io';
 import '../models/usuario_response.dart';
+import 'dart:convert' as convert;
 
 class UsuarioProvider extends ChangeNotifier{
 
-  // String _baseUrl = 'api-sliderin.herokuapp.com';
-  String _baseUrl = "localhost:8080";
+  String _baseUrl = 'api-sliderin.herokuapp.com';
+  //String _baseUrl = "localhost:8080";
 
   List<Usuario> listaUsuarios = [];
   List<UsuarioActivo> listaUsuariosActivos = [];
@@ -40,9 +41,13 @@ class UsuarioProvider extends ChangeNotifier{
                                      headers: {HttpHeaders.contentTypeHeader:'application/json'},
                                      body: usuario.toJson()                                     
     );
-    print(response.body);
+    final jsonRsp = convert.jsonDecode(response.body) as Map<String, dynamic>;
+    // print('===========================');
+    // print(jsonRsp['message']);
+    // print('===========================');
     getOnUsuarioList();
     notifyListeners();
+    return jsonRsp;
   }
   reporteUsuariosActivos() async{
     var url = Uri.http(_baseUrl, '/api/reportes/usuariosActivos');

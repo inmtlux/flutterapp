@@ -7,9 +7,7 @@ import 'dart:io';
 import '../models/categoria_response.dart';
 
 class CategoriaProvider extends ChangeNotifier {
-  
-  // String _baseUrl = 'api-sliderin.herokuapp.com';
-  String _baseUrl = "localhost:8080";
+  String _baseUrl = "senku-apirest.herokuapp.com";
 
   List<Categoria> listaCategorias = [];
   List<ReporteCategoria> listaReporteCategoria = [];

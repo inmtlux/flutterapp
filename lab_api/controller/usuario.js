@@ -20,7 +20,7 @@ var controller = {
                     });
                 }else{
                     return res.status(200).send({
-                        status:"succees",
+                        message: "success",
                         usuario: dataUsuarios
                     });
                 }
@@ -39,8 +39,8 @@ var controller = {
                     });
                 }else{
                     return res.status(200).send({
-                        status:"succees",
-                        usuario: dataUsuarios[0]
+                        message: "success",
+                        usuario:dataUsuarios[0]
                     });
             }
         }
@@ -76,7 +76,7 @@ var controller = {
                             }else{
                                 return res.status(200).send({
                                     message: "success",
-                                    usuario: result
+                                    usuario
                                 });
                             }
                         }
@@ -95,7 +95,7 @@ var controller = {
             usuario.rol = "user_rol";
             usuario.categoria = req.body.categoria;
             console.log(usuario);
-            db.collection("usuarios").updateOne({ usuarioId: { $eq: parseInt(req.body.usuarioId)}},
+            db.collection("usuarios").updateOne({ usuarioId: { $eq: parseInt(req.body.usuarioId)}},{new:true},
                                                  {$set: usuario},
                 (error, result)=>{
                 if(error){
@@ -105,7 +105,7 @@ var controller = {
                 }else{
                     return res.status(200).send({
                         message: "success",
-                        usuario: result
+                        usuario
                     });
                 }
             }

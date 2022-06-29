@@ -10,8 +10,8 @@ import "package:http/http.dart" as http;
 
 
 class LibroProvider extends ChangeNotifier{
-  // String _baseUrl = 'api-sliderin.herokuapp.com';
-  String _baseUrl = "localhost:8080";
+  String _baseUrl = 'api-sliderin.herokuapp.com';
+  //String _baseUrl = "localhost:8080";
 
   List<Libro> listaLibrosNovedades = [];
   List<Libro> listaLibrosPopulares = [];
