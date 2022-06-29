@@ -28,17 +28,65 @@ enum Categoriaslist {
 class _CategoriaFormScreen extends State<CategoriaFormScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  final txtCategoriaId = TextEditingController();
   final txtDescripcion = TextEditingController();
   final txtCantidadLibros = TextEditingController();
   final txtImagen = TextEditingController();
 
   Categoriaslist? _catSeleccion = Categoriaslist.terror;
   bool? _estadoActivo = false;
+  bool formModificado = false;
 
   @override
   Widget build(BuildContext context) {
     final categoriaProvider = Provider.of<CategoriaProvider>(context);
 
+    //RECIBIENDO EL PRODUCTO POR ARGUMENTO
+    final Categoria? categoria =
+        ModalRoute.of(context)!.settings.arguments as Categoria?;
+    if (!formModificado) {
+      if (categoria != null) {
+        //EDITAR
+        txtCategoriaId.text = categoria.categoriaId.toString();
+        txtDescripcion.text = categoria.descripcion;
+        txtCantidadLibros.text = categoria.cantidadlibros.toString();
+        txtImagen.text = categoria.img;
+        print(categoria.categoria);
+        print(categoria.estado);
+        if (categoria.categoria == 'Categoriaslist.terror') {
+          _catSeleccion = Categoriaslist.terror;
+        } else if (categoria.categoria == 'Categoriaslist.historia') {
+          _catSeleccion = Categoriaslist.historia;
+        } else if (categoria.categoria == 'Categoriaslist.romance') {
+          _catSeleccion = Categoriaslist.romance;
+        } else if (categoria.categoria == 'Categoriaslist.ficcion') {
+          _catSeleccion = Categoriaslist.ficcion;
+        } else if (categoria.categoria == 'Categoriaslist.literatura') {
+          _catSeleccion = Categoriaslist.literatura;
+        } else if (categoria.categoria == 'Categoriaslist.fantasia') {
+          _catSeleccion = Categoriaslist.fantasia;
+        } else if (categoria.categoria == 'Categoriaslist.viajes') {
+          _catSeleccion = Categoriaslist.viajes;
+        } else if (categoria.categoria == 'Categoriaslist.comics') {
+          _catSeleccion = Categoriaslist.comics;
+        } else if (categoria.categoria == 'Categoriaslist.cientifico') {
+          _catSeleccion = Categoriaslist.cientifico;
+        } else if (categoria.categoria == 'Categoriaslist.biografia') {
+          _catSeleccion = Categoriaslist.biografia;
+        } else if (categoria.categoria == 'Categoriaslist.poetico') {
+          _catSeleccion = Categoriaslist.poetico;
+        } else {
+          _catSeleccion = Categoriaslist.infantiles;
+        }
+        _estadoActivo = (categoria.estado == 'true') ? true : false;
+      } else {
+        //NUEVO
+        txtCategoriaId.text = '0';
+        txtDescripcion.text = '';
+        txtCantidadLibros.text = '';
+        txtImagen.text = '';
+      }
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('REGISTRO DE CATEGORIAS'),
@@ -48,6 +96,17 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
         child: Form(
           key: _formKey,
           child: Column(children: <Widget>[
+            TextFormField(
+              readOnly: true,
+              controller: txtCategoriaId,
+              decoration: InputDecoration(
+                  labelText: "CategoriaId",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0))),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             TextFormField(
               //maxLines: 8,
               //maxLength: 50,
@@ -91,6 +150,9 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                   return 'Por favor ingrese una imagen';
                 }
               },
+            ),
+            SizedBox(
+              height: 20,
             ),*/
             Row(
                 //boton para seleccionar categorias
@@ -106,6 +168,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true; //PONER EN TODAS LAS CATEGORIAS
                         });
                       }),
                   Text('Terror'),
@@ -119,6 +182,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Historia'),
@@ -132,6 +196,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Romance'),
@@ -145,6 +210,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Ficción'),
@@ -166,6 +232,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Literatura'),
@@ -179,6 +246,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Fantasia'),
@@ -192,6 +260,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Viajes'),
@@ -205,6 +274,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Comics'),
@@ -226,6 +296,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Científico'),
@@ -239,6 +310,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Biografía'),
@@ -252,6 +324,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Poético'),
@@ -265,6 +338,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         setState(() {
                           _catSeleccion = value as Categoriaslist?;
                           print(_catSeleccion);
+                          formModificado = true;
                         });
                       }),
                   Text('Infantil'),
@@ -299,7 +373,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
 
                     var categoria = Categoria(
                       id: '',
-                      categoriaId: 0,
+                      categoriaId: int.parse(txtCategoriaId.text),
                       descripcion: txtDescripcion.text,
                       cantidadlibros: txtCantidadLibros.text,
                       img: txtImagen.text,
