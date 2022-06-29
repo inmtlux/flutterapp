@@ -100,7 +100,7 @@ var controller = {
                             } else {
                                 return res.status(200).send({
                                     message: "success",
-                                    libro: result
+                                    libro
                                 });
                             }
                         }
@@ -117,7 +117,7 @@ var controller = {
             //
             libro.img = "";
             console.log(libro);
-            db.collection("libros").updateOne({ libroId: { $eq: parseInt(req.body.libroId) } },
+            db.collection("libros").updateOne({ libroId: { $eq: parseInt(req.body.libroId) } },{new:true},
                 { $set: libro },
                 (error, result) => {
                     if (error) {
@@ -127,7 +127,7 @@ var controller = {
                     } else {
                         return res.status(200).send({
                             message: "success",
-                            libro: result
+                            libro
                         });
                     }
                 }

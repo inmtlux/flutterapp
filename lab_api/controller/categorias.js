@@ -71,7 +71,7 @@ var controller = {
                             } else {
                                 return res.status(200).send({
                                     message: "success",
-                                    categoria: result
+                                    categoria
                                 });
                             }
                         }
@@ -90,7 +90,7 @@ var controller = {
             categoria.estado = req.body.estado;
 
             console.log(categoria);
-            db.collection("categorias").updateOne({ categoriaId: { $eq: parseInt(req.body.categoriaId) } },
+            db.collection("categorias").updateOne({ categoriaId: { $eq: parseInt(req.body.categoriaId) } },{new:true},
                 { $set: categoria },
                 (error, result) => {
                     if (error) {
@@ -100,7 +100,7 @@ var controller = {
                     } else {
                         return res.status(200).send({
                             message: "success",
-                            categoria: result
+                            categoria
                         });
                     }
                 }

@@ -83,10 +83,7 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
                           child: CircleAvatar(  
                                                   
                             child: ClipOval(
-                              child: Image(image: NetworkImage(listaUsuarios[index].img,),
-                              height: 100,
-                              width: 100,
-                              fit: BoxFit.cover,),
+                              child: imagenUsuario(usuario: listaUsuarios[index])
                             )
                           ),
                         ),
@@ -107,5 +104,16 @@ class _UsuarioScreenState extends State<UsuarioScreend> {
           ),
       ],
     );
+  }
+}
+Widget imagenUsuario({ required Usuario usuario}){
+  if(usuario.img == ""){
+    return Image(image: AssetImage('assets/user.jpg',),height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,);
+  }else{
+    return Image(image: NetworkImage(usuario.img,),height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,);
   }
 }
