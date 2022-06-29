@@ -1,3 +1,6 @@
+import 'dart:html';
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,18 +22,14 @@ class _PruebaScreenState extends State<PruebaScreen> {
   Widget build(BuildContext context) {
     final libroProvider = Provider.of<LibroProvider>(context);
     final List<Libro> listaTerror = libroProvider.listaLibrosTerror;
+    final List<Libro> listaTerPo = libroProvider.listaLibrosTerrPo;
     return Stack(
       children: <Widget>[
         Scaffold(
-          //drawer: TerrorScreen(),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           body: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                /*leading: IconButton(icon: Icon(Icons.arrow_back, color: Colors.white,),
-      onPressed: (){
-        Navigator.pushReplacementNamed(context, 'Crear nueva cuenta');
-      },),*/
                 pinned: true,
                 snap: true,
                 floating: true,
@@ -61,41 +60,58 @@ class _PruebaScreenState extends State<PruebaScreen> {
                   ),
                 ),
               ),
-              SliverFillRemaining(
-                child: Container(
-                
-         padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 55),
-         child: Column(//LIBROS
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: <Widget>[
-             Text('Novedades', style: TextStyle(fontSize: 30),),
-             Expanded(
-               child: Container(
-                 child: ListView(
-                   physics: BouncingScrollPhysics(),
-                   scrollDirection: Axis.horizontal,
-                   children: buildBooks(listaTerror),
-                 ),
-               ),
-             ),
-             SizedBox(
-              height: 20,
-             ),
-             Text('Populares', style: TextStyle(fontSize: 30),),
-             Expanded(
-             child: Container(
-                  child: ListView(
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    children: buildBooks(listaTerror),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Novedades',
+                        style: TextStyle(fontSize: 30,color: Colors.white),
+                      ),
+                      Container(
+                        height: 170,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: listaTerror.length,
+                          separatorBuilder: (context, _) => SizedBox(
+                            width: 20,
+                          ),
+                          itemBuilder: (context, index) =>
+                              buildCard(item: listaTerror[index]),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Text(
+                        'Populares',
+                        style: TextStyle(fontSize: 30,color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 400,
+                        child: ListView.separated(
+                        scrollDirection: Axis.vertical,
+                        itemCount: listaTerror.length,
+                        separatorBuilder: (context, _) => SizedBox(
+                        width: 20,
+                        ),
+                        itemBuilder: (context, index) =>
+                        buildTerr (item: listaTerPo[index]),
+                        )
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                    ],
                   ),
-              ),
-              ),
-
-           ],
-         ),
-       ),
-              ),
+                ),
+              ])),
             ],
           ),
           drawer: MenuLateral(),
@@ -103,75 +119,76 @@ class _PruebaScreenState extends State<PruebaScreen> {
       ],
     );
   }
-
-  //LIBROS
-  List<Widget> buildBooks(libros) {
-    List<Widget> list = [];
-    for (var i = 0; i < libros.length; i++) {
-      list.add(buildBook(libros[i], i));
-    }
-    return list;
-  }
-
-  Widget buildBook(Libro book, int index) {
-    return Container(
-      height: 100,
-      
-      
-      margin: EdgeInsets.only(right: 32, left: 0, bottom: 8),
+}
+Widget buildCard({
+  required Libro item,
+}) =>
+    Container(
+      margin: EdgeInsets.only(top: 15),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 12,
-                  offset: Offset(0, 3),
-                )
-              ],
-            ),
-            margin: EdgeInsets.only(bottom: 16, top: 24),
-            child: Hero(
-              
-              tag: '',
-              child: Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child:FittedBox(
-                    fit: BoxFit.cover,
-                    child: Image.network(
-                    book.img,
-                    height: 200,
-                    ),
-                  ),
-                   /*Image.network(
-                    book.img,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),*/
-                ),
+        children: [
+          Expanded(
+            child: Container(
+              height: 100,
+              width: 100,
+              //borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                item.img,
+                width: 150,
+                fit: BoxFit.cover,
               ),
-              
             ),
           ),
-          Text(
-            book.descripcion,
-      
-            //  textDirection: TextDirection.ltr,
-            style: GoogleFonts.catamaran(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
+          const SizedBox(height: 10),
+          Text(item.descripcion,style: TextStyle(fontSize: 15,color: Colors.white),)
         ],
       ),
     );
-  }
-}
+
+Widget buildTerr({
+  required Libro item,
+}) =>
+    Card(
+      child: Container(
+              
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black26,
+                    Colors.grey,
+                    Colors.black,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(1.9)
+              ),
+               child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    children: [
+                      Container(
+                        height: 80,
+                        width: 70,
+                        child: Image.network(item.img,fit: BoxFit.cover),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           Text(item.descripcion,style: TextStyle(fontSize: 15,color: Colors.white),),
+                           SizedBox(height: 10,),
+                           Text(item.autor,style: TextStyle(fontSize: 15,color: Colors.white),),
+                         ],
+                       )
+                    ],
+                  )
+                ],
+              ),
+            ),
+);
+
+       

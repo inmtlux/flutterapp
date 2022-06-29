@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
           'Olvido la contraseña': (context) => ForgotPassword(),
           'Crear nueva cuenta': (context) => CreateNewAccounte(),
           'principal_screen': (_) => InicioScrenn(),
-          'categorias_screen': (_) => CategoriaScreen(),//aca
+          'categorias_screen': (_) => CategoriaScreen(),//acaPruebaScreen
           'categorias2_screen': (_) => Categoria2Screen(),
           'categorias2_form_screen': (_) => CategoriaFormScreen(),
           'usuarios_screen': (_) => UsuarioScreend(),
