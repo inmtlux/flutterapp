@@ -95,7 +95,7 @@ var controller = {
             usuario.rol = "user_rol";
             usuario.categoria = req.body.categoria;
             console.log(usuario);
-            db.collection("usuarios").updateOne({ usuarioId: { $eq: parseInt(req.body.usuarioId)}},{new:true},
+            db.collection("usuarios").updateOne({ usuarioId: { $eq: parseInt(req.body.usuarioId)}},
                                                  {$set: usuario},
                 (error, result)=>{
                 if(error){

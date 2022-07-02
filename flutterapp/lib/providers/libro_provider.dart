@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:primera_prueba/models/libro.dart';
 import 'package:primera_prueba/models/libro_response.dart';
 import "package:http/http.dart" as http;
+import 'dart:convert' as convert;
 
 
 class LibroProvider extends ChangeNotifier{
@@ -75,8 +76,12 @@ class LibroProvider extends ChangeNotifier{
     final response = await http.post(url,
         headers: {HttpHeaders.contentTypeHeader: "application/json"},
         body: libro.toJson());
-    print(response.body);
-    getLibros();
-    notifyListeners();
+    // print(response.body);
+    // getLibros();
+    // notifyListeners();
+    final jsonRsp = convert.jsonDecode(response.body) as Map<String, dynamic>;
+    // notifyListeners();
+    return jsonRsp;
   }
+
 }

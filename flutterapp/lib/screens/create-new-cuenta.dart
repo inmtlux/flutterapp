@@ -412,35 +412,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                       ),
                     ),
                   ),
-                    // Container(
-                    //   width: size.width,
-                    //   margin: EdgeInsets.only(left: 20,right:20),
-                    //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: kBlue),
-                    //   child: ElevatedButton.icon(
-                        
-                    //     icon: Icon(
-                    //       Icons.edit,
-                    //       color: Colors.white,
-                    //     ),
-                    //     onPressed: () {
-                    //       opciones(context);
-                    //     },
-                    //     label: Text(
-                    //       'Selecciona una imagen',
-                    //       style: TextStyle(fontSize: 18),
-                    //     ),
-                    //     style: ElevatedButton.styleFrom(
-                    //       primary: kBlue,
-                    
-                    //       padding: EdgeInsets.all(10),
-                          
-                        
-                    //     ),
-                    //   ),
-                    // ),
-                    SizedBox(
-                      height: 10,
-                    ),
+
                     SizedBox(
                       height: 30,
                     ),
