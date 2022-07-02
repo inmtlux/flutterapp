@@ -214,7 +214,7 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, 'Crear nueva cuenta'),
+                onTap: () => Navigator.pushNamed(context, 'Crear_nueva_cuenta'),
                 child: Container(
                   child: Text(
                     'Crear nueva cuenta',

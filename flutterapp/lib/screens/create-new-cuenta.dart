@@ -448,7 +448,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                       child: Row(
                         children: <Widget>[
                           SizedBox(
-                            width: 20,
+                            width: 10,
                           ),
                           Text(
                             'Categoria',
@@ -458,7 +458,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                             ),
                           ),
                           SizedBox(
-                            width: 20,
+                            width: 10,
                           ),
                           Radio(
                               value: Categorias.Gold,
@@ -477,7 +477,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                             ),
                           ),
                           SizedBox(
-                            width: 20,
+                            width: 10,
                           ),
                           Radio(
                               value: Categorias.Platinum,
@@ -536,7 +536,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                     ),
                     Container(
                       height: 56,
-                      width: 450,
+                      width: 350,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         color: kBlue,

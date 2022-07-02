@@ -114,6 +114,19 @@ class MenuLateral extends StatelessWidget {
                 Navigator.pushNamed(context, '/');
               },
             ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app, color: Colors.grey),
+              title: Text(
+                'Swiper',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'usuario_swiper');
+              },
+            ),
           ],
         ),
       ),

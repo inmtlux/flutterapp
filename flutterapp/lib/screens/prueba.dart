@@ -1,5 +1,3 @@
-import 'dart:html';
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
@@ -87,7 +85,7 @@ class _PruebaScreenState extends State<PruebaScreen> {
                         height: 40,
                       ),
                       Text(
-                        'Populares',
+                        'Libros',
                         style: TextStyle(fontSize: 30,color: Colors.white),
                       ),
                       SizedBox(
@@ -132,10 +130,14 @@ Widget buildCard({
               height: 100,
               width: 100,
               //borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                item.img,
-                width: 150,
-                fit: BoxFit.cover,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child:
+                 Image.network(
+                  item.img,
+                  width: 150,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
@@ -154,14 +156,13 @@ Widget buildTerr({
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.black26,
-                    Colors.grey,
-                    Colors.black,
+                    Color.fromARGB(232, 14, 4, 4),
+                    Color.fromARGB(255, 243, 2, 2),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(1.9)
+                borderRadius: BorderRadius.circular(3)
               ),
                child: Column(
                 //crossAxisAlignment: CrossAxisAlignment.start,

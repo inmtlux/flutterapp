@@ -20,6 +20,7 @@ import 'package:primera_prueba/screens/terr-cat-screen.dart';
 import 'package:primera_prueba/screens/terror1_screen.dart';
 import 'package:primera_prueba/screens/usuario_reporte.dart';
 import 'package:primera_prueba/screens/usuarios.dart';
+import 'package:primera_prueba/screens/usuarios_swiper.dart';
 import 'package:primera_prueba/widgets/my-custom-scroll.dart';
 import 'package:primera_prueba/widgets/splash.dart';
 import 'package:provider/provider.dart';
@@ -60,19 +61,20 @@ class MyApp extends StatelessWidget {
           '/': (context) => LoginScreen(),
           'splash': (_) => SplasScreen(),
           'Olvido la contraseña': (context) => ForgotPassword(),
-          'Crear nueva cuenta': (context) => CreateNewAccounte(),
+          'Crear_nueva_cuenta': (context) => CreateNewAccounte(),
           'principal_screen': (_) => InicioScrenn(),
           'categorias_screen': (_) => CategoriaScreen(),//acaPruebaScreen
           'categorias2_screen': (_) => Categoria2Screen(),
           'categorias2_form_screen': (_) => CategoriaFormScreen(),
           'usuarios_screen': (_) => UsuarioScreend(),
-          "cat-terror": (_) => TerrorScreen(),
+          "cat-terror": (_) => PruebaScreen(),
           'reporte_screen': (_) => ReporteScreen(),
           'reporte_usuarios_activos': (_) => UsuarioActivoReporte(),
           'reporte_categorias_screen': (_) => ReporteCategoriaScreen(),
           'reporte_usuarios': (_) => UsuarioReporte(),
           'terror1_screen': (_) => Terror1Screen(),
           'libro_form_screen':(_) => LibroFormScreen(),
+          'usuario_swiper':(_) => UsuSwiper(),
           
         },
       ),

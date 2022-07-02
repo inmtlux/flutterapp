@@ -93,14 +93,14 @@ var controller = {
 
                     db.collection('libros').insertOne(libro,
                         (error, result) => {
-                            if (error) {
+                            if (error, result) {
                                 return res.status(404).send({
                                     message: "no se pudo regitrar el producto"
                                 });
                             } else {
                                 return res.status(200).send({
                                     message: "success",
-                                    libro
+                                    libro: result
                                 });
                             }
                         }
@@ -110,7 +110,7 @@ var controller = {
         } else {//entrando a editar
             console.log("ENTRANDO A EDITAR");
             var libro = {}
-            libro.libroId = countProductos + 1;//producto
+            libro.libroId = parseInt(req.body.libroId);//producto
             libro.categoria = (req.body.categoria).toUpperCase();
             libro.descripcion = req.body.descripcion;//descripcion
             libro.autor = req.body.autor; //autor
