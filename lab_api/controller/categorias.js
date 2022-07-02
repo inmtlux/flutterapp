@@ -90,7 +90,7 @@ var controller = {
             categoria.estado = req.body.estado;
 
             console.log(categoria);
-            db.collection("categorias").updateOne({ categoriaId: { $eq: parseInt(req.body.categoriaId) } },{new:true},
+            db.collection("categorias").updateOne({ categoriaId: { $eq: parseInt(req.body.categoriaId) } },
                 { $set: categoria },
                 (error, result) => {
                     if (error) {

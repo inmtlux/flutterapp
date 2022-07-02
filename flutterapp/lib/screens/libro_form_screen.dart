@@ -3,6 +3,11 @@ import 'package:primera_prueba/models/producto.dart';
 import 'package:primera_prueba/providers/libro_provider.dart';
 import 'package:primera_prueba/models/libro.dart';
 import 'package:primera_prueba/providers/producto_provider.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart';
+import 'dart:io';
+
+import 'dart:async';
 
 import 'package:provider/provider.dart';
 
@@ -31,7 +36,51 @@ class _LibroFormScreen extends State<LibroFormScreen> {
   final txtAutor = TextEditingController();
   final txtImagen = TextEditingController();
   final txtCategoria = TextEditingController();
+  File? imagen;
+  final picker = ImagePicker();
 
+  Future setImage() async {
+    var pickedFile;
+
+    pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    print(pickedFile);
+    setState(() {
+      if (pickedFile != null) {
+        imagen = File(pickedFile.path);
+        print('========================');
+        print(imagen!.path);
+        print('========================');
+      } else {
+        print('No seleccionaste ninguna imagen');
+      }
+    });
+  }
+  
+  Dio dio = new Dio();
+  Future<void> subir_imagen(String id) async {
+    try {
+      String filename = imagen!.path.split('/').last;
+      print('========================');
+      print(filename);
+      print('========================');
+
+      FormData formData = new FormData.fromMap({
+        'archivo':
+            await MultipartFile.fromFile(imagen!.path, filename: filename)
+      });
+
+      await dio
+          .putUri(
+              Uri.http(
+                  'api-sliderin.herokuapp.com', '/api/upload/libros/' + id),
+              data: formData)
+          .then((value) {
+        print(value);
+      });
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +142,36 @@ class _LibroFormScreen extends State<LibroFormScreen> {
             SizedBox(
               height: 20,
             ),
+            InkWell(
+                    onTap: () {
+                      setImage();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(10)
+                        ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.edit,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 25,),
+                          Expanded(
+                            child: Text(
+                              'Seleccionar una imagen ',
+                              style: TextStyle(fontSize: 18,color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               children: <Widget>[
                 Text('Estado'),
@@ -113,7 +192,7 @@ class _LibroFormScreen extends State<LibroFormScreen> {
             Container(
               child: ElevatedButton(
                 child: const Text('GUARDAR'),
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Validando...')));
@@ -128,7 +207,9 @@ class _LibroFormScreen extends State<LibroFormScreen> {
                       
                     );
 
-                    libroProvider.saveLibros(libro);
+                    final rsp = await libroProvider.saveLibros(libro);
+                    String libroId = await (rsp['libro']['libroId']).toString();
+                    await subir_imagen(libroId);
 
                     Navigator.pushReplacementNamed(
                         context, 'terror1_screen');

@@ -89,7 +89,7 @@ var controller = {
                     libro.categoria = (req.body.categoria).toUpperCase();
                     libro.descripcion = req.body.descripcion;//descripcion
                     libro.autor = req.body.autor; //autor
-                    libro.img = '';
+                    libro.img = (req.body.img)? req.body.img:"";
 
                     db.collection('libros').insertOne(libro,
                         (error, result) => {
@@ -115,9 +115,9 @@ var controller = {
             libro.descripcion = req.body.descripcion;//descripcion
             libro.autor = req.body.autor; //autor
             //
-            libro.img = "";
+            libro.img =(req.body.img)? req.body.img:"";
             console.log(libro);
-            db.collection("libros").updateOne({ libroId: { $eq: parseInt(req.body.libroId) } },{new:true},
+            db.collection("libros").updateOne({ libroId: { $eq: parseInt(req.body.libroId) } },
                 { $set: libro },
                 (error, result) => {
                     if (error) {
@@ -127,7 +127,7 @@ var controller = {
                     } else {
                         return res.status(200).send({
                             message: "success",
-                            libro
+                            libro: result
                         });
                     }
                 }
