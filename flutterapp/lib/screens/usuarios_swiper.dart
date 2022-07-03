@@ -33,7 +33,7 @@ class _UsuSwisperState extends State<UsuSwiper> {
                   ),
                   onPressed: () {
                     Navigator.pushReplacementNamed(
-                        context, 'Crear nueva cuenta');
+                        context, 'principal_screen');
                   },
                 ),
                 pinned: true,
@@ -199,7 +199,7 @@ class _EtiquetaNombre extends StatelessWidget{
               trailing: IconButton(
                 icon: const Icon(Icons.edit),
                 onPressed: (){
-                  Navigator.pushNamed(context, 'Crear_nueva_cuenta',arguments: usuario);
+                  Navigator.pushNamed(context, 'usuario_actu',arguments: usuario);
                 },
               ),
             ),

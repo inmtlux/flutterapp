@@ -19,6 +19,8 @@ class LibroProvider extends ChangeNotifier{
   List<Libro> listaLibros = [];
   List<Libro> listaLibrosTerror = [];
   List<Libro> listaLibrosTerrPo = [];
+  List<Libro> listaLibrosFiccPo = [];
+  List<Libro> listaLibrosFiccion = [];
   
 
   LibroProvider(){
@@ -28,6 +30,8 @@ class LibroProvider extends ChangeNotifier{
     this.getLibros();
     this.getLibrosTerror();
     this.getLibrosTerPo();
+    this.getLibrosFiccion();
+    this.getLibrosFiccPo();
   }
   getLibrosNovedades() async {
     final queryParameters = {
@@ -45,11 +49,11 @@ class LibroProvider extends ChangeNotifier{
   }
 
   getLibrosTerror() async {
-    final queryParameters = {
-       'limite':'5',
+    final terror = {
+       'limite':'10',
       'desde':'5'
     };
-    var url = Uri.http(_baseUrl, '/api/libros/terror',queryParameters);
+    var url = Uri.http(_baseUrl, '/api/libros/terror',terror);
     final response = await http.get(url);
 
     print(response.body);
@@ -61,7 +65,7 @@ class LibroProvider extends ChangeNotifier{
 
   getLibrosTerPo() async {
      final queryParameters = {
-       'limite':'5',
+       'limite':'10',
     };
 
     var url = Uri.http(_baseUrl, '/api/libros/terror',queryParameters);
@@ -69,8 +73,38 @@ class LibroProvider extends ChangeNotifier{
 
     print(response.body);
 
+    final libroRSP = LibroResponse.fromJson(response.body);
+    listaLibrosTerrPo = libroRSP.libro;
+    notifyListeners();
+  }
+
+  getLibrosFiccPo() async {
+     final queryParameters = {
+       'limite':'10',
+    };
+
+    var url = Uri.http(_baseUrl, '/api/libros/ficcion',queryParameters);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroRSP = LibroResponse.fromJson(response.body);
+    listaLibrosFiccPo = libroRSP.libro;
+    notifyListeners();
+  }
+
+  getLibrosFiccion() async {
+    final ficcion = {
+       'limite':'10',
+      'desde':'5'
+    };
+    var url = Uri.http(_baseUrl, '/api/libros/ficcion',ficcion);
+    final response = await http.get(url);
+
+    print(response.body);
+
     final libroResponse = LibroResponse.fromJson(response.body);
-    listaLibrosTerrPo = libroResponse.libro;
+    listaLibrosFiccion = libroResponse.libro;
     notifyListeners();
   }
 

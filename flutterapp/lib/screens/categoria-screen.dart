@@ -107,7 +107,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     child: InkWell(
                       splashColor: Colors.lightBlue,
                       onTap: () {
-                        Navigator.pushNamed(context, ".....");
+                        Navigator.pushNamed(context, "cat-ficcion");
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,

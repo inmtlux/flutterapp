@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,21 +5,21 @@ import 'package:primera_prueba/models/libro.dart';
 import 'package:primera_prueba/providers/libro_provider.dart';
 import 'package:provider/provider.dart';
 
-class PruebaScreen extends StatefulWidget {
-  PruebaScreen({Key? key}) : super(key: key);
+class FiccionScreen extends StatefulWidget {
+  FiccionScreen({Key? key}) : super(key: key);
 
   @override
-  State<PruebaScreen> createState() => _PruebaScreenState();
+  State<FiccionScreen> createState() => _FiccionScreenState();
 }
 
-class _PruebaScreenState extends State<PruebaScreen> {
+class _FiccionScreenState extends State<FiccionScreen> {
   
 
   @override
   Widget build(BuildContext context) {
     final libroProvider = Provider.of<LibroProvider>(context);
-    final List<Libro> listaTerror = libroProvider.listaLibrosTerror;
-    final List<Libro> listaTerPo = libroProvider.listaLibrosTerrPo;
+    final List<Libro> listaFiccion = libroProvider.listaLibrosFiccion;
+    final List<Libro> listaFiccPo = libroProvider.listaLibrosFiccPo;
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -36,7 +35,7 @@ class _PruebaScreenState extends State<PruebaScreen> {
                 iconTheme: IconThemeData(color: Colors.black),
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
-                    'HORROR',
+                    'FICCION',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   centerTitle: true,
@@ -50,7 +49,7 @@ class _PruebaScreenState extends State<PruebaScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/oscuro.jpg'),
+                          image: AssetImage('assets/ficciones.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -73,12 +72,12 @@ class _PruebaScreenState extends State<PruebaScreen> {
                         height: 170,
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
-                          itemCount: listaTerPo.length,
+                          itemCount: listaFiccPo.length,
                           separatorBuilder: (context, _) => SizedBox(
                             width: 20,
                           ),
                           itemBuilder: (context, index) =>
-                              buildCard(item: listaTerPo[index]),
+                              buildCard(item: listaFiccPo[index]),
                         ),
                       ),
                       SizedBox(
@@ -95,12 +94,12 @@ class _PruebaScreenState extends State<PruebaScreen> {
                         height: 400,
                         child: ListView.separated(
                         scrollDirection: Axis.vertical,
-                        itemCount: listaTerPo.length,
+                        itemCount: listaFiccPo.length,
                         separatorBuilder: (context, _) => SizedBox(
                         width: 20,
                         ),
                         itemBuilder: (context, index) =>
-                        buildTerr (item: listaTerror[index]),
+                        buildTerr (item: listaFiccion[index]),
                         )
                       ),
                       SizedBox(
@@ -157,7 +156,7 @@ Widget buildTerr({
                 gradient: LinearGradient(
                   colors: [
                     Color.fromARGB(232, 14, 4, 4),
-                    Color.fromARGB(255, 243, 2, 2),
+                    Color.fromARGB(255, 243, 2, 203),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -191,5 +190,3 @@ Widget buildTerr({
               ),
             ),
 );
-
-       

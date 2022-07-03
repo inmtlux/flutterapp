@@ -98,7 +98,7 @@ var controller = {
             db.collection("usuarios").updateOne({ usuarioId: { $eq: parseInt(req.body.usuarioId)}},
                                                  {$set: usuario},
                 (error, result)=>{
-                if(error, result){
+                if(error){
                     return res.status(404).send({
                         message:"no se pudo editar el usuario"
                     });
