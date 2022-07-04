@@ -141,10 +141,14 @@ class LibroProvider extends ChangeNotifier{
         headers: {HttpHeaders.contentTypeHeader: "application/json"},
         body: libro.toJson());
     // print(response.body);
-    // getLibros();
-    // notifyListeners();
     final jsonRsp = convert.jsonDecode(response.body) as Map<String, dynamic>;
-    // notifyListeners();
+    print('=========== Libro nuevo   =========');
+    print(jsonRsp['libro']['descripcion']);
+    print('=========== Libro nuevo   =========');
+    // getLibros();
+    getLibrosNovedades();
+    getLibrosPopulares();
+    notifyListeners();
     return jsonRsp;
   }
 

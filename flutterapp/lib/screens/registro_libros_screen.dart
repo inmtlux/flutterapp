@@ -5,6 +5,7 @@ import 'package:primera_prueba/providers/libro_provider.dart';
 import 'package:provider/provider.dart';
 import '../widgets/menu_lateral.dart';
 import 'package:card_swiper/card_swiper.dart';
+import '../search/libro_search_delegate.dart';
 
 class RegistroScreen extends StatefulWidget {
   @override
@@ -25,7 +26,11 @@ class _RegistroScreen extends State<RegistroScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {}, //PENDIENTE
+            onPressed: () {
+              showSearch(
+                  context: context,
+                  delegate: LibroSearchDelegate(listaLibros));
+            }, //PENDIENTE
           )
         ],
       ),
