@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:primera_prueba/models/categoria.dart';
 import 'package:primera_prueba/providers/categoria_provider.dart';
 
+import '../search/categoria_search_delegate.dart';
+
 class Categoria2Screen extends StatefulWidget {
   @override
   createState() => _Categorias2Screen();
@@ -25,7 +27,11 @@ class _Categorias2Screen extends State<Categoria2Screen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {}, //PENDIENTE
+            onPressed: () {
+              showSearch(
+                  context: context,
+                  delegate: CategoriaSearchDelegate(listaCategorias));
+            },
           )
         ],
       ),
@@ -131,7 +137,7 @@ class _cardCategorias extends StatelessWidget {
                 bottomLeft: Radius.circular(25),
                 bottomRight: Radius.circular(25),
               ),
-              color: Colors.amber,
+              color: Colors.greenAccent,
             ),
             child: ListTile(
               title: Text(
@@ -153,7 +159,7 @@ class _cardCategorias extends StatelessWidget {
               trailing: IconButton(
                 icon: const Icon(
                   Icons.edit,
-                  color: Colors.blueAccent,
+                  color: Color.fromARGB(255, 4, 110, 8),
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, 'categorias2_form_screen',

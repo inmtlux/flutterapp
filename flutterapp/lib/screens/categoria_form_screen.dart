@@ -139,7 +139,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
             SizedBox(
               height: 20,
             ),
-            /*TextFormField(
+            TextFormField(
               decoration: InputDecoration(
                   labelText: 'Imagen',
                   border: OutlineInputBorder(
@@ -153,7 +153,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
             ),
             SizedBox(
               height: 20,
-            ),*/
+            ),
             Row(
                 //boton para seleccionar categorias
                 children: <Widget>[
