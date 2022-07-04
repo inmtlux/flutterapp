@@ -46,18 +46,25 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                       onTap: () {
                         Navigator.pushNamed(context, ".....");
                       },
-                      child: Column(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                                '../assets/categoria-screen/romanceprueba.jpg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      /* child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Ink.image(
                             image: AssetImage(
                                 "../assets/categoria-screen/romanceprueba.jpg"),
-                            height: 100,
-                            width: 176,
                             fit: BoxFit.cover,
                           ),
                         ],
-                      ),
+                      ),*/
                     ),
                   ),
                 ),
