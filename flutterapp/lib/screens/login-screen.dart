@@ -20,6 +20,7 @@ class LoginScreen extends StatelessWidget {
     void ingresar(email, pass) async {
       try {
         var url = Uri.https('api-sliderin.herokuapp.com', '/api/auth');
+        // var url = Uri.https('localhost:8080', '/api/auth');
         var response = await http.post(url, body: {
           'email': email,
           'password': password

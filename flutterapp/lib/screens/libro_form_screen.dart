@@ -89,7 +89,7 @@ class _LibroFormScreen extends State<LibroFormScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('REGISTRO DE LIBROS'),
+        title: Text('REGISTRO DE LIBROS'),backgroundColor: Colors.blueAccent,
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
@@ -192,6 +192,9 @@ class _LibroFormScreen extends State<LibroFormScreen> {
             Container(
               child: ElevatedButton(
                 child: const Text('GUARDAR'),
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromARGB(255, 18, 170, 97)
+                ),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -203,11 +206,12 @@ class _LibroFormScreen extends State<LibroFormScreen> {
                       categoria: txtCategoria.text,
                       descripcion: txtDescripcion.text,
                       autor: txtAutor.text,
-                      img: txtImagen.text,
+                      img: '',
                       
                     );
-
                     final rsp = await libroProvider.saveLibros(libro);
+                    print('=========== Libro nuevo   =========');
+                    print('Bienvenido ' + rsp['libro']['descripcion']);
                     String libroId = await (rsp['libro']['libroId']).toString();
                     await subir_imagen(libroId);
 

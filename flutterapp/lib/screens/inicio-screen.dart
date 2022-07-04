@@ -27,7 +27,6 @@ class _InicioScrenn extends State<InicioScrenn> {
                 snap: true,
                 floating: true,
                 expandedHeight: 160,
-                        
                 backgroundColor: Color.fromARGB(255, 41, 76, 233),
                 iconTheme:
                     IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
@@ -77,8 +76,7 @@ class _InicioScrenn extends State<InicioScrenn> {
                           separatorBuilder: (context, _) => SizedBox(
                             width: 20,
                           ),
-                          itemBuilder: (context, index) =>
-                              buildCard(item: listaNovedades[index]),
+                          itemBuilder: (context, index) => _CardLibro(listaNovedades[index]),
                         ),
                       ),
                       SizedBox(
@@ -91,14 +89,13 @@ class _InicioScrenn extends State<InicioScrenn> {
                       Container(
                         height: 250,
                         child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: listaPopulares.length,
-                          separatorBuilder: (context, _) => SizedBox(
-                            width: 20,
-                          ),
-                          itemBuilder: (context, index) =>
-                              buildCard(item: listaPopulares[index]),
-                        ),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: listaPopulares.length,
+                            separatorBuilder: (context, _) => SizedBox(
+                                  width: 20,
+                                ),
+                            itemBuilder: (context, index) => _CardLibro(listaPopulares[index])
+                            ),
                       ),
                       SizedBox(
                         height: 30,
@@ -107,7 +104,6 @@ class _InicioScrenn extends State<InicioScrenn> {
                   ),
                 ),
               ])),
-              
             ],
           ),
           drawer: MenuLateral(),
@@ -117,10 +113,15 @@ class _InicioScrenn extends State<InicioScrenn> {
   }
 }
 
-Widget buildCard({
-  required Libro item,
-}) =>
-    Container(
+
+
+class _CardLibro extends StatelessWidget {
+  final Libro libro;
+  _CardLibro(this.libro);
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
       margin: EdgeInsets.only(top: 15),
       child: Column(
         children: [
@@ -128,14 +129,36 @@ Widget buildCard({
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
-                item.img,
+                libro.img,
                 width: 150,
                 fit: BoxFit.cover,
               ),
             ),
           ),
           const SizedBox(height: 10),
-          Text(item.descripcion,style: TextStyle(fontSize: 18),)
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  libro.descripcion,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.edit),
+                  color: Colors.black87,
+                  onPressed: () {
+                    Navigator.pushNamed(context,'libro_form_update',
+                arguments: libro);
+                  },
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
+  }
+}
