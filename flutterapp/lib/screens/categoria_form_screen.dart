@@ -208,7 +208,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                     ),
                     Expanded(
                       child: Text(
-                        'Seleccionar una imagen ',
+                        'Selecciona una imagen ',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
