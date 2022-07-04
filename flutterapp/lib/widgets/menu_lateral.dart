@@ -75,6 +75,7 @@ class MenuLateral extends StatelessWidget {
                 Navigator.pushNamed(context, 'categorias_screen');
               },
             ),
+            
             ListTile(
               leading: Icon(Icons.supervised_user_circle, color: Colors.grey),
               title: Text(
@@ -112,6 +113,32 @@ class MenuLateral extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pushNamed(context, '/');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app, color: Colors.grey),
+              title: Text(
+                'Swiper',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'usuario_swiper');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.app_registration, color: Colors.grey),
+              title: Text(
+                'Registro',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'registro_libros_screen');
               },
             ),
           ],

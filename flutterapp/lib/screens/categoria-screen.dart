@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:primera_prueba/screens/cat-terror.dart';
+//import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
 
 class CategoriaScreen extends StatefulWidget {
@@ -107,7 +107,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     child: InkWell(
                       splashColor: Colors.lightBlue,
                       onTap: () {
-                        Navigator.pushNamed(context, ".....");
+                        Navigator.pushNamed(context, "cat-ficcion");
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,

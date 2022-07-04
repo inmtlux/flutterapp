@@ -17,6 +17,10 @@ class LibroProvider extends ChangeNotifier{
   List<Libro> listaLibrosNovedades = [];
   List<Libro> listaLibrosPopulares = [];
   List<Libro> listaLibros = [];
+  List<Libro> listaLibrosTerror = [];
+  List<Libro> listaLibrosTerrPo = [];
+  List<Libro> listaLibrosFiccPo = [];
+  List<Libro> listaLibrosFiccion = [];
   
 
   LibroProvider(){
@@ -24,6 +28,10 @@ class LibroProvider extends ChangeNotifier{
     this.getLibrosNovedades();
     this.getLibrosPopulares();
     this.getLibros();
+    this.getLibrosTerror();
+    this.getLibrosTerPo();
+    this.getLibrosFiccion();
+    this.getLibrosFiccPo();
   }
   getLibrosNovedades() async {
     final queryParameters = {
@@ -39,6 +47,68 @@ class LibroProvider extends ChangeNotifier{
     listaLibrosNovedades = libroResponse.libro;
     notifyListeners();
   }
+
+  getLibrosTerror() async {
+    final terror = {
+       'limite':'10',
+      'desde':'5'
+    };
+    var url = Uri.http(_baseUrl, '/api/libros/terror',terror);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroResponse = LibroResponse.fromJson(response.body);
+    listaLibrosTerror = libroResponse.libro;
+    notifyListeners();
+  }
+
+  getLibrosTerPo() async {
+     final queryParameters = {
+       'limite':'10',
+    };
+
+    var url = Uri.http(_baseUrl, '/api/libros/terror',queryParameters);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroRSP = LibroResponse.fromJson(response.body);
+    listaLibrosTerrPo = libroRSP.libro;
+    notifyListeners();
+  }
+
+  getLibrosFiccPo() async {
+     final queryParameters = {
+       'limite':'10',
+    };
+
+    var url = Uri.http(_baseUrl, '/api/libros/ficcion',queryParameters);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroRSP = LibroResponse.fromJson(response.body);
+    listaLibrosFiccPo = libroRSP.libro;
+    notifyListeners();
+  }
+
+  getLibrosFiccion() async {
+    final ficcion = {
+       'limite':'10',
+      'desde':'5'
+    };
+    var url = Uri.http(_baseUrl, '/api/libros/ficcion',ficcion);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroResponse = LibroResponse.fromJson(response.body);
+    listaLibrosFiccion = libroResponse.libro;
+    notifyListeners();
+  }
+
+
   getLibrosPopulares() async {
      final queryParameters = {
        'limite':'5',
@@ -53,15 +123,9 @@ class LibroProvider extends ChangeNotifier{
     listaLibrosPopulares = libroResponse.libro;
     notifyListeners();
   }
-  getlibrosTerro() async{
-
-  }
   getLibros() async {
-    final queryParameters = {
-       'limite':'5',
-    };
-
-    var url = Uri.http(_baseUrl, '/api/libros',queryParameters);
+    
+    var url = Uri.http(_baseUrl, '/api/libros');
     final response = await http.get(url);
 
     print(response.body);

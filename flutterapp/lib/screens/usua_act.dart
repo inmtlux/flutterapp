@@ -13,16 +13,16 @@ import 'package:primera_prueba/providers/usuario_provider.dart';
 import 'package:primera_prueba/widgets/background-image.dart';
 import 'package:provider/provider.dart';
 
-class CreateNewAccounte extends StatefulWidget {
-  CreateNewAccounte({Key? key}) : super(key: key);
+class UsuaAct extends StatefulWidget {
+  UsuaAct({Key? key}) : super(key: key);
 
   @override
-  State<CreateNewAccounte> createState() => _CreateNewAccounteState();
+  State<UsuaAct> createState() => _UsuaActState();
 }
 
 enum Categorias { Gold, Platinum, Diamond }
 
-class _CreateNewAccounteState extends State<CreateNewAccounte> {
+class _UsuaActState extends State<UsuaAct> {
   File? imagen;
   final picker = ImagePicker();
   final _formkey = GlobalKey<FormState>();
@@ -31,9 +31,11 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
   final txtEmail = TextEditingController();
   final txtPassword = TextEditingController();
   final txtPassConf = TextEditingController();
+  final txtusuarioId = TextEditingController();
 
   Categorias? _catselection = Categorias.Gold;
   bool? _estadoActivo = false;
+  bool formModificado = false;
   Future selImage(op) async {
     var pickedFile;
     if (op == 1) {
@@ -151,6 +153,33 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
   @override
   Widget build(BuildContext context) {
     final usuarioProvider = Provider.of<UsuarioProvider>(context);
+    //recibiendo el producto por argumento
+    final Usuario? usuario = ModalRoute.of(context)!.settings.arguments as Usuario?;
+
+    if(!formModificado){
+      if (usuario != null) {
+        //editar
+        txtusuarioId.text = usuario.usuarioId.toString();
+        txtUser.text = usuario.nombre;
+        txtEmail.text = usuario.email;
+        txtPassword.text = usuario.password;
+        print(usuario.categoria);
+        print(usuario.estado);
+        if (usuario.categoria == 'Categorias.Gold') {
+          _catselection = Categorias.Gold;
+        } else {
+          _catselection = Categorias.Platinum;
+          _catselection = Categorias.Diamond;
+        }
+      } else {
+        //nuevo
+        txtUser.text = '';
+        txtEmail.text = '';
+        txtPassword.text = '';
+      }
+    }
+
+    print(usuario!.email);
     final size = MediaQuery.of(context).size;
     return Stack(
       children: [
@@ -163,29 +192,65 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                 SizedBox(
                   height: 56,
                 ),
-                Stack(
-                  children: [
-                    Center(
-                      child: ClipOval(
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-                          child: CircleAvatar(
-                            radius: 75,
-                            backgroundColor: Colors.grey[500]?.withOpacity(0.5),
-                            child: Icon(FontAwesomeIcons.user,
-                                color: kWhite, size: 45),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    child: IconButton(onPressed: (){
+                     Navigator.pushNamed(context, 'usuario_swiper');
+                    }, icon: Icon(Icons.arrow_back_ios_sharp),),
+                  ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Form(
                   key: _formkey,
                   child: Column(children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Container(
+                        //cuadro gris
+                        height: 56,
+                        width: 450,
+                        decoration: BoxDecoration(
+                            color: Colors.grey[500]?.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16)),
+
+                        child: Center(
+                          //creamos otro widget para el texto y centrar
+                          child: TextFormField(
+                            //texto del cuadro
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+
+                              prefixIcon: Padding(
+                                //Todo el icono espacio etc
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20.0),
+                                child: Icon(
+                                  //ponemos un icono antes del texto
+                                  Icons.block,
+                                  size: 30, //tamaño del icono
+                                  color: kWhite,
+                                ),
+                              ),
+
+                              hintText: ('id'), //para escribir el email
+                              hintStyle: kBodyText,
+                            ),
+
+                            controller: txtusuarioId, 
+                            style:
+                                kBodyText, //stilo de la laetra que ira dentro del recuadro
+                            keyboardType: TextInputType.name,
+                            textInputAction: TextInputAction.next,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: Container(
@@ -329,58 +394,6 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                     SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Container(
-                        //cuadro gris
-                        height: 56,
-                        width: 450,
-                        decoration: BoxDecoration(
-                            color: Colors.grey[500]?.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(16)),
-
-                        child: Center(
-                          //creamos otro widget para el texto y centrar
-                          child: TextFormField(
-                            //texto del cuadro
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-
-                              prefixIcon: Padding(
-                                //Todo el icono espacio etc
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: Icon(
-                                  //ponemos un icono antes del texto
-                                  Icons.block,
-                                  size: 30, //tamaño del icono
-                                  color: kWhite,
-                                ),
-                              ),
-
-                              hintText: ('Contraseña'), //para escribir el email
-                              hintStyle: kBodyText,
-                            ),
-
-                            controller: txtPassConf,
-                            validator: (value) {
-                              if (txtPassConf == '${txtPassword}') {
-                                return 'Porfavor confirmar contraseña';
-                              }
-                            },
-                            obscureText:
-                                true, //para que las letras tengan cifrado ***
-                            style:
-                                kBodyText, //stilo de la laetra que ira dentro del recuadro
-                            keyboardType: TextInputType.visiblePassword,
-                            textInputAction: TextInputAction.done,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
                       InkWell(
                     onTap: () {
                       opciones(context);
@@ -439,6 +452,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                                 setState(() {
                                   _catselection = value as Categorias?;
                                   print(_catselection);
+                                  formModificado = true;
                                 });
                               }),
                           Text(
@@ -458,6 +472,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                                 setState(() {
                                   _catselection = value as Categorias?;
                                   print(_catselection);
+                                  formModificado = true;
                                 });
                               }),
                           Text(
@@ -474,6 +489,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                                 setState(() {
                                   _catselection = value as Categorias?;
                                   print(_catselection);
+                                  formModificado = true;
                                 });
                               }),
                           Text(
@@ -489,23 +505,23 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                     SizedBox(
                       height: 20,
                     ),
-                    // Row(
-                    //   children: <Widget>[
-                    //     Text('Estado'),
-                    //     SizedBox(
-                    //       width: 20,
-                    //     ),
-                    //     Checkbox(
-                    //         value: _estadoActivo,
-                    //         onChanged: (value) {
-                    //           setState(() {
-                    //             _estadoActivo = value;
-                    //             print('_estadoActivo: ${_estadoActivo}');
-                    //           });
-                    //         }),
-                    //     Text('Activo')
-                    //   ],
-                    // ),
+                    Row(
+                      children: <Widget>[
+                        Text('Estado'),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Checkbox(
+                            value: _estadoActivo,
+                            onChanged: (value) {
+                              setState(() {
+                                _estadoActivo = value;
+                                print('_estadoActivo: ${_estadoActivo}');
+                              });
+                            }),
+                        Text('Activo')
+                      ],
+                    ),
                     Container(
                       height: 56,
                       width: 350,
@@ -521,7 +537,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
 
                             var usuario = Usuario(
                                 id: '',
-                                usuarioId: 0,
+                                usuarioId: int.parse(txtusuarioId.text),
                                 nombre: txtUser.text,
                                 email: txtEmail.text,
                                 password: txtPassword.text,
@@ -561,7 +577,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, '/');
+                            Navigator.pushNamed(context, 'usuario_swiper');
                           },
                           child: Text(
                             'Ingresar',

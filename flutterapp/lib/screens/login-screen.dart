@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:primera_prueba/palette.dart';
-import 'package:primera_prueba/screens/terr-cat-screen.dart';
+//import 'package:primera_prueba/screens/terr-cat-screen.dart';
 import 'package:primera_prueba/widgets/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -215,7 +215,7 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, 'Crear nueva cuenta'),
+                onTap: () => Navigator.pushNamed(context, 'Crear_nueva_cuenta'),
                 child: Container(
                   child: Text(
                     'Crear nueva cuenta',

@@ -93,14 +93,14 @@ var controller = {
 
                     db.collection('libros').insertOne(libro,
                         (error, result) => {
-                            if (error) {
+                            if (error, result) {
                                 return res.status(404).send({
                                     message: "no se pudo regitrar el producto"
                                 });
                             } else {
                                 return res.status(200).send({
                                     message: "success",
-                                    libro
+                                    libro: result
                                 });
                             }
                         }
