@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:primera_prueba/screens/cat-terror.dart';
+//import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
 
 class CategoriaScreen extends StatefulWidget {

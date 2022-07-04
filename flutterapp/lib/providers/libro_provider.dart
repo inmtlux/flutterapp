@@ -124,11 +124,8 @@ class LibroProvider extends ChangeNotifier{
     notifyListeners();
   }
   getLibros() async {
-    final queryParameters = {
-       'limite':'5',
-    };
-
-    var url = Uri.http(_baseUrl, '/api/libros',queryParameters);
+    
+    var url = Uri.http(_baseUrl, '/api/libros');
     final response = await http.get(url);
 
     print(response.body);
