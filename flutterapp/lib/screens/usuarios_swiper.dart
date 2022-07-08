@@ -5,6 +5,7 @@ import 'package:primera_prueba/providers/usuario_provider.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
+import 'package:primera_prueba/screens/usu_search/usuario_search.dart';
 import 'package:provider/provider.dart';
 
 class UsuSwiper extends StatefulWidget {
@@ -36,6 +37,21 @@ class _UsuSwisperState extends State<UsuSwiper> {
                         context, 'principal_screen');
                   },
                 ),
+                actions: <Widget>[
+                  IconButton(
+                  icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    showSearch(
+                      context: context, 
+                      delegate: UsuarioSearchDelegate(listaUsuarios)
+                      );
+                  },
+                ),
+                ],
+                
                 pinned: true,
                 snap: true,
                 floating: true,
@@ -156,11 +172,7 @@ class _ImagenFondo extends StatelessWidget{
         child: Container(
           width: double.infinity,
           height: 400,
-          child: FadeInImage(
-            placeholder: AssetImage('assets/pajaros.jpg'), 
-            image: NetworkImage(usuario.img),
-            fit: BoxFit.cover,
-          ),
+          child: Image(image: NetworkImage(usuario.img),fit: BoxFit.cover,),
         ),
       );
     }

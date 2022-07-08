@@ -44,7 +44,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     child: InkWell(
                       splashColor: Colors.yellowAccent,
                       onTap: () {
-                        Navigator.pushNamed(context, ".....");
+                        Navigator.pushNamed(context, "cat-romance");
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -136,14 +136,14 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                     child: InkWell(
                       splashColor: Color.fromARGB(255, 211, 236, 113),
                       onTap: () {
-                        Navigator.pushNamed(context, ".....");
+                        Navigator.pushNamed(context, "cat-infantil");
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Ink.image(
                             image: AssetImage(
-                                "../assets/categoria-screen/literatura.jpg"),
+                                "../assets/categoria-screen/infantilesYjuvenil.jpg"),
                             height: 100,
                             width: 176,
                             fit: BoxFit.cover,
@@ -406,7 +406,7 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                         children: [
                           Ink.image(
                             image: AssetImage(
-                                "../assets/categoria-screen/infantilesYjuvenil.jpg"),
+                                "../assets/categoria-screen/literatura.jpg"),
                             height: 100,
                             width: 176,
                             fit: BoxFit.cover,

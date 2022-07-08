@@ -21,6 +21,10 @@ class LibroProvider extends ChangeNotifier{
   List<Libro> listaLibrosTerrPo = [];
   List<Libro> listaLibrosFiccPo = [];
   List<Libro> listaLibrosFiccion = [];
+  List<Libro> listaLibrosInfPo = [];
+  List<Libro> listaLibrosInfantil = [];
+  List<Libro> listaLibrosRomPo = [];
+  List<Libro> listaLibrosRomance = [];
   
 
   LibroProvider(){
@@ -32,6 +36,10 @@ class LibroProvider extends ChangeNotifier{
     this.getLibrosTerPo();
     this.getLibrosFiccion();
     this.getLibrosFiccPo();
+    this.getLibrosInfantil();
+    this.getLibrosInfPo();
+    this.getLibrosRomance();
+    this.getLibrosRomPo();
   }
   getLibrosNovedades() async {
     final queryParameters = {
@@ -105,6 +113,66 @@ class LibroProvider extends ChangeNotifier{
 
     final libroResponse = LibroResponse.fromJson(response.body);
     listaLibrosFiccion = libroResponse.libro;
+    notifyListeners();
+  }
+
+  getLibrosRomPo() async {
+     final queryParameters = {
+       'limite':'10',
+    };
+
+    var url = Uri.http(_baseUrl, '/api/libros/romance',queryParameters);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroRSP = LibroResponse.fromJson(response.body);
+    listaLibrosRomPo = libroRSP.libro;
+    notifyListeners();
+  }
+
+  getLibrosRomance() async {
+    final romance = {
+       'limite':'10',
+      'desde':'5'
+    };
+    var url = Uri.http(_baseUrl, '/api/libros/romance',romance);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroResponse = LibroResponse.fromJson(response.body);
+    listaLibrosRomance = libroResponse.libro;
+    notifyListeners();
+  }
+
+  getLibrosInfPo() async {
+     final queryParameters = {
+       'limite':'10',
+    };
+
+    var url = Uri.http(_baseUrl, '/api/libros/infantil',queryParameters);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroRSP = LibroResponse.fromJson(response.body);
+    listaLibrosInfPo = libroRSP.libro;
+    notifyListeners();
+  }
+
+  getLibrosInfantil() async {
+    final infantil = {
+       'limite':'10',
+      'desde':'5'
+    };
+    var url = Uri.http(_baseUrl, '/api/libros/infantil',infantil);
+    final response = await http.get(url);
+
+    print(response.body);
+
+    final libroResponse = LibroResponse.fromJson(response.body);
+    listaLibrosInfantil = libroResponse.libro;
     notifyListeners();
   }
 

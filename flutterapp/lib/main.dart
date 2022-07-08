@@ -10,12 +10,14 @@ import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart'; //aca
 import 'package:primera_prueba/screens/ficcion_screen.dart';
+import 'package:primera_prueba/screens/infantil_screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/libro_form_screen.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
 import 'package:primera_prueba/screens/prueba.dart';
 import 'package:primera_prueba/screens/reporte_categoria_screen.dart';
 import 'package:primera_prueba/screens/reportes_screen.dart';
+import 'package:primera_prueba/screens/romance_screen.dart';
 
 import 'package:primera_prueba/screens/terr-cat-screen.dart';
 import 'package:primera_prueba/screens/terror1_screen.dart';
@@ -78,7 +80,9 @@ class MyApp extends StatelessWidget {
           'libro_form_screen':(_) => LibroFormScreen(),
           'usuario_swiper':(_) => UsuSwiper(),
           'usuario_actu':(_) => UsuaAct(),  
-          'cat-ficcion':(_) => FiccionScreen(),       
+          'cat-ficcion':(_) => FiccionScreen(),  
+          'cat-infantil':(_) => InfantilScreen(),  
+          'cat-romance':(_) => RomanceScreen(),   
         },
       ),
     );

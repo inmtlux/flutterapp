@@ -425,6 +425,41 @@ class _UsuaActState extends State<UsuaAct> {
                       ),
                     ),
                   ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                      InkWell(
+                    onTap: ()async {
+                      await subir_imagen(txtusuarioId.text);
+                      usuarioProvider.getOnUsuarioList();
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 20,right:20),
+
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: kBlue,
+                        borderRadius: BorderRadius.circular(20)
+                        ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.edit,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 25,),
+                          Expanded(
+                            
+                            child: Text(
+                              'Actualizar Imagen',
+                              // textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 18,color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
 
                     SizedBox(
                       height: 30,
@@ -505,23 +540,23 @@ class _UsuaActState extends State<UsuaAct> {
                     SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      children: <Widget>[
-                        Text('Estado'),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Checkbox(
-                            value: _estadoActivo,
-                            onChanged: (value) {
-                              setState(() {
-                                _estadoActivo = value;
-                                print('_estadoActivo: ${_estadoActivo}');
-                              });
-                            }),
-                        Text('Activo')
-                      ],
-                    ),
+                    // Row(
+                    //   children: <Widget>[
+                    //     Text('Estado'),
+                    //     SizedBox(
+                    //       width: 20,
+                    //     ),
+                    //     Checkbox(
+                    //         value: _estadoActivo,
+                    //         onChanged: (value) {
+                    //           setState(() {
+                    //             _estadoActivo = value;
+                    //             print('_estadoActivo: ${_estadoActivo}');
+                    //           });
+                    //         }),
+                    //     Text('Activo')
+                    //   ],
+                    // ),
                     Container(
                       height: 56,
                       width: 350,
@@ -553,9 +588,9 @@ class _UsuaActState extends State<UsuaAct> {
                             String usuarioId = await (rsp['usuario']['usuarioId']).toString();
                             print(usuarioId);
                             print('===========================');
-                            await subir_imagen(usuarioId);
+                            
                             Navigator.pushReplacementNamed(
-                                context, 'usuarios_screen');
+                                context, 'usuario_swiper');
                           }
                         },
                         child: Text(
