@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
+import 'package:primera_prueba/helpers/obtener_imagen.dart';
 import 'package:primera_prueba/models/libro.dart';
 import 'package:primera_prueba/providers/libro_provider.dart';
 import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 import 'dart:async';
 
@@ -36,9 +39,6 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
     setState(() {
       if (pickedFile != null) {
         imagen = File(pickedFile.path);
-        print('========================');
-        print(imagen!.path);
-        print('========================');
       } else {
         print('No seleccionaste ninguna imagen');
       }
@@ -49,9 +49,6 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
   Future<void> subir_imagen(String id) async {
     try {
       String filename = imagen!.path.split('/').last;
-      print('========================');
-      print(filename);
-      print('========================');
 
       FormData formData = new FormData.fromMap({
         'archivo':
@@ -70,7 +67,8 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
       print(e.toString());
     }
   }
-
+  
+  
   @override
   Widget build(BuildContext context) {
     final libroProvider = Provider.of<LibroProvider>(context);
@@ -86,6 +84,7 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
     return Scaffold(
         appBar: AppBar(
           title: Text('ACTUALIZAR LIBRO'),
+          backgroundColor: Color.fromARGB(255, 39, 64, 176),
         ),
         drawer: MenuLateral(),
         body: SingleChildScrollView(
@@ -157,6 +156,7 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
                 InkWell(
                   onTap: () {
                     setImage();
+                    
                   },
                   child: Container(
                     padding: EdgeInsets.all(15),
@@ -187,9 +187,67 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
                 ),
                 InkWell(
                   onTap: () async {
+
+                  //   String imgRsp = await obtenerImage('libros',txtId.text);
+                  // print('==========');
+                  // print('imagen rsp: '+imgRsp);
+                  // print('==========');
+                  //   setState(() {
+                  //   img = imgRsp;
+                      
+                  //   });
+                    if(imagen == null){
+                      showDialog(
+                        context: context, 
+                        builder: (BuildContext context){
+                          return AlertDialog(
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: [
+                                  Text(
+                            'No has seleccionado ninguna imagen', 
+                            style: TextStyle(fontSize: 18),textAlign: TextAlign.center,),
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                    }else{
                     await subir_imagen(txtId.text);
                     libroProvider.getLibrosNovedades();
                     libroProvider.getLibrosPopulares();
+
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context){
+                        return AlertDialog(
+                          content: SingleChildScrollView(
+                    child: ListBody(
+                      children: [
+                        Text(
+                            'Imagen actualizada', 
+                            style: TextStyle(fontSize: 18),textAlign: TextAlign.center,),
+                        
+                      ],
+                      
+                    ),
+                  ),
+                  actions: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 39, 64, 176)) 
+                      ),
+                      child: Text('volver',style: TextStyle(fontSize: 20)),
+                     
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'principal_screen');
+                      },
+                    )
+                  ],
+                        );
+                      }
+                    );
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.all(15),
@@ -237,10 +295,7 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
                           img: img,
                         );
                         final rsp = await libroProvider.saveLibros(libro);
-                        print('=========== Libro nuevo   =========');
-                        print('Bienvenido ' + rsp['libro']['descripcion']);
-                        String libroId =
-                            await (rsp['libro']['libroId']).toString();
+                        String libroId = await (rsp['libro']['libroId']).toString();
 
                         Navigator.pushNamed(
                             context, 'principal_screen');
