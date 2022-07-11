@@ -1,25 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:primera_prueba/models/libro.dart';
 import 'package:primera_prueba/providers/libro_provider.dart';
+//import 'package:primera_prueba/providers/registro_provider.dart';
 import 'package:provider/provider.dart';
 import '../widgets/menu_lateral.dart';
+import 'package:card_swiper/card_swiper.dart';
+import '../search/libro_search_delegate.dart';
 
-class Terror1Screen extends StatefulWidget {
+class RegistroScreen extends StatefulWidget {
   @override
-  createState() => _Terror1Screen();
+  createState() => _RegistroScreen();
 }
 
-class _Terror1Screen extends State<Terror1Screen> {
+class _RegistroScreen extends State<RegistroScreen> {
   @override
   Widget build(BuildContext context) {
     final libroProvider = Provider.of<LibroProvider>(context);
     final List<Libro> listaLibros = libroProvider.listaLibros;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      drawer: MenuLateral(),
       appBar: AppBar(
-        title: Text('Autores'),
+        title: Text('Registro de libros'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                  context: context,
+                  delegate: LibroSearchDelegate(listaLibros));
+            }, //PENDIENTE
+          )
+        ],
       ),
-      body: Center(
+      body: Container(
+        width: double.infinity,
+        height: size.height * 0.7,
+        color: Colors.white,
+        child: Swiper(
+          itemCount: listaLibros.length,
+          layout: SwiperLayout.STACK,
+          itemWidth: size.width * 0.8,
+          itemHeight: size.height * 0.7,
+          itemBuilder: (BuildContext context, int index) {
+            return _cardLibros(listaLibros[index]);
+          },
+        ),
+      ),
+
+
+
+      /*body: Center(
           child: ListView.builder(
         itemCount: listaLibros.length,
         itemBuilder: (context, index) {
@@ -71,7 +103,9 @@ class _Terror1Screen extends State<Terror1Screen> {
                 )),
           );
         },
-      )),
+      )
+      ),
+      */
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
@@ -79,25 +113,85 @@ class _Terror1Screen extends State<Terror1Screen> {
         },
         backgroundColor: Colors.blue,
       ),
-      drawer: MenuLateral(),
+    );
+  }
+}
+
+
+class _cardLibros extends StatelessWidget {
+  final Libro libro;
+  _cardLibros(this.libro);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Container(
+      margin: EdgeInsets.only(top: 140, bottom: 20),
+      width: double.infinity,
+      height: size.height * 0.7,
+      decoration: _cardBorders(),
+      child: Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          _ImagenFondo(libro),
+          Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              color: Colors.amber,
+            ),
+            child: ListTile(
+              title: Text(
+                libro.descripcion,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+              subtitle: Text(
+              'Autor:  ' + libro.autor.toString(),
+              style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.indigo),
+                        ),
+              leading: Icon(Icons.book),
+              trailing: IconButton(
+                icon: const Icon(
+                  Icons.edit,
+                  color: Colors.blueAccent,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'libro_form_screen',
+                      arguments: libro);
+                },
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
 
 class _ImagenFondo extends StatelessWidget {
+  final Libro libro;
+  _ImagenFondo(this.libro);
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Container(
         width: double.infinity,
-        height: 200,
+        height: 350,
         child: FadeInImage(
             placeholder:
                 AssetImage('../assets/terror-screen/horror.jpg'),
-            image: AssetImage('../assets/terror-screen/horror.jpg'),
-
-            // NetworkImage('https://placeimg.com/400/300/tech'),
+            image: NetworkImage(libro.img),
             fit: BoxFit.cover),
       ),
     );

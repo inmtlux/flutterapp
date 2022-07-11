@@ -22,20 +22,16 @@ class LibroFormScreen extends StatefulWidget {
   State<LibroFormScreen> createState() => _LibroFormScreen();
 }
 
-enum Autoreslist {
- literario,
- noliterario
-} 
-
 class _LibroFormScreen extends State<LibroFormScreen> {
   final _formKey = GlobalKey<FormState>();
-  Autoreslist? _catSeleccion = Autoreslist.literario;
-  bool? _estadoActivo = false;
+
 
   final txtDescripcion = TextEditingController();
   final txtAutor = TextEditingController();
   final txtImagen = TextEditingController();
   final txtCategoria = TextEditingController();
+  final txtLibroId= TextEditingController();
+  bool? _estadoActivo = false;
   File? imagen;
   final picker = ImagePicker();
 
@@ -85,17 +81,54 @@ class _LibroFormScreen extends State<LibroFormScreen> {
   @override
   Widget build(BuildContext context) {
     final libroProvider = Provider.of<LibroProvider>(context);
+
+
     
+    //RECIBIENDO EL PRODUCTO POR ARGUMENTO
+    final Libro? libro =
+        ModalRoute.of(context)!.settings.arguments as Libro?;
+     /*if (!formModificado) {*/
+      if (libro != null) {
+        //EDITAR
+        txtLibroId.text = libro.libroId.toString();
+        txtDescripcion.text = libro.descripcion;
+        txtCategoria.text = libro.categoria.toString();
+        txtAutor.text = libro.autor.toString();
+        txtImagen.text = libro.img;
+        //print(libro.estado);
+        //_estadoActivo = (libro.estado == 'true') ? true : false;
+        
+        } else {
+        //NUEVO
+        txtLibroId.text = '0';
+        txtDescripcion.text = '';
+        txtCategoria.text = '';
+        txtAutor.text = '';
+        txtImagen.text = '';
+      }
+     //}
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('REGISTRO DE LIBROS'),
+        title: Text('REGISTRO DE LIBROS'),backgroundColor: Colors.blueAccent,
       ),
       body: Container(
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: Column(children: <Widget>[
+
+            TextFormField(
+              readOnly: true,
+              controller: txtLibroId,
+              decoration: InputDecoration(
+                  labelText: "LibroId",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0))),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             TextFormField(
               decoration: InputDecoration(
                   labelText: 'Nombre del libro',
@@ -109,7 +142,7 @@ class _LibroFormScreen extends State<LibroFormScreen> {
               },
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             TextFormField(
               decoration: InputDecoration(
@@ -192,6 +225,9 @@ class _LibroFormScreen extends State<LibroFormScreen> {
             Container(
               child: ElevatedButton(
                 child: const Text('GUARDAR'),
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromARGB(255, 18, 170, 97)
+                ),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -203,16 +239,17 @@ class _LibroFormScreen extends State<LibroFormScreen> {
                       categoria: txtCategoria.text,
                       descripcion: txtDescripcion.text,
                       autor: txtAutor.text,
-                      img: txtImagen.text,
+                      img: '',
                       
                     );
-
                     final rsp = await libroProvider.saveLibros(libro);
+                    print('=========== Libro nuevo   =========');
+                    print('Bienvenido ' + rsp['libro']['descripcion']);
                     String libroId = await (rsp['libro']['libroId']).toString();
                     await subir_imagen(libroId);
 
                     Navigator.pushReplacementNamed(
-                        context, 'terror1_screen');
+                        context, 'registro_libros_screen');
                   }
                 },
               ),

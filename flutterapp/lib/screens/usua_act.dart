@@ -9,7 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:primera_prueba/models/usuario.dart';
 import 'package:primera_prueba/palette.dart';
 import 'package:primera_prueba/providers/usuario_provider.dart';
-import 'package:primera_prueba/screens/terr-cat-screen.dart';
+//import 'package:primera_prueba/screens/terr-cat-screen.dart';
 import 'package:primera_prueba/widgets/background-image.dart';
 import 'package:provider/provider.dart';
 

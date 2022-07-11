@@ -6,21 +6,19 @@ import 'package:primera_prueba/providers/categoria_provider.dart';
 import 'package:primera_prueba/providers/libro_provider.dart';
 import 'package:primera_prueba/providers/usuario_provider.dart';
 import 'package:primera_prueba/reportes/usuarios_activos_reporte.dart';
-import 'package:primera_prueba/screens/cat-terror.dart';
+//import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart'; //aca
 import 'package:primera_prueba/screens/ficcion_screen.dart';
 import 'package:primera_prueba/screens/infantil_screen.dart';
 import 'package:primera_prueba/screens/inicio-screen.dart';
 import 'package:primera_prueba/screens/libro_form_screen.dart';
+import 'package:primera_prueba/screens/libro_update_form.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
 import 'package:primera_prueba/screens/prueba.dart';
 import 'package:primera_prueba/screens/reporte_categoria_screen.dart';
 import 'package:primera_prueba/screens/reportes_screen.dart';
 import 'package:primera_prueba/screens/romance_screen.dart';
-
-import 'package:primera_prueba/screens/terr-cat-screen.dart';
-import 'package:primera_prueba/screens/terror1_screen.dart';
 import 'package:primera_prueba/screens/usua_act.dart';
 import 'package:primera_prueba/screens/usuario_reporte.dart';
 import 'package:primera_prueba/screens/usuarios.dart';
@@ -50,6 +48,7 @@ class MyApp extends StatelessWidget {
           lazy: false,
         ),
         ChangeNotifierProvider(create: (_) => CategoriaProvider(), lazy: false),
+        //ChangeNotifierProvider(create: (_) => RegistroProvider(), lazy: false),
       ],
       child: MaterialApp(
         //scrollBehavior: MyCustomScrollBehavior(),
@@ -76,8 +75,8 @@ class MyApp extends StatelessWidget {
           'reporte_usuarios_activos': (_) => UsuarioActivoReporte(),
           'reporte_categorias_screen': (_) => ReporteCategoriaScreen(),
           'reporte_usuarios': (_) => UsuarioReporte(),
-          'terror1_screen': (_) => Terror1Screen(),
           'libro_form_screen':(_) => LibroFormScreen(),
+          'libro_form_update':(_) => LibroUpdateForm(),
           'usuario_swiper':(_) => UsuSwiper(),
           'usuario_actu':(_) => UsuaAct(),  
           'cat-ficcion':(_) => FiccionScreen(),  

@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../models/categoria.dart';
 import '../providers/categoria_provider.dart';
@@ -36,6 +40,51 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
   Categoriaslist? _catSeleccion = Categoriaslist.terror;
   bool? _estadoActivo = false;
   bool formModificado = false;
+  File? imagen;
+  final picker = ImagePicker();
+
+  Future setImage() async {
+    var pickedFile;
+
+    pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    print(pickedFile);
+    setState(() {
+      if (pickedFile != null) {
+        imagen = File(pickedFile.path);
+        print('========================');
+        print(imagen!.path);
+        print('========================');
+      } else {
+        print('No seleccionaste ninguna imagen');
+      }
+    });
+  }
+
+  Dio dio = new Dio();
+  Future<void> subir_imagen(String id) async {
+    try {
+      String filename = imagen!.path.split('/').last;
+      print('========================');
+      print(filename);
+      print('========================');
+
+      FormData formData = new FormData.fromMap({
+        'archivo':
+            await MultipartFile.fromFile(imagen!.path, filename: filename)
+      });
+
+      await dio
+          .putUri(
+              Uri.http(
+                  'api-sliderin.herokuapp.com', '/api/upload/categorias/' + id),
+              data: formData)
+          .then((value) {
+        print(value);
+      });
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +188,34 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
             SizedBox(
               height: 20,
             ),
+            InkWell(
+              onTap: () {
+                setImage();
+              },
+              child: Container(
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Expanded(
+                      child: Text(
+                        'Selecciona una imagen ',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             /*TextFormField(
               decoration: InputDecoration(
                   labelText: 'Imagen',
@@ -150,10 +227,10 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                   return 'Por favor ingrese una imagen';
                 }
               },
-            ),
-            SizedBox(
-              height: 20,
             ),*/
+            SizedBox(
+              height: 1,
+            ),
             Row(
                 //boton para seleccionar categorias
                 children: <Widget>[
@@ -186,8 +263,15 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         });
                       }),
                   Text('Historia'),
+                ]),
+            SizedBox(
+              height: 1,
+            ),
+            Row(
+                //boton para seleccionar categorias 2
+                children: <Widget>[
                   SizedBox(
-                    width: 15,
+                    width: 73,
                   ),
                   Radio(
                       value: Categoriaslist.romance,
@@ -216,11 +300,11 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                   Text('Ficción'),
                 ]),
             //.........................
-            SizedBox(
-              height: 10,
+            /*SizedBox(
+              height: 1,
             ),
             Row(
-                //boton para seleccionar categorias 2
+                //boton para seleccionar categorias 3
                 children: <Widget>[
                   SizedBox(
                     width: 73,
@@ -250,8 +334,15 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         });
                       }),
                   Text('Fantasia'),
+                ]),
+            SizedBox(
+              height: 1,
+            ),
+            Row(
+                //boton para seleccionar categorias 4
+                children: <Widget>[
                   SizedBox(
-                    width: 15,
+                    width: 73,
                   ),
                   Radio(
                       value: Categoriaslist.viajes,
@@ -278,13 +369,13 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         });
                       }),
                   Text('Comics'),
-                ]),
+                ]),*/
             SizedBox(
-              height: 10,
+              height: 1,
             ),
             //....................................
             Row(
-                //boton para seleccionar categorias 2
+                //boton para seleccionar categorias 5
                 children: <Widget>[
                   SizedBox(
                     width: 73,
@@ -314,8 +405,15 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                         });
                       }),
                   Text('Biografía'),
+                ]),
+            SizedBox(
+              height: 1,
+            ),
+            Row(
+                //boton para seleccionar categorias 4
+                children: <Widget>[
                   SizedBox(
-                    width: 15,
+                    width: 73,
                   ),
                   Radio(
                       value: Categoriaslist.poetico,
@@ -327,9 +425,9 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                           formModificado = true;
                         });
                       }),
-                  Text('Poético'),
+                  Text('Poeticos'),
                   SizedBox(
-                    width: 10,
+                    width: 15,
                   ),
                   Radio(
                       value: Categoriaslist.infantiles,
@@ -341,10 +439,10 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
                           formModificado = true;
                         });
                       }),
-                  Text('Infantil'),
+                  Text('Infantiles'),
                 ]),
             SizedBox(
-              height: 20,
+              height: 1,
             ),
             Row(
               children: <Widget>[
