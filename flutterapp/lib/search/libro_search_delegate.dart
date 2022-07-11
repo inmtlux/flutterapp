@@ -78,7 +78,7 @@ Widget _cardLibro(Libro libroFiltrada, context) {
           subtitle: Text('Autor: ${libroFiltrada.autor}'),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
-            Navigator.pushNamed(context, 'libro_form_screen',
+            Navigator.pushNamed(context, 'libro_form_update',
                 arguments: libroFiltrada);
           },
         ),

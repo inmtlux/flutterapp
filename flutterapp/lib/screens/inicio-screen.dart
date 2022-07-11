@@ -5,6 +5,8 @@ import 'package:primera_prueba/providers/libro_provider.dart';
 import 'package:primera_prueba/widgets/menu_lateral.dart';
 import 'package:provider/provider.dart';
 
+import '../search/libro_search_delegate.dart';
+
 class InicioScrenn extends StatefulWidget {
   @override
   State<InicioScrenn> createState() => _InicioScrenn();
@@ -16,6 +18,8 @@ class _InicioScrenn extends State<InicioScrenn> {
     final libroProvider = Provider.of<LibroProvider>(context);
     final List<Libro> listaNovedades = libroProvider.listaLibrosNovedades;
     final List<Libro> listaPopulares = libroProvider.listaLibrosPopulares;
+    final List<Libro> listaLibros = libroProvider.listaLibros;
+
     return Stack(
       children: <Widget>[
         Scaffold(
@@ -30,11 +34,23 @@ class _InicioScrenn extends State<InicioScrenn> {
                 backgroundColor: Color.fromARGB(255, 41, 76, 233),
                 iconTheme:
                     IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+                   actions: <Widget>[
+                    
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+               showSearch(
+                  context: context,
+                  delegate: LibroSearchDelegate(listaLibros));
+            }, //PENDIENTE
+          )
+        ],
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     'INICIO',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
+                  
                   centerTitle: true,
                   background: ShaderMask(
                     shaderCallback: (rect) => LinearGradient(
@@ -68,6 +84,7 @@ class _InicioScrenn extends State<InicioScrenn> {
                         'Novedades',
                         style: TextStyle(fontSize: 30),
                       ),
+                      
                       Container(
                         height: 250,
                         child: ListView.separated(

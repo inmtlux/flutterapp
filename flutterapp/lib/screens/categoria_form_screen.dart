@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import '../models/categoria.dart';
 import '../providers/categoria_provider.dart';
 
@@ -140,7 +141,7 @@ class _CategoriaFormScreen extends State<CategoriaFormScreen> {
       appBar: AppBar(
         title: Text('REGISTRO DE CATEGORIAS'),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,

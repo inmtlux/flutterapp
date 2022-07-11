@@ -15,12 +15,12 @@ import 'package:provider/provider.dart';
 
 import '../widgets/menu_lateral.dart';
 
-class LibroUpdateForm extends StatefulWidget {
+class RegistroUpdateForm extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _LibroUpdateForm();
+  State<StatefulWidget> createState() => _RegistroUpdateForm();
 }
 
-class _LibroUpdateForm extends State<LibroUpdateForm> {
+class _RegistroUpdateForm extends State<RegistroUpdateForm> {
   final _formKey = GlobalKey<FormState>();
   final txtId = TextEditingController();
   final txtDescripcion = TextEditingController();
@@ -240,7 +240,7 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
                       child: Text('volver',style: TextStyle(fontSize: 20)),
                      
                       onPressed: () {
-                        Navigator.pushNamed(context, 'principal_screen');
+                        Navigator.pushNamed(context, 'registro_libros_screen');
                       },
                     )
                   ],
@@ -298,7 +298,7 @@ class _LibroUpdateForm extends State<LibroUpdateForm> {
                         String libroId = await (rsp['libro']['libroId']).toString();
 
                         Navigator.pushNamed(
-                            context, 'principal_screen');
+                            context, 'registro_libros_screen');
                       }
                     },
                   ),
