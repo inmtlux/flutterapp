@@ -538,7 +538,7 @@ class _CreateNewAccounteState extends State<CreateNewAccounte> {
                             print(usuarioId);
                             print('===========================');
                             await subir_imagen(usuarioId);
-                            await usuarioProvider.listaUsuarios;
+                            usuarioProvider.getOnUsuarioList();
                             Navigator.pushReplacementNamed(
                                 context, 'usuarios_screen');
                           }
