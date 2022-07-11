@@ -8,6 +8,7 @@ import 'package:primera_prueba/providers/usuario_provider.dart';
 import 'package:primera_prueba/reportes/usuarios_activos_reporte.dart';
 //import 'package:primera_prueba/screens/cat-terror.dart';
 import 'package:primera_prueba/screens/categoria-screen.dart';
+import 'package:primera_prueba/screens/registro_libros_screen.dart';
 import 'package:primera_prueba/screens/create-new-cuenta.dart'; //aca
 import 'package:primera_prueba/screens/ficcion_screen.dart';
 import 'package:primera_prueba/screens/infantil_screen.dart';
@@ -80,15 +81,10 @@ class MyApp extends StatelessWidget {
           'libro_form_update':(_) => LibroUpdateForm(),
           'usuario_swiper':(_) => UsuSwiper(),
           'usuario_actu':(_) => UsuaAct(),  
-<<<<<<< HEAD
           'cat-ficcion':(_) => FiccionScreen(),  
           'cat-infantil':(_) => InfantilScreen(),  
           'cat-romance':(_) => RomanceScreen(),   
-=======
-          'cat-ficcion':(_) => FiccionScreen(), 
-          'registro_libros_screen':(_) => RegistroScreen(),   
-          'registro_form_update':(_) => RegistroUpdateForm(),    
->>>>>>> 8b56cdb4647d44fbde681f560a302d92d8a8f22a
+          'registro_libros_screen':(_) => RegistroScreen(),
         },
       ),
     );

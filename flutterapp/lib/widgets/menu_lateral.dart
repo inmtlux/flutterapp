@@ -75,20 +75,6 @@ class MenuLateral extends StatelessWidget {
                 Navigator.pushNamed(context, 'categorias_screen');
               },
             ),
-            
-            ListTile(
-              leading: Icon(Icons.supervised_user_circle, color: Colors.grey),
-              title: Text(
-                'Perfil',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                ),
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, 'principal_screen');
-              },
-            ),
             ListTile(
               leading: Icon(Icons.supervised_user_circle, color: Colors.grey),
               title: Text(

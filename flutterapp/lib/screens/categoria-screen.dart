@@ -188,7 +188,6 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                       onTap: () {
                         Navigator.pushNamed(context, "cat-infantil");
                       },
-<<<<<<< HEAD
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -200,28 +199,6 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                             fit: BoxFit.cover,
                           ),
                         ],
-=======
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Color.fromARGB(255, 164, 2, 192),
-                              width: 3),
-                          borderRadius: BorderRadius.circular(28),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox(width: 15),
-                            Center(
-                              child: Text("LITERATURA",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: Color.fromARGB(255, 164, 2, 192))),
-                            )
-                          ],
-                        ),
->>>>>>> 8b56cdb4647d44fbde681f560a302d92d8a8f22a
                       ),
                     ),
                   ),
@@ -542,7 +519,6 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                       onTap: () {
                         Navigator.pushNamed(context, ".....");
                       },
-<<<<<<< HEAD
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -554,55 +530,11 @@ class _CategoriasScreen extends State<CategoriaScreen> {
                             fit: BoxFit.cover,
                           ),
                         ],
-=======
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Color.fromARGB(255, 2, 26, 242), width: 3),
-                          borderRadius: BorderRadius.circular(28),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox(width: 15),
-                            Center(
-                              child: Text("INFANTILES",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: Color.fromARGB(255, 2, 26, 242))),
-                            )
-                          ],
-                        ),
->>>>>>> 8b56cdb4647d44fbde681f560a302d92d8a8f22a
                       ),
                     ),
                   ),
                 ),
-<<<<<<< HEAD
               Container(
-=======
-              ],
-            ), // 3ERA PARTE FINAL
-            SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Text('DALE CLICK SI QUIERES SUGERIR UNA CATEGORIA...',
-                  style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey[850])),
-            ),
-            SizedBox(
-              height: 17,
-            ),
-            Container(
-              //boton con texto e img
-              //padding: EdgeInsets.only(left: 100),
-              margin: EdgeInsets.only(left: 70),
->>>>>>> 8b56cdb4647d44fbde681f560a302d92d8a8f22a
               height: 60,
               width: 200,
               child: Material(
