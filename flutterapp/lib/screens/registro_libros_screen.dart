@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../widgets/menu_lateral.dart';
 import 'package:card_swiper/card_swiper.dart';
 import '../search/libro_search_delegate.dart';
+import 'package:primera_prueba/screens/libro_update_form.dart';
 
 class RegistroScreen extends StatefulWidget {
   @override
@@ -166,7 +167,7 @@ class _cardLibros extends StatelessWidget {
                   color: Colors.blueAccent,
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, 'libro_form_screen',
+                  Navigator.pushNamed(context, 'libro_form_update',
                       arguments: libro);
                 },
               ),

@@ -31,7 +31,6 @@ class _LibroFormScreen extends State<LibroFormScreen> {
   final txtImagen = TextEditingController();
   final txtCategoria = TextEditingController();
   final txtLibroId= TextEditingController();
-  bool? _estadoActivo = false;
   File? imagen;
   final picker = ImagePicker();
 
@@ -112,7 +111,7 @@ class _LibroFormScreen extends State<LibroFormScreen> {
       appBar: AppBar(
         title: Text('REGISTRO DE LIBROS'),backgroundColor: Colors.blueAccent,
       ),
-      body: Container(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
@@ -205,23 +204,7 @@ class _LibroFormScreen extends State<LibroFormScreen> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              children: <Widget>[
-                Text('Estado'),
-                SizedBox(
-                  width: 20,
-                ),
-                Checkbox(
-                    value: _estadoActivo,
-                    onChanged: (value) {
-                      setState(() {
-                        _estadoActivo = value;
-                        print('_estadoActivo: ${_estadoActivo}');
-                      });
-                    }),
-                Text('Activo')
-              ],
-            ),
+            
             Container(
               child: ElevatedButton(
                 child: const Text('GUARDAR'),
