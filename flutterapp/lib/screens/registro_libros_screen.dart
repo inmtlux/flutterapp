@@ -167,7 +167,7 @@ class _cardLibros extends StatelessWidget {
                   color: Colors.blueAccent,
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, 'libro_form_update',
+                  Navigator.pushNamed(context, 'registro_form_update',
                       arguments: libro);
                 },
               ),

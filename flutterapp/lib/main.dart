@@ -15,6 +15,7 @@ import 'package:primera_prueba/screens/libro_form_screen.dart';
 import 'package:primera_prueba/screens/libro_update_form.dart';
 import 'package:primera_prueba/screens/login-screen.dart';
 import 'package:primera_prueba/screens/prueba.dart';
+import 'package:primera_prueba/screens/registro_update_form.dart';
 import 'package:primera_prueba/screens/reporte_categoria_screen.dart';
 import 'package:primera_prueba/screens/reportes_screen.dart';
 import 'package:primera_prueba/screens/registro_libros_screen.dart';
@@ -82,7 +83,8 @@ class MyApp extends StatelessWidget {
           'usuario_swiper':(_) => UsuSwiper(),
           'usuario_actu':(_) => UsuaAct(),  
           'cat-ficcion':(_) => FiccionScreen(), 
-          'registro_libros_screen':(_) => RegistroScreen(),       
+          'registro_libros_screen':(_) => RegistroScreen(),   
+          'registro_form_update':(_) => RegistroUpdateForm(),    
         },
       ),
     );
